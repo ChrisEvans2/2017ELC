@@ -64,8 +64,8 @@ uint16_t temp = 0;
 uint16_t time_ms = 0;
 uint16_t time_s = 0;
 extern __IO uint32_t ADC_ConvertedValue;
-//uint16_t ADC_Data = 0;
-//float ADC_Vol = 0;
+uint16_t ADC_Data = 0;
+float ADC_Vol = 0;
 /* USER CODE END EV */
 
 /******************************************************************************/
@@ -247,22 +247,22 @@ void TIM6_IRQHandler(void)
 //  /* USER CODE END DMA2_Channel4_5_IRQn 1 */
 //}
 
-//uint16_t time1 = 0;
-//uint16_t time2 = 0;
-//void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
-//{
+uint16_t time1 = 0;
+uint16_t time2 = 0;
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+{
 
-//	if(htim == &htim6){	
-//		time1++;
-//		if(time1 == 10){
-//			time1 = 0;
-//			ADC_Data = ADC_ConvertedValue;
-//			ADC_Vol =(float) ADC_Data/4096*(float)3.3; // 读取转换的AD值
-////			printf("\r\n The current AD value = 0x%04X \r\n", ADC_Data); 
-////			printf("\r\n The current AD value = %f V \r\n",ADC_Vol);     
-//			Send_float(ADC_Vol);
-//		}
-//	}
+	if(htim == &htim6){	
+		time1++;
+		if(time1 == 10){
+			time1 = 0;
+			ADC_Data = ADC_ConvertedValue;
+			ADC_Vol =(float) ADC_Data/4096*(float)3.3; // 读取转换的AD值
+//			printf("\r\n The current AD value = 0x%04X \r\n", ADC_Data); 
+//			printf("\r\n The current AD value = %f V \r\n",ADC_Vol);     
+			Send_float(ADC_Vol);
+		}
+	}
 //	if(htim == &htim2){
 //		time2++;
 //		lv_tick_inc(1);
@@ -276,6 +276,6 @@ void TIM6_IRQHandler(void)
 //			printf("This is 1s (%d)\n", time_s);
 //		}
 //	}
-//}
+}
 
 /* USER CODE END 1 */

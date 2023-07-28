@@ -41,7 +41,6 @@ extern ADC_HandleTypeDef hadc1;
 void MX_ADC1_Init(void);
 
 /* USER CODE BEGIN Prototypes */
-extern __IO uint32_t ADC_ConvertedValue;
 
 /* USER CODE END Prototypes */
 

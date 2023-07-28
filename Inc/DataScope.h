@@ -3,7 +3,7 @@
  
 #include "main.h"
  
-#define FRAME_HEAD_SCOPE			0xAB
+#define FRAME_HEAD			0xAB
 #define FRAME_SADDR			0x01
 #define FRAME_DADDR			0xFE
 
@@ -20,7 +20,7 @@
 
 #define DATA_LEN				4
 #define CHECK_LEN				(DATA_LEN  + 6)
-#define SEND_LEN_SCOPE				(CHECK_LEN + 2)
+#define SEND_LEN				(CHECK_LEN + 2)
 
 
 void DataScope_Float_Generate( float f );
