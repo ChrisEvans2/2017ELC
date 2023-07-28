@@ -42,6 +42,7 @@ void MX_ADC1_Init(void);
 
 /* USER CODE BEGIN Prototypes */
 extern __IO uint32_t ADC_ConvertedValue;
+extern __IO uint32_t ADC_Array[256];
 
 /* USER CODE END Prototypes */
 

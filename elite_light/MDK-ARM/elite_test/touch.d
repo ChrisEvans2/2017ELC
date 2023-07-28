@@ -37,7 +37,7 @@ elite_test\touch.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h
 elite_test\touch.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h
 elite_test\touch.o: D:\study\keil MDK\Core\ARM\ARMCC\Bin\..\include\stdio.h
 elite_test\touch.o: D:\study\keil MDK\Core\ARM\ARMCC\Bin\..\include\string.h
-elite_test\touch.o: ..\User\delay\delay.h
+elite_test\touch.o: ../User/delay/delay.h
 elite_test\touch.o: ../Core/Inc/main.h
 elite_test\touch.o: ../Core/Inc/usart.h
 elite_test\touch.o: ../User/sys.h
@@ -46,7 +46,7 @@ elite_test\touch.o: D:\study\keil MDK\Core\ARM\ARMCC\Bin\..\include\stdlib.h
 elite_test\touch.o: ../User/IIC/myiic.h
 elite_test\touch.o: ../User/24CXX/24cxx.h
 elite_test\touch.o: ../User/TOUCH/touch.h
-elite_test\touch.o: ..\User\DataScope\DataScope.h
+elite_test\touch.o: ../User/DataScope/DataScope.h
 elite_test\touch.o: ..\User\TOUCH\ott2001a.h
 elite_test\touch.o: ..\User\TOUCH\gt9147.h
 elite_test\touch.o: ..\User\TOUCH\ft5206.h

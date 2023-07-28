@@ -36,7 +36,7 @@ elite_test\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h
 elite_test\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h
 elite_test\main.o: D:\study\keil MDK\Core\ARM\ARMCC\Bin\..\include\stdio.h
 elite_test\main.o: D:\study\keil MDK\Core\ARM\ARMCC\Bin\..\include\string.h
-elite_test\main.o: ..\User\delay\delay.h
+elite_test\main.o: ../User/delay/delay.h
 elite_test\main.o: ../Core/Inc/main.h
 elite_test\main.o: ../Core/Inc/usart.h
 elite_test\main.o: ../User/sys.h
@@ -48,15 +48,15 @@ elite_test\main.o: ../User/TOUCH/touch.h
 elite_test\main.o: ../User/TOUCH/ott2001a.h
 elite_test\main.o: ../User/TOUCH/gt9147.h
 elite_test\main.o: ../User/TOUCH/ft5206.h
-elite_test\main.o: ..\User\DataScope\DataScope.h
+elite_test\main.o: ../User/DataScope/DataScope.h
 elite_test\main.o: ../Core/Inc/adc.h
 elite_test\main.o: ../Core/Inc/dac.h
 elite_test\main.o: ../Core/Inc/dma.h
 elite_test\main.o: ../Core/Inc/tim.h
 elite_test\main.o: ../Core/Inc/gpio.h
 elite_test\main.o: ../Core/Inc/fsmc.h
-elite_test\main.o: ..\User\FFT\stm32_dsp.h
-elite_test\main.o: ..\User\FFT\table_fft.h
+elite_test\main.o: ../User/FFT/stm32_dsp.h
+elite_test\main.o: ../User/FFT/table_fft.h
 elite_test\main.o: D:\study\keil MDK\Core\ARM\ARMCC\Bin\..\include\math.h
 elite_test\main.o: D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Include\arm_math.h
 elite_test\main.o: D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Include\arm_math_types.h

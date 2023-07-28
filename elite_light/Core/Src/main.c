@@ -138,7 +138,7 @@ int main(void)
   MX_DAC_Init();
   /* USER CODE BEGIN 2 */
   HAL_DAC_Start_DMA(&hdac,DAC_CHANNEL_1,(uint32_t *) Sine12bit,32,DAC_ALIGN_12B_R);
-	HAL_ADC_Start_DMA(&hadc1, (uint32_t*)&ADC_ConvertedValue, 1);
+	HAL_ADC_Start_DMA(&hadc1, (uint32_t*)&ADC_Array, 256);
 	
 	LCD_Init();
 	tp_dev.init();
@@ -149,14 +149,12 @@ int main(void)
 	LCD_ShowString(30,70,200,16,16,(unsigned char*)"DAC TEST");	
 	LCD_ShowString(30,90,200,16,16,(unsigned char*)"ATOM@ALIENTEK");
 	LCD_ShowString(30,110,200,16,16,(unsigned char*)"2019/9/18");	 
-	LCD_ShowString(30,130,200,16,16,(unsigned char*)"KEY1:-  KEY1:+");	  
+	LCD_ShowString(30,130,200,16,16,(unsigned char*)"KEY0:-  KEY1:+");	  
 	POINT_COLOR=BLUE;//设置字体为蓝色      	 
 	LCD_ShowString(30,150,200,16,16,(unsigned char*)"DAC VAL:");	      
 	LCD_ShowString(30,170,200,16,16,(unsigned char*)"DAC VOL:0.000V");	      
 	LCD_ShowString(30,190,200,16,16,(unsigned char*)"ADC VOL:0.000V"); 	
 
-	HAL_GPIO_WritePin(LED0_GPIO_Port, LED0_Pin, GPIO_PIN_SET);
-	HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_SET);
 	HAL_TIM_Base_Start_IT(&htim6);
 	
   /* USER CODE END 2 */

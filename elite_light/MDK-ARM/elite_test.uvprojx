@@ -338,7 +338,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32F103xE,ARM_MATH_CM3</Define>
               <Undefine></Undefine>
-              <IncludePath>../Core/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F1xx/Include;../Drivers/CMSIS/Include;../User;../User/LCD;../User/TOUCH;../User/IIC;../User/24CXX;..\User\FFT;..\User\delay;..\User\DataScope</IncludePath>
+              <IncludePath>../Core/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F1xx/Include;../Drivers/CMSIS/Include;../User;../User/LCD;../User/TOUCH;../User/IIC;../User/24CXX;../User/FFT;../User/delay;../User/DataScope</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>

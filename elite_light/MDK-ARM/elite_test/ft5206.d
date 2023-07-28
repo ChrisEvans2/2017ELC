@@ -39,7 +39,7 @@ elite_test\ft5206.o: ..\User\TOUCH\touch.h
 elite_test\ft5206.o: ../Core/Inc/main.h
 elite_test\ft5206.o: D:\study\keil MDK\Core\ARM\ARMCC\Bin\..\include\stdio.h
 elite_test\ft5206.o: D:\study\keil MDK\Core\ARM\ARMCC\Bin\..\include\string.h
-elite_test\ft5206.o: ..\User\delay\delay.h
+elite_test\ft5206.o: ../User/delay/delay.h
 elite_test\ft5206.o: ../Core/Inc/main.h
 elite_test\ft5206.o: ../Core/Inc/usart.h
 elite_test\ft5206.o: ../User/LCD/lcd.h
@@ -47,7 +47,7 @@ elite_test\ft5206.o: D:\study\keil MDK\Core\ARM\ARMCC\Bin\..\include\stdlib.h
 elite_test\ft5206.o: ../User/IIC/myiic.h
 elite_test\ft5206.o: ../User/24CXX/24cxx.h
 elite_test\ft5206.o: ../User/TOUCH/touch.h
-elite_test\ft5206.o: ..\User\DataScope\DataScope.h
+elite_test\ft5206.o: ../User/DataScope/DataScope.h
 elite_test\ft5206.o: ..\User\TOUCH\ott2001a.h
 elite_test\ft5206.o: ..\User\TOUCH\gt9147.h
 elite_test\ft5206.o: ..\User\TOUCH\ctiic.h

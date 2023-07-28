@@ -395,4 +395,10 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 		}
 	}
 }
+void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
+{
+	HAL_GPIO_TogglePin(LED1_GPIO_Port, LED1_Pin);
+	printf("ADC complete!");
+	
+}
 /* USER CODE END 1 */
