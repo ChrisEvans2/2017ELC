@@ -179,7 +179,7 @@ int main(void)
   {
 		tp_dev.scan(0);
 //		HAL_GPIO_TogglePin(LED0_GPIO_Port, LED0_Pin);
-		delay_ms(5);
+		Delay_ms(5);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

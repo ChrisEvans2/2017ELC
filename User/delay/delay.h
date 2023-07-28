@@ -1,9 +1,11 @@
-#ifndef __DELAY_H
-#define __DELAY_H
+#ifndef DELAY_H_
+#define DELAY_H_
 
-#include "main.h"
+#include "stm32f1xx_hal.h"
 
-void delay_us(uint16_t time_us);
-void delay_ms(uint16_t time_ms);
+void SysTick_Init(uint8_t SYSCLK); //SysTick定时器初始化函数
+void Delay_us(uint32_t nus);       //微秒级延时函数
+void Delay_ms(uint16_t nms);       //毫秒级延时函数
+
 
 #endif
