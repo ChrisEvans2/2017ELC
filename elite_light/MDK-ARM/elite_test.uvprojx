@@ -338,7 +338,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32F103xE,ARM_MATH_CM3</Define>
               <Undefine></Undefine>
-              <IncludePath>../Core/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F1xx/Include;../Drivers/CMSIS/Include;../User;../User/LCD;../User/TOUCH;../User/IIC;../User/24CXX</IncludePath>
+              <IncludePath>../Core/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F1xx/Include;../Drivers/CMSIS/Include;../User;../User/LCD;../User/TOUCH;../User/IIC;../User/24CXX;..\User\FFT;..\User\delay;..\User\DataScope</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -1170,11 +1170,6 @@
           <GroupName>User</GroupName>
           <Files>
             <File>
-              <FileName>delay.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\User\delay.c</FilePath>
-            </File>
-            <File>
               <FileName>lcd.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\User\LCD\lcd.c</FilePath>
@@ -1214,6 +1209,16 @@
               <FileType>1</FileType>
               <FilePath>..\User\TOUCH\ott2001a.c</FilePath>
             </File>
+            <File>
+              <FileName>delay.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\delay\delay.c</FilePath>
+            </File>
+            <File>
+              <FileName>DataScope.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\DataScope\DataScope.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1222,22 +1227,22 @@
             <File>
               <FileName>cr4_fft_256_stm32.s</FileName>
               <FileType>2</FileType>
-              <FilePath>..\User\cr4_fft_256_stm32.s</FilePath>
+              <FilePath>..\User\FFT\cr4_fft_256_stm32.s</FilePath>
             </File>
             <File>
               <FileName>cr4_fft_1024_stm32.s</FileName>
               <FileType>2</FileType>
-              <FilePath>..\User\cr4_fft_1024_stm32.s</FilePath>
+              <FilePath>..\User\FFT\cr4_fft_1024_stm32.s</FilePath>
             </File>
             <File>
               <FileName>stm32_dsp.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\User\stm32_dsp.h</FilePath>
+              <FilePath>..\User\FFT\stm32_dsp.h</FilePath>
             </File>
             <File>
               <FileName>table_fft.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\User\table_fft.h</FilePath>
+              <FilePath>..\User\FFT\table_fft.h</FilePath>
             </File>
           </Files>
         </Group>

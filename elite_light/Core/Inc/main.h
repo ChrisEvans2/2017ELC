@@ -41,8 +41,7 @@ extern "C" {
 #include "myiic.h"
 #include "24cxx.h"
 #include "touch.h"
-
-
+#include "DataScope.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/

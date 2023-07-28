@@ -2429,8 +2429,8 @@ e" -I"D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Include" -I"D:\study\kei
 l MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\PrivateInclude" -I"D:\study\keil MDK\Pack\
 Keil\STM32F1xx_DFP\2.3.0\Device\Include" --predefine="__MICROLIB SETA 1" --pred
 efine="__UVISION_VERSION SETA 528" --predefine="_RTE_ SETA 1" --predefine="STM3
-2F10X_HD SETA 1" --list=./elite_test/\cr4_fft_1024_stm32.lst ..\User\cr4_fft_10
-24_stm32.s
+2F10X_HD SETA 1" --list=./elite_test/\cr4_fft_1024_stm32.lst ..\User\FFT\cr4_ff
+t_1024_stm32.s
 
 
 
@@ -2441,7 +2441,7 @@ Relocatable symbols
 
 Symbol: .text
    Definitions
-      At line 20 in file ..\User\cr4_fft_1024_stm32.s
+      At line 20 in file ..\User\FFT\cr4_fft_1024_stm32.s
    Uses
       None
 Comment: .text unused
@@ -2449,49 +2449,49 @@ TableFFT_V7 000001F0
 
 Symbol: TableFFT_V7
    Definitions
-      At line 285 in file ..\User\cr4_fft_1024_stm32.s
+      At line 285 in file ..\User\FFT\cr4_fft_1024_stm32.s
    Uses
-      At line 250 in file ..\User\cr4_fft_1024_stm32.s
+      At line 250 in file ..\User\FFT\cr4_fft_1024_stm32.s
 Comment: TableFFT_V7 used once
 butterloop_v7 000000D0
 
 Symbol: butterloop_v7
    Definitions
-      At line 263 in file ..\User\cr4_fft_1024_stm32.s
+      At line 263 in file ..\User\FFT\cr4_fft_1024_stm32.s
    Uses
-      At line 266 in file ..\User\cr4_fft_1024_stm32.s
+      At line 266 in file ..\User\FFT\cr4_fft_1024_stm32.s
 Comment: butterloop_v7 used once
 cr4_fft_1024_stm32 00000000
 
 Symbol: cr4_fft_1024_stm32
    Definitions
-      At line 219 in file ..\User\cr4_fft_1024_stm32.s
+      At line 219 in file ..\User\FFT\cr4_fft_1024_stm32.s
    Uses
-      At line 22 in file ..\User\cr4_fft_1024_stm32.s
+      At line 22 in file ..\User\FFT\cr4_fft_1024_stm32.s
 Comment: cr4_fft_1024_stm32 used once
 grouploop_v7 000000CC
 
 Symbol: grouploop_v7
    Definitions
-      At line 260 in file ..\User\cr4_fft_1024_stm32.s
+      At line 260 in file ..\User\FFT\cr4_fft_1024_stm32.s
    Uses
-      At line 274 in file ..\User\cr4_fft_1024_stm32.s
+      At line 274 in file ..\User\FFT\cr4_fft_1024_stm32.s
 Comment: grouploop_v7 used once
 passloop_v7 000000C0
 
 Symbol: passloop_v7
    Definitions
-      At line 254 in file ..\User\cr4_fft_1024_stm32.s
+      At line 254 in file ..\User\FFT\cr4_fft_1024_stm32.s
    Uses
-      At line 279 in file ..\User\cr4_fft_1024_stm32.s
+      At line 279 in file ..\User\FFT\cr4_fft_1024_stm32.s
 Comment: passloop_v7 used once
 preloop_v7 0000000C
 
 Symbol: preloop_v7
    Definitions
-      At line 226 in file ..\User\cr4_fft_1024_stm32.s
+      At line 226 in file ..\User\FFT\cr4_fft_1024_stm32.s
    Uses
-      At line 232 in file ..\User\cr4_fft_1024_stm32.s
+      At line 232 in file ..\User\FFT\cr4_fft_1024_stm32.s
 Comment: preloop_v7 used once
 7 symbols
 
@@ -2504,16 +2504,16 @@ NPT 00000400
 
 Symbol: NPT
    Definitions
-      At line 46 in file ..\User\cr4_fft_1024_stm32.s
+      At line 46 in file ..\User\FFT\cr4_fft_1024_stm32.s
    Uses
-      At line 136 in macro `”×ØkÖOPT
-      at line 228 in file ..\User\cr4_fft_1024_stm32.s
-      At line 139 in macro `”×ØkÖOPT
-      at line 228 in file ..\User\cr4_fft_1024_stm32.s
-      At line 142 in macro `”×ØkÖOPT
-      at line 228 in file ..\User\cr4_fft_1024_stm32.s
-      At line 145 in macro `”×ØkÖOPT
-      at line 228 in file ..\User\cr4_fft_1024_stm32.s
+      At line 136 in macro è+—OPT
+      at line 228 in file ..\User\FFT\cr4_fft_1024_stm32.s
+      At line 139 in macro è+—OPT
+      at line 228 in file ..\User\FFT\cr4_fft_1024_stm32.s
+      At line 142 in macro è+—OPT
+      at line 228 in file ..\User\FFT\cr4_fft_1024_stm32.s
+      At line 145 in macro è+—OPT
+      at line 228 in file ..\User\FFT\cr4_fft_1024_stm32.s
 
 1 symbol
 
@@ -2526,7 +2526,7 @@ TableFFT 00000000
 
 Symbol: TableFFT
    Definitions
-      At line 23 in file ..\User\cr4_fft_1024_stm32.s
+      At line 23 in file ..\User\FFT\cr4_fft_1024_stm32.s
    Uses
       None
 Comment: TableFFT unused
