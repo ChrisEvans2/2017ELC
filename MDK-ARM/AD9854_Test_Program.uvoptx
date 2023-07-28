@@ -22,11 +22,7 @@
   </DaveTm>
 
   <Target>
-<<<<<<<< HEAD:MDK-ARM/AD9854_Test_Program.uvoptx
     <TargetName>AD9854_Test_Program</TargetName>
-========
-    <TargetName>elite_test</TargetName>
->>>>>>>> origin/elite_light:MDK-ARM/elite_test.uvoptx
     <ToolsetNumber>0x4</ToolsetNumber>
     <ToolsetName>ARM-ADS</ToolsetName>
     <TargetOption>
@@ -49,11 +45,7 @@
         <PageWidth>79</PageWidth>
         <PageLength>66</PageLength>
         <TabStop>8</TabStop>
-<<<<<<<< HEAD:MDK-ARM/AD9854_Test_Program.uvoptx
         <ListingPath></ListingPath>
-========
-        <ListingPath>./elite_test/\</ListingPath>
->>>>>>>> origin/elite_light:MDK-ARM/elite_test.uvoptx
       </OPTLEX>
       <ListingPage>
         <CreateCListing>1</CreateCListing>
@@ -111,7 +103,7 @@
         <bEvRecOn>1</bEvRecOn>
         <bSchkAxf>0</bSchkAxf>
         <bTchkAxf>0</bTchkAxf>
-        <nTsel>6</nTsel>
+        <nTsel>3</nTsel>
         <sDll></sDll>
         <sDllPa></sDllPa>
         <sDlgDll></sDlgDll>
@@ -122,18 +114,13 @@
         <tDlgDll></tDlgDll>
         <tDlgPa></tDlgPa>
         <tIfile></tIfile>
-        <pMon>STLink\ST-LINKIII-KEIL_SWO.dll</pMon>
+        <pMon>BIN\CMSIS_AGDI.dll</pMon>
       </DebugOpt>
       <TargetDriverDllRegistry>
         <SetRegEntry>
           <Number>0</Number>
-<<<<<<<< HEAD:MDK-ARM/AD9854_Test_Program.uvoptx
           <Key>CMSIS_AGDI</Key>
           <Name>-X"Any" -UAny -O206 -S8 -C0 -P00000000 -N00("") -D00(00000000) -L00(0) -TO65554 -TC10000000 -TT10000000 -TP20 -TDS8007 -TDT0 -TDC1F -TIEFFFFFFFF -TIP8 -FO15 -FD20000000 -FC1000 -FN1 -FF0STM32F10x_512.FLM -FS08000000 -FL080000 -FP0($$Device:STM32F103ZE$Flash\STM32F10x_512.FLM)</Name>
-========
-          <Key>ST-LINKIII-KEIL_SWO</Key>
-          <Name>-U49FF6B064989495321141787 -O206 -SF4000 -C0 -A0 -I0 -HNlocalhost -HP7184 -P2 -N00("ARM CoreSight SW-DP") -D00(1BA01477) -L00(0) -TO18 -TC10000000 -TP21 -TDS8007 -TDT0 -TDC1F -TIEFFFFFFFF -TIP8 -FO7 -FD20000000 -FC1000 -FN1 -FF0STM32F10x_512.FLM -FS08000000 -FL080000 -FP0($$Device:STM32F103ZE$Flash\STM32F10x_512.FLM)</Name>
->>>>>>>> origin/elite_light:MDK-ARM/elite_test.uvoptx
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
@@ -157,7 +144,6 @@
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
-<<<<<<<< HEAD:MDK-ARM/AD9854_Test_Program.uvoptx
           <Key>UL2CM3</Key>
           <Name>UL2CM3(-S0 -C0 -P0 -FD20000000 -FC1000 -FN1 -FF0STM32F10x_512 -FS08000000 -FL080000 -FP0($$Device:STM32F103ZE$Flash\STM32F10x_512.FLM))</Name>
         </SetRegEntry>
@@ -165,15 +151,6 @@
           <Number>0</Number>
           <Key>ST-LINKIII-KEIL_SWO</Key>
           <Name>-U1104090B2316303030303032 -O2254 -SF10000 -C0 -A0 -I0 -HNlocalhost -HP7184 -P1 -N00("ARM CoreSight SW-DP") -D00(1BA01477) -L00(0) -TO131090 -TC10000000 -TT10000000 -TP21 -TDS8004 -TDT0 -TDC1F -TIEFFFFFFFF -TIP8 -FO15 -FD20000000 -FC800 -FN1 -FF0STM32F10x_512.FLM -FS08000000 -FL080000 -FP0($$Device:STM32F103ZE$Flash\STM32F10x_512.FLM) -WA0 -WE0 -WVCE4 -WS2710 -WM0 -WP2</Name>
-========
-          <Key>CMSIS_AGDI</Key>
-          <Name>-X"Any" -UAny -O206 -S8 -C0 -P00 -N00("ARM CoreSight SW-DP") -D00(1BA01477) -L00(0) -TO65554 -TC10000000 -TT10000000 -TP20 -TDS8007 -TDT0 -TDC1F -TIEFFFFFFFF -TIP8 -FO15 -FD20000000 -FC1000 -FN1 -FF0STM32F10x_512.FLM -FS08000000 -FL080000 -FP0($$Device:STM32F103ZE$Flash\STM32F10x_512.FLM)</Name>
-        </SetRegEntry>
-        <SetRegEntry>
-          <Number>0</Number>
-          <Key>UL2CM3</Key>
-          <Name>UL2CM3(-S0 -C0 -P0 -FD20000000 -FC1000 -FN1 -FF0STM32F10x_512 -FS08000000 -FL080000 -FP0($$Device:STM32F103ZE$Flash\STM32F10x_512.FLM))</Name>
->>>>>>>> origin/elite_light:MDK-ARM/elite_test.uvoptx
         </SetRegEntry>
       </TargetDriverDllRegistry>
       <Breakpoint>
@@ -197,7 +174,6 @@
       <WatchWindow2>
         <Ww>
           <count>0</count>
-<<<<<<<< HEAD:MDK-ARM/AD9854_Test_Program.uvoptx
           <WinNumber>2</WinNumber>
           <ItemText>point</ItemText>
         </Ww>
@@ -222,12 +198,6 @@
           <ItemText>byte_arr</ItemText>
         </Ww>
       </WatchWindow2>
-========
-          <WinNumber>1</WinNumber>
-          <ItemText>data</ItemText>
-        </Ww>
-      </WatchWindow1>
->>>>>>>> origin/elite_light:MDK-ARM/elite_test.uvoptx
       <Tracepoint>
         <THDelay>0</THDelay>
       </Tracepoint>
@@ -281,13 +251,8 @@
   </Target>
 
   <Group>
-<<<<<<<< HEAD:MDK-ARM/AD9854_Test_Program.uvoptx
     <GroupName>Application/MDK-ARM</GroupName>
     <tvExp>1</tvExp>
-========
-    <GroupName>Application/User/Core</GroupName>
-    <tvExp>0</tvExp>
->>>>>>>> origin/elite_light:MDK-ARM/elite_test.uvoptx
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -366,36 +331,14 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-<<<<<<<< HEAD:MDK-ARM/AD9854_Test_Program.uvoptx
       <PathWithFileName>../Src/gpio.c</PathWithFileName>
       <FilenameWithoutPath>gpio.c</FilenameWithoutPath>
-========
-      <PathWithFileName>../Core/Src/fsmc.c</PathWithFileName>
-      <FilenameWithoutPath>fsmc.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
     <File>
-      <GroupNumber>1</GroupNumber>
-      <FileNumber>7</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>../Core/Src/tim.c</PathWithFileName>
-      <FilenameWithoutPath>tim.c</FilenameWithoutPath>
->>>>>>>> origin/elite_light:MDK-ARM/elite_test.uvoptx
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-<<<<<<<< HEAD:MDK-ARM/AD9854_Test_Program.uvoptx
       <GroupNumber>2</GroupNumber>
       <FileNumber>7</FileNumber>
-========
-      <GroupNumber>1</GroupNumber>
-      <FileNumber>8</FileNumber>
->>>>>>>> origin/elite_light:MDK-ARM/elite_test.uvoptx
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -406,13 +349,8 @@
       <bShared>0</bShared>
     </File>
     <File>
-<<<<<<<< HEAD:MDK-ARM/AD9854_Test_Program.uvoptx
       <GroupNumber>2</GroupNumber>
       <FileNumber>8</FileNumber>
-========
-      <GroupNumber>1</GroupNumber>
-      <FileNumber>9</FileNumber>
->>>>>>>> origin/elite_light:MDK-ARM/elite_test.uvoptx
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -423,13 +361,8 @@
       <bShared>0</bShared>
     </File>
     <File>
-<<<<<<<< HEAD:MDK-ARM/AD9854_Test_Program.uvoptx
       <GroupNumber>2</GroupNumber>
       <FileNumber>9</FileNumber>
-========
-      <GroupNumber>1</GroupNumber>
-      <FileNumber>10</FileNumber>
->>>>>>>> origin/elite_light:MDK-ARM/elite_test.uvoptx
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -484,13 +417,8 @@
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
     <File>
-<<<<<<<< HEAD:MDK-ARM/AD9854_Test_Program.uvoptx
       <GroupNumber>3</GroupNumber>
       <FileNumber>13</FileNumber>
-========
-      <GroupNumber>2</GroupNumber>
-      <FileNumber>11</FileNumber>
->>>>>>>> origin/elite_light:MDK-ARM/elite_test.uvoptx
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -501,13 +429,8 @@
       <bShared>0</bShared>
     </File>
     <File>
-<<<<<<<< HEAD:MDK-ARM/AD9854_Test_Program.uvoptx
       <GroupNumber>3</GroupNumber>
       <FileNumber>14</FileNumber>
-========
-      <GroupNumber>2</GroupNumber>
-      <FileNumber>12</FileNumber>
->>>>>>>> origin/elite_light:MDK-ARM/elite_test.uvoptx
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -518,13 +441,8 @@
       <bShared>0</bShared>
     </File>
     <File>
-<<<<<<<< HEAD:MDK-ARM/AD9854_Test_Program.uvoptx
       <GroupNumber>3</GroupNumber>
       <FileNumber>15</FileNumber>
-========
-      <GroupNumber>2</GroupNumber>
-      <FileNumber>13</FileNumber>
->>>>>>>> origin/elite_light:MDK-ARM/elite_test.uvoptx
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -535,13 +453,8 @@
       <bShared>0</bShared>
     </File>
     <File>
-<<<<<<<< HEAD:MDK-ARM/AD9854_Test_Program.uvoptx
       <GroupNumber>3</GroupNumber>
       <FileNumber>16</FileNumber>
-========
-      <GroupNumber>2</GroupNumber>
-      <FileNumber>14</FileNumber>
->>>>>>>> origin/elite_light:MDK-ARM/elite_test.uvoptx
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -552,13 +465,8 @@
       <bShared>0</bShared>
     </File>
     <File>
-<<<<<<<< HEAD:MDK-ARM/AD9854_Test_Program.uvoptx
       <GroupNumber>3</GroupNumber>
       <FileNumber>17</FileNumber>
-========
-      <GroupNumber>2</GroupNumber>
-      <FileNumber>15</FileNumber>
->>>>>>>> origin/elite_light:MDK-ARM/elite_test.uvoptx
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -569,13 +477,8 @@
       <bShared>0</bShared>
     </File>
     <File>
-<<<<<<<< HEAD:MDK-ARM/AD9854_Test_Program.uvoptx
       <GroupNumber>3</GroupNumber>
       <FileNumber>18</FileNumber>
-========
-      <GroupNumber>2</GroupNumber>
-      <FileNumber>16</FileNumber>
->>>>>>>> origin/elite_light:MDK-ARM/elite_test.uvoptx
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -586,13 +489,8 @@
       <bShared>0</bShared>
     </File>
     <File>
-<<<<<<<< HEAD:MDK-ARM/AD9854_Test_Program.uvoptx
       <GroupNumber>3</GroupNumber>
       <FileNumber>19</FileNumber>
-========
-      <GroupNumber>2</GroupNumber>
-      <FileNumber>17</FileNumber>
->>>>>>>> origin/elite_light:MDK-ARM/elite_test.uvoptx
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -603,13 +501,8 @@
       <bShared>0</bShared>
     </File>
     <File>
-<<<<<<<< HEAD:MDK-ARM/AD9854_Test_Program.uvoptx
       <GroupNumber>3</GroupNumber>
       <FileNumber>20</FileNumber>
-========
-      <GroupNumber>2</GroupNumber>
-      <FileNumber>18</FileNumber>
->>>>>>>> origin/elite_light:MDK-ARM/elite_test.uvoptx
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -620,13 +513,8 @@
       <bShared>0</bShared>
     </File>
     <File>
-<<<<<<<< HEAD:MDK-ARM/AD9854_Test_Program.uvoptx
       <GroupNumber>3</GroupNumber>
       <FileNumber>21</FileNumber>
-========
-      <GroupNumber>2</GroupNumber>
-      <FileNumber>19</FileNumber>
->>>>>>>> origin/elite_light:MDK-ARM/elite_test.uvoptx
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -637,13 +525,8 @@
       <bShared>0</bShared>
     </File>
     <File>
-<<<<<<<< HEAD:MDK-ARM/AD9854_Test_Program.uvoptx
       <GroupNumber>3</GroupNumber>
       <FileNumber>22</FileNumber>
-========
-      <GroupNumber>2</GroupNumber>
-      <FileNumber>20</FileNumber>
->>>>>>>> origin/elite_light:MDK-ARM/elite_test.uvoptx
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -654,13 +537,8 @@
       <bShared>0</bShared>
     </File>
     <File>
-<<<<<<<< HEAD:MDK-ARM/AD9854_Test_Program.uvoptx
       <GroupNumber>3</GroupNumber>
       <FileNumber>23</FileNumber>
-========
-      <GroupNumber>2</GroupNumber>
-      <FileNumber>21</FileNumber>
->>>>>>>> origin/elite_light:MDK-ARM/elite_test.uvoptx
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -671,13 +549,8 @@
       <bShared>0</bShared>
     </File>
     <File>
-<<<<<<<< HEAD:MDK-ARM/AD9854_Test_Program.uvoptx
       <GroupNumber>3</GroupNumber>
       <FileNumber>24</FileNumber>
-========
-      <GroupNumber>2</GroupNumber>
-      <FileNumber>22</FileNumber>
->>>>>>>> origin/elite_light:MDK-ARM/elite_test.uvoptx
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -688,13 +561,8 @@
       <bShared>0</bShared>
     </File>
     <File>
-<<<<<<<< HEAD:MDK-ARM/AD9854_Test_Program.uvoptx
       <GroupNumber>3</GroupNumber>
       <FileNumber>25</FileNumber>
-========
-      <GroupNumber>2</GroupNumber>
-      <FileNumber>23</FileNumber>
->>>>>>>> origin/elite_light:MDK-ARM/elite_test.uvoptx
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -705,61 +573,8 @@
       <bShared>0</bShared>
     </File>
     <File>
-<<<<<<<< HEAD:MDK-ARM/AD9854_Test_Program.uvoptx
       <GroupNumber>3</GroupNumber>
       <FileNumber>26</FileNumber>
-========
-      <GroupNumber>2</GroupNumber>
-      <FileNumber>24</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dac.c</PathWithFileName>
-      <FilenameWithoutPath>stm32f1xx_hal_dac.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>2</GroupNumber>
-      <FileNumber>25</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dac_ex.c</PathWithFileName>
-      <FilenameWithoutPath>stm32f1xx_hal_dac_ex.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>2</GroupNumber>
-      <FileNumber>26</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_fsmc.c</PathWithFileName>
-      <FilenameWithoutPath>stm32f1xx_ll_fsmc.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>2</GroupNumber>
-      <FileNumber>27</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_sram.c</PathWithFileName>
-      <FilenameWithoutPath>stm32f1xx_hal_sram.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>2</GroupNumber>
-      <FileNumber>28</FileNumber>
->>>>>>>> origin/elite_light:MDK-ARM/elite_test.uvoptx
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -770,13 +585,8 @@
       <bShared>0</bShared>
     </File>
     <File>
-<<<<<<<< HEAD:MDK-ARM/AD9854_Test_Program.uvoptx
       <GroupNumber>3</GroupNumber>
       <FileNumber>27</FileNumber>
-========
-      <GroupNumber>2</GroupNumber>
-      <FileNumber>29</FileNumber>
->>>>>>>> origin/elite_light:MDK-ARM/elite_test.uvoptx
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -787,13 +597,8 @@
       <bShared>0</bShared>
     </File>
     <File>
-<<<<<<<< HEAD:MDK-ARM/AD9854_Test_Program.uvoptx
       <GroupNumber>3</GroupNumber>
       <FileNumber>28</FileNumber>
-========
-      <GroupNumber>2</GroupNumber>
-      <FileNumber>30</FileNumber>
->>>>>>>> origin/elite_light:MDK-ARM/elite_test.uvoptx
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -807,30 +612,13 @@
 
   <Group>
     <GroupName>Drivers/CMSIS</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
     <File>
-<<<<<<<< HEAD:MDK-ARM/AD9854_Test_Program.uvoptx
       <GroupNumber>4</GroupNumber>
       <FileNumber>29</FileNumber>
-========
-      <GroupNumber>3</GroupNumber>
-      <FileNumber>31</FileNumber>
-      <FileType>2</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\Drivers\CMSIS\startup_stm32f103xe.s</PathWithFileName>
-      <FilenameWithoutPath>startup_stm32f103xe.s</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>3</GroupNumber>
-      <FileNumber>32</FileNumber>
->>>>>>>> origin/elite_light:MDK-ARM/elite_test.uvoptx
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -843,193 +631,6 @@
   </Group>
 
   <Group>
-<<<<<<<< HEAD:MDK-ARM/AD9854_Test_Program.uvoptx
-========
-    <GroupName>User</GroupName>
-    <tvExp>1</tvExp>
-    <tvExpOptDlg>0</tvExpOptDlg>
-    <cbSel>0</cbSel>
-    <RteFlg>0</RteFlg>
-    <File>
-      <GroupNumber>4</GroupNumber>
-      <FileNumber>33</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\User\LCD\lcd.c</PathWithFileName>
-      <FilenameWithoutPath>lcd.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>4</GroupNumber>
-      <FileNumber>34</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\User\IIC\myiic.c</PathWithFileName>
-      <FilenameWithoutPath>myiic.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>4</GroupNumber>
-      <FileNumber>35</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\User\24CXX\24cxx.c</PathWithFileName>
-      <FilenameWithoutPath>24cxx.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>4</GroupNumber>
-      <FileNumber>36</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\User\TOUCH\touch.c</PathWithFileName>
-      <FilenameWithoutPath>touch.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>4</GroupNumber>
-      <FileNumber>37</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\User\TOUCH\ctiic.c</PathWithFileName>
-      <FilenameWithoutPath>ctiic.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>4</GroupNumber>
-      <FileNumber>38</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\User\TOUCH\ft5206.c</PathWithFileName>
-      <FilenameWithoutPath>ft5206.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>4</GroupNumber>
-      <FileNumber>39</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\User\TOUCH\gt9147.c</PathWithFileName>
-      <FilenameWithoutPath>gt9147.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>4</GroupNumber>
-      <FileNumber>40</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\User\TOUCH\ott2001a.c</PathWithFileName>
-      <FilenameWithoutPath>ott2001a.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>4</GroupNumber>
-      <FileNumber>41</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\User\delay\delay.c</PathWithFileName>
-      <FilenameWithoutPath>delay.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>4</GroupNumber>
-      <FileNumber>42</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\User\DataScope\DataScope.c</PathWithFileName>
-      <FilenameWithoutPath>DataScope.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-  </Group>
-
-  <Group>
-    <GroupName>DAP</GroupName>
-    <tvExp>1</tvExp>
-    <tvExpOptDlg>0</tvExpOptDlg>
-    <cbSel>0</cbSel>
-    <RteFlg>0</RteFlg>
-    <File>
-      <GroupNumber>5</GroupNumber>
-      <FileNumber>43</FileNumber>
-      <FileType>2</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\User\FFT\cr4_fft_256_stm32.s</PathWithFileName>
-      <FilenameWithoutPath>cr4_fft_256_stm32.s</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>5</GroupNumber>
-      <FileNumber>44</FileNumber>
-      <FileType>2</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\User\FFT\cr4_fft_1024_stm32.s</PathWithFileName>
-      <FilenameWithoutPath>cr4_fft_1024_stm32.s</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>5</GroupNumber>
-      <FileNumber>45</FileNumber>
-      <FileType>5</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\User\FFT\stm32_dsp.h</PathWithFileName>
-      <FilenameWithoutPath>stm32_dsp.h</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>5</GroupNumber>
-      <FileNumber>46</FileNumber>
-      <FileType>5</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\User\FFT\table_fft.h</PathWithFileName>
-      <FilenameWithoutPath>table_fft.h</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-  </Group>
-
-  <Group>
->>>>>>>> origin/elite_light:MDK-ARM/elite_test.uvoptx
     <GroupName>::CMSIS</GroupName>
     <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
