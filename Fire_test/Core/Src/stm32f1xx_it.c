@@ -19,12 +19,10 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "DataScope.h"
 #include "stm32f1xx_it.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "adc.h"
-#include "dac.h"
-#include "usart.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -58,11 +56,16 @@
 /* USER CODE END 0 */
 
 /* External variables --------------------------------------------------------*/
-extern DMA_HandleTypeDef hdma_adc1;
-extern DMA_HandleTypeDef hdma_dac_ch2;
+extern TIM_HandleTypeDef htim6;
 extern UART_HandleTypeDef huart1;
 /* USER CODE BEGIN EV */
-
+extern uint8_t clk_5ms_flag;
+uint16_t temp = 0;
+uint16_t time_ms = 0;
+uint16_t time_s = 0;
+extern __IO uint32_t ADC_ConvertedValue;
+//uint16_t ADC_Data = 0;
+//float ADC_Vol = 0;
 /* USER CODE END EV */
 
 /******************************************************************************/
@@ -204,103 +207,75 @@ void SysTick_Handler(void)
 /******************************************************************************/
 
 /**
-  * @brief This function handles EXTI line0 interrupt.
-  */
-void EXTI0_IRQHandler(void)
-{
-  /* USER CODE BEGIN EXTI0_IRQn 0 */
-
-  /* USER CODE END EXTI0_IRQn 0 */
-  HAL_GPIO_EXTI_IRQHandler(KEY1_Pin);
-  /* USER CODE BEGIN EXTI0_IRQn 1 */
-
-  /* USER CODE END EXTI0_IRQn 1 */
-}
-
-/**
-  * @brief This function handles DMA1 channel1 global interrupt.
-  */
-void DMA1_Channel1_IRQHandler(void)
-{
-  /* USER CODE BEGIN DMA1_Channel1_IRQn 0 */
-
-  /* USER CODE END DMA1_Channel1_IRQn 0 */
-  HAL_DMA_IRQHandler(&hdma_adc1);
-  /* USER CODE BEGIN DMA1_Channel1_IRQn 1 */
-
-  /* USER CODE END DMA1_Channel1_IRQn 1 */
-}
-
-/**
   * @brief This function handles USART1 global interrupt.
   */
-void USART1_IRQHandler(void)
-{
-  /* USER CODE BEGIN USART1_IRQn 0 */
+//void USART1_IRQHandler(void)
+//{
+//  /* USER CODE BEGIN USART1_IRQn 0 */
 
-  /* USER CODE END USART1_IRQn 0 */
-  HAL_UART_IRQHandler(&huart1);
-  /* USER CODE BEGIN USART1_IRQn 1 */
+//  /* USER CODE END USART1_IRQn 0 */
+//  HAL_UART_IRQHandler(&huart1);
+//  /* USER CODE BEGIN USART1_IRQn 1 */
 
-  /* USER CODE END USART1_IRQn 1 */
-}
-
-/**
-  * @brief This function handles EXTI line[15:10] interrupts.
-  */
-void EXTI15_10_IRQHandler(void)
-{
-  /* USER CODE BEGIN EXTI15_10_IRQn 0 */
-
-  /* USER CODE END EXTI15_10_IRQn 0 */
-  HAL_GPIO_EXTI_IRQHandler(KEY2_Pin);
-  /* USER CODE BEGIN EXTI15_10_IRQn 1 */
-
-  /* USER CODE END EXTI15_10_IRQn 1 */
-}
+//  /* USER CODE END USART1_IRQn 1 */
+//}
 
 /**
-  * @brief This function handles DMA2 channel4 and channel5 global interrupts.
+  * @brief This function handles TIM6 global interrupt.
   */
-void DMA2_Channel4_5_IRQHandler(void)
+void TIM6_IRQHandler(void)
 {
-  /* USER CODE BEGIN DMA2_Channel4_5_IRQn 0 */
+  /* USER CODE BEGIN TIM6_IRQn 0 */
 
-  /* USER CODE END DMA2_Channel4_5_IRQn 0 */
-  HAL_DMA_IRQHandler(&hdma_dac_ch2);
-  /* USER CODE BEGIN DMA2_Channel4_5_IRQn 1 */
+  /* USER CODE END TIM6_IRQn 0 */
+  HAL_TIM_IRQHandler(&htim6);
+  /* USER CODE BEGIN TIM6_IRQn 1 */
 
-  /* USER CODE END DMA2_Channel4_5_IRQn 1 */
+  /* USER CODE END TIM6_IRQn 1 */
 }
 
 /* USER CODE BEGIN 1 */
-int16_t dac_output = 620;
-void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
-{
-	if(GPIO_Pin & KEY1_Pin)
-	{
-		dac_output += 62;
-		if(dac_output >= 1240)
-		{
-			dac_output = 1240;
-		}
-		HAL_DAC_Stop_DMA(&hdac, DAC_CHANNEL_2);
-		HAL_DAC_Start_DMA(&hdac, DAC_CHANNEL_2, (uint32_t*)&dac_output, 1, DAC_ALIGN_12B_R);
-		HAL_GPIO_TogglePin(LED1_GPIO_Port, LED1_Pin);
-	}else if(GPIO_Pin & KEY2_Pin)
-	{
-		dac_output -= 62;
-		if( dac_output <= 0)
-		{
-			dac_output = 0;
-		}
-		HAL_DAC_Stop_DMA(&hdac, DAC_CHANNEL_2);
-		HAL_DAC_Start_DMA(&hdac, DAC_CHANNEL_2, (uint32_t*)&dac_output, 1, DAC_ALIGN_12B_R);
-		HAL_GPIO_TogglePin(LED1_GPIO_Port, LED1_Pin);
-	}
-	printf("DAC_set: %d\n", dac_output);
-	printf("Vol: %f V\n", (float)(dac_output*3.3/4096));
-}
 
+//void DMA2_Channel4_5_IRQHandler(void)
+//{
+//  /* USER CODE BEGIN DMA2_Channel4_5_IRQn 0 */
+
+//  /* USER CODE END DMA2_Channel4_5_IRQn 0 */
+//  HAL_DMA_IRQHandler(&hdma_dac_ch2);
+//  /* USER CODE BEGIN DMA2_Channel4_5_IRQn 1 */
+
+//  /* USER CODE END DMA2_Channel4_5_IRQn 1 */
+//}
+
+//uint16_t time1 = 0;
+//uint16_t time2 = 0;
+//void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+//{
+
+//	if(htim == &htim6){	
+//		time1++;
+//		if(time1 == 10){
+//			time1 = 0;
+//			ADC_Data = ADC_ConvertedValue;
+//			ADC_Vol =(float) ADC_Data/4096*(float)3.3; // 读取转换的AD值
+////			printf("\r\n The current AD value = 0x%04X \r\n", ADC_Data); 
+////			printf("\r\n The current AD value = %f V \r\n",ADC_Vol);     
+//			Send_float(ADC_Vol);
+//		}
+//	}
+//	if(htim == &htim2){
+//		time2++;
+//		lv_tick_inc(1);
+//		if(time2&&(time2%5 == 0))
+//		{
+//			clk_5ms_flag = 0;
+//		}
+//		if(time2 == 1000){
+//			time2 = 0;
+//			time_s++;
+//			printf("This is 1s (%d)\n", time_s);
+//		}
+//	}
+//}
 
 /* USER CODE END 1 */
