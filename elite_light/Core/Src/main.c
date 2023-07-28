@@ -149,7 +149,7 @@ int main(void)
 	LCD_ShowString(30,70,200,16,16,(unsigned char*)"DAC TEST");	
 	LCD_ShowString(30,90,200,16,16,(unsigned char*)"ATOM@ALIENTEK");
 	LCD_ShowString(30,110,200,16,16,(unsigned char*)"2019/9/18");	 
-	LCD_ShowString(30,130,200,16,16,(unsigned char*)"WK_UP:+  KEY1:-");	  
+	LCD_ShowString(30,130,200,16,16,(unsigned char*)"KEY1:-  KEY1:+");	  
 	POINT_COLOR=BLUE;//设置字体为蓝色      	 
 	LCD_ShowString(30,150,200,16,16,(unsigned char*)"DAC VAL:");	      
 	LCD_ShowString(30,170,200,16,16,(unsigned char*)"DAC VOL:0.000V");	      
