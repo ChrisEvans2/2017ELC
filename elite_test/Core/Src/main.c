@@ -108,8 +108,6 @@ int main(void)
 //	LCD_ShowString(30,90,200,16,16,"ATOM@ALIENTEK");
 //	LCD_ShowString(30,110,200,16,16,"2019/9/19");	 		
 
-	HAL_GPIO_WritePin(LED0_GPIO_Port, LED0_Pin, GPIO_PIN_SET);
-	HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_SET);
 	HAL_TIM_Base_Start_IT(&htim6);
 
   /* USER CODE END 2 */

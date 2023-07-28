@@ -3,7 +3,7 @@
 <title>Static Call Graph - [elite_test\elite_test.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image elite_test\elite_test.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Fri Jul 28 21:12:32 2023
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Fri Jul 28 21:31:15 2023
 <BR><P>
 <H3>Maximum Stack Usage =       1168 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -1273,7 +1273,6 @@ Global Symbols
 
 <P><STRONG><a name="[185]"></a>HAL_GPIO_WritePin</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, stm32f1xx_hal_gpio.o(i.HAL_GPIO_WritePin))
 <BR><BR>[Called By]<UL><LI><a href="#[184]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_GPIO_Init
-<LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;touchpad_read
 </UL>
 
@@ -1755,13 +1754,13 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[184]"></a>MX_GPIO_Init</STRONG> (Thumb, 268 bytes, Stack size 48 bytes, gpio.o(i.MX_GPIO_Init))
+<P><STRONG><a name="[184]"></a>MX_GPIO_Init</STRONG> (Thumb, 278 bytes, Stack size 48 bytes, gpio.o(i.MX_GPIO_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = MX_GPIO_Init &rArr; HAL_GPIO_Init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[14f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_NVIC_SetPriority
 <LI><a href="#[15b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_NVIC_EnableIRQ
-<LI><a href="#[138]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_Init
 <LI><a href="#[185]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
+<LI><a href="#[138]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_Init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -8479,7 +8478,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[1f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_lv_txt_set_text_vfmt
 </UL>
 
-<P><STRONG><a name="[51]"></a>main</STRONG> (Thumb, 176 bytes, Stack size 64 bytes, main.o(i.main))
+<P><STRONG><a name="[51]"></a>main</STRONG> (Thumb, 156 bytes, Stack size 64 bytes, main.o(i.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 1052<LI>Call Chain = main &rArr; ui_init &rArr; ui_Screen1_screen_init &rArr; lv_spinbox_set_digit_format &rArr; lv_spinbox_updatevalue &rArr; lv_textarea_set_text &rArr; lv_textarea_add_char &rArr;  lv_textarea_add_text (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[3bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ui_init
@@ -8498,7 +8497,6 @@ Global Symbols
 <LI><a href="#[152]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_OscConfig
 <LI><a href="#[150]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_ClockConfig
 <LI><a href="#[14a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Init
-<LI><a href="#[185]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
 <LI><a href="#[143]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> entry9a.o(.ARM.Collect$$$$0000000B)
