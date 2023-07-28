@@ -1,7 +1,7 @@
 #include "DataScope.h"
 #include "usart.h"
 #include "uarttoesp32.h"
-unsigned char DataScope_OutPut_Buffer[SEND_LEN] = {0};	   //串口发送缓冲区
+unsigned char DataScope_OutPut_Buffer[SEND_LEN_SCOPE] = {0};	   //串口发送缓冲区
 uint8_t sumcheck = 0, addcheck = 0;
 
 extern float ADC_Vol;
@@ -41,7 +41,7 @@ uint32_t my_data = 10;
 //返回0表示帧格式生成失败 
 void DataScope_Float_Generate( float f )
 {
-	DataScope_OutPut_Buffer[0] = FRAME_HEAD;  	// 帧头
+	DataScope_OutPut_Buffer[0] = FRAME_HEAD_SCOPE;  	// 帧头
 	DataScope_OutPut_Buffer[1] = FRAME_SADDR;  	// 源地址
 	DataScope_OutPut_Buffer[2] = FRAME_DADDR;  	// 目标地址
 	DataScope_OutPut_Buffer[3] = FRAME_ID1;  				// 帧ID
@@ -58,7 +58,7 @@ void DataScope_Float_Generate( float f )
 
 void DataScope_Uint32_Generate( uint32_t u32 )
 {
-	DataScope_OutPut_Buffer[0] = FRAME_HEAD;  	// 帧头
+	DataScope_OutPut_Buffer[0] = FRAME_HEAD_SCOPE;  	// 帧头
 	DataScope_OutPut_Buffer[1] = FRAME_SADDR;  	// 源地址
 	DataScope_OutPut_Buffer[2] = FRAME_DADDR;  	// 目标地址
 	DataScope_OutPut_Buffer[3] = FRAME_ID2;  				// 帧ID
@@ -76,11 +76,11 @@ void DataScope_Uint32_Generate( uint32_t u32 )
 void Send_float( float f )
 {
 	DataScope_Float_Generate(f);
-	HAL_UART_Transmit_IT(&huart1, DataScope_OutPut_Buffer, SEND_LEN);
+	HAL_UART_Transmit_IT(&huart1, DataScope_OutPut_Buffer, SEND_LEN_SCOPE);
 }
 
 void Send_u32( uint32_t u32 )
 {
 	DataScope_Uint32_Generate(u32);
-	HAL_UART_Transmit_IT(&huart1, DataScope_OutPut_Buffer, SEND_LEN);
+	HAL_UART_Transmit_IT(&huart1, DataScope_OutPut_Buffer, SEND_LEN_SCOPE);
 }

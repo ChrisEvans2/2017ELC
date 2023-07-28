@@ -30,6 +30,8 @@
 #include "key.h"
 #include "ad9854.h"
 #include "dma.h"
+#include "DataScope.h"
+#include "stm32f1xx_it.h"
 
 /* USER CODE END Includes */
 
@@ -64,8 +66,9 @@ void SystemClock_Config(void);
 /* USER CODE BEGIN 0 */
 uint32_t F=1000000;  		// 设置正弦波的频率（1~100MHz）
 uint16_t A=816;			// 设置正弦波的幅度（0~4095）        816为100mV输出
-
-
+uint16_t ADC_Data = 0;
+float ADC_Vol = 0;    
+    
 void key_change_fre(uint8_t s,uint8_t Key_Count)              // 按键改变频率
 {
     if(s==2&&Key_Count==1)
@@ -223,12 +226,19 @@ int main(void)
 //    AD9854_Init ();
 //    Delay_ms(20);
 //    HAL_GPIO_TogglePin(LED0_GPIO_Port,LED0_Pin);
+    HAL_TIM_Base_Start(&htim6);
+    HAL_ADC_Start_DMA(&hadc1, (uint32_t*)&ADC_ConvertedValue, 1);
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
     while (1)
     {
+        ADC_Vol = 1.0;
+//        ADC_Data = ADC_ConvertedValue;
+//        ADC_Vol =(float) ADC_Data/4096*(float)3.3; // 读取转换的AD值
+        Send_float(ADC_Vol);
+        HAL_Delay(2); 
 //        s = KEY_Scan(0);
 //        if (s == 1)
 //        {

@@ -38,3 +38,5 @@ ad9854_test_program\main.o: ../Inc/delay.h
 ad9854_test_program\main.o: ../Inc/key.h
 ad9854_test_program\main.o: ../Inc/ad9854.h
 ad9854_test_program\main.o: ../Inc/dma.h
+ad9854_test_program\main.o: ../Inc/DataScope.h
+ad9854_test_program\main.o: ../Inc/stm32f1xx_it.h
