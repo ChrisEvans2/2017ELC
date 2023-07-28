@@ -18,19 +18,15 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-#include "adc.h"
-#include "dac.h"
 #include "dma.h"
 #include "tim.h"
 #include "usart.h"
 #include "gpio.h"
+#include "fsmc.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "stm32_dsp.h"
-#include "table_fft.h"
-#include "math.h"
-#include "arm_math.h"
+#include "ui.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -40,11 +36,7 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-#define F 	50
-#define Fs 	1000
-#define MY_PI 	3.1416
-#define W		2*MY_PI/Fs
-#define N		256
+
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -55,12 +47,6 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-int32_t x[N];
-int32_t FFT_IN[N],FFT_OUT[N];
-int32_t lBufMagArray[N] = {0};
-
-float ADC_Vol; 
-uint32_t ADC_Data; 
 
 /* USER CODE END PV */
 
@@ -72,31 +58,7 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-void GetPowerMag()
-{
-	signed short lX,lY;
-	float X,Y,Mag;
-	unsigned short i;
-	int a;
-	for(i=0; i<N/2; i++)
-	{
-		lX  =  FFT_OUT[i] >> 16;
-		lY  = (FFT_OUT[i] << 16 ) >> 16;
-		X = N * ((float)lX) / 32768;
-		Y = N * ((float)lY) / 32768;
-		Mag = sqrt(X * X + Y * Y) / N;
-		if(i == 0)
-			lBufMagArray[i] = (unsigned long)(Mag * 32768);
-     else
-			lBufMagArray[i] = (unsigned long)(Mag * 65536);
-		 
-		printf("%d      ",i);
-		printf("%f      ",(float)Fs/N*i);
-		printf("%d      ",lBufMagArray[i]);
-		printf("%f      ",X);
-		printf("%f      \r\n",Y);                       
-	}
-}
+
 /* USER CODE END 0 */
 
 /**
@@ -128,51 +90,40 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_DMA_Init();
-  MX_DAC_Init();
-  MX_USART1_UART_Init();
   MX_TIM6_Init();
-  MX_ADC1_Init();
+  MX_TIM7_Init();
+  MX_USART1_UART_Init();
+  MX_FSMC_Init();
   /* USER CODE BEGIN 2 */
+	
+	lv_init();
+	lv_port_disp_init();
+	lv_port_indev_init();
+	
+	ui_init();
+	
+//	POINT_COLOR=RED;
+//	LCD_ShowString(30,50,200,16,16,"ELITE STM32");	
+//	LCD_ShowString(30,70,200,16,16,"TOUCH TEST");	
+//	LCD_ShowString(30,90,200,16,16,"ATOM@ALIENTEK");
+//	LCD_ShowString(30,110,200,16,16,"2019/9/19");	 		
+
+	HAL_GPIO_WritePin(LED0_GPIO_Port, LED0_Pin, GPIO_PIN_SET);
 	HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_SET);
-	HAL_GPIO_WritePin(LED2_GPIO_Port, LED2_Pin, GPIO_PIN_SET);
-	
-	HAL_TIM_Base_Start(&htim6);
-  HAL_DAC_Start_DMA(&hdac,DAC_CHANNEL_2,(uint32_t *) Sine12bit,32,DAC_ALIGN_12B_R);
-	
-	HAL_ADC_Start_DMA(&hadc1, (uint32_t*)&ADC_ConvertedValue, 1);
+	HAL_TIM_Base_Start_IT(&htim6);
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-	printf("这是一个FFT实验\r\n");
-	printf("初始化完成\r\n");
+	printf("初始化完成");
 	
-	HAL_Delay(10);
-	
-	// 生成FFT数据
-	for(int i = 0;i<N;i++)
-	{
-		x[i] = 2048*sin((float)W*F*i)+2048;
-		FFT_IN[i] = x[i] << 16;
-	}
-	printf("输入信号：\r\n");
-	for(int i = 0;i<N;i++)
-	{
-		printf("%d (input :%d)\r\n", x[i], i+1);
-	}
-	
-	// 计算FFT
-	cr4_fft_256_stm32(FFT_OUT, FFT_IN, N);
-	
-	GetPowerMag();
-	
-  while (1)
+	while (1)
   {
-		ADC_Data = ADC_ConvertedValue;
-		ADC_Vol =(float) ADC_Data/4096*(float)3.3; // 读取转换的AD值
-//		printf("\r\n The current AD value = 0x%04X \r\n", ADC_Data); 
-//		printf("\r\n The current AD value = %f V \r\n",ADC_Vol);     
-		HAL_Delay(1000);  
+//		tp_dev.scan(0);
+//		HAL_GPIO_TogglePin(LED0_GPIO_Port, LED0_Pin);
+		lv_timer_handler();
+		delay_ms(5);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -188,7 +139,6 @@ void SystemClock_Config(void)
 {
   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
-  RCC_PeriphCLKInitTypeDef PeriphClkInit = {0};
 
   /** Initializes the RCC Oscillators according to the specified parameters
   * in the RCC_OscInitTypeDef structure.
@@ -215,12 +165,6 @@ void SystemClock_Config(void)
   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
 
   if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_2) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_ADC;
-  PeriphClkInit.AdcClockSelection = RCC_ADCPCLK2_DIV6;
-  if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
   {
     Error_Handler();
   }
