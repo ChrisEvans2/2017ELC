@@ -44,6 +44,7 @@ static void disp_flush(lv_disp_drv_t * disp_drv, const lv_area_t * area, lv_colo
 /**********************
  *  STATIC VARIABLES
  **********************/
+static lv_disp_drv_t disp_drv;                         /*Descriptor of a display driver*/
 
 /**********************
  *      MACROS
@@ -107,7 +108,7 @@ void lv_port_disp_init(void)
      * Register the display in LVGL
      *----------------------------------*/
 
-    static lv_disp_drv_t disp_drv;                         /*Descriptor of a display driver*/
+//    static lv_disp_drv_t disp_drv;                         /*Descriptor of a display driver*/
     lv_disp_drv_init(&disp_drv);                    /*Basic initialization*/
 
     /*Set up the functions to access to your display*/
@@ -143,6 +144,7 @@ static void disp_init(void)
 {
     /*You code here*/
 		LCD_Init();
+
 }
 
 volatile bool disp_flush_enabled = true;
@@ -164,23 +166,21 @@ void disp_disable_update(void)
 /*Flush the content of the internal buffer the specific area on the display
  *You can use DMA or any hardware acceleration to do this operation in the background but
  *'lv_disp_flush_ready()' has to be called when finished.*/
+uint8_t test = 0;
+void my_test(uint8_t test)
+{
+	if(test == 1)
+	{
+		lv_disp_flush_ready(&disp_drv);
+		test = 0;
+	}
+}
 static void disp_flush(lv_disp_drv_t * disp_drv, const lv_area_t * area, lv_color_t * color_p)
 {
     if(disp_flush_enabled) {
         /*The most simple case (but also the slowest) to put all pixels to the screen one-by-one*/
 
-        int32_t x;
-        int32_t y;
-				int16_t* color;
-        for(y = area->y1; y <= area->y2; y++) {
-            for(x = area->x1; x <= area->x2; x++) {
-                /*Put a pixel to the display. For example:*/
-                /*put_px(x, y, *color_p)*/
-								color = (uint16_t*)color_p;
-								LCD_Fast_DrawPoint(x, y, *color);
-                color_p++;
-            }
-        }
+			LCD_Color_Fill(area->x1,area->y1,area->x2,area->y2, (uint16_t*)color_p);
     }
 
     /*IMPORTANT!!!

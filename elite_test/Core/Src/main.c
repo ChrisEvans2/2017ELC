@@ -95,7 +95,7 @@ int main(void)
   MX_USART1_UART_Init();
   MX_FSMC_Init();
   /* USER CODE BEGIN 2 */
-	
+
 	lv_init();
 	lv_port_disp_init();
 	lv_port_indev_init();

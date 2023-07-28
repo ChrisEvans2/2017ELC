@@ -2354,32 +2354,17 @@ void LCD_ShowString(u16 x, u16 y, u16 width, u16 height, u8 size, u8 *p)
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+void LCD_Address_Set(uint16_t x1,uint16_t y1,uint16_t x2,uint16_t y2)
+{
+  LCD_WR_REG(0x2a);//列地址设置
+  LCD_WR_DATA(x1>>8);
+  LCD_WR_DATA(x1&0x00ff);
+  LCD_WR_DATA(x2>>8);
+  LCD_WR_DATA(x2&0x00ff);
+  LCD_WR_REG(0x2b);//行地址设置
+  LCD_WR_DATA(y1>>8);
+  LCD_WR_DATA(y1&0x00ff);
+  LCD_WR_DATA(y2>>8);
+  LCD_WR_DATA(y2&0x00ff);
+  LCD_WR_REG(0x2c);//储存器写(2C命令之后开始写颜色数据)
+}

@@ -21,7 +21,6 @@ extern "C" {
 #else
 #include "lvgl/lvgl.h"
 #include "lcd.h"
-
 #endif
 
 /*********************
