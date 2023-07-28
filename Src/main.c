@@ -236,7 +236,7 @@ int main(void)
     {
         ADC_Vol = 1.0;
 //        ADC_Data = ADC_ConvertedValue;
-//        ADC_Vol =(float) ADC_Data/4096*(float)3.3; // 读取转换的AD值
+//        ADC_Vol =(float) ADC_Data/4096*(float)3.3'; // 读取转换的AD值
         Send_float(ADC_Vol);
         HAL_Delay(2); 
 //        s = KEY_Scan(0);
