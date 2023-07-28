@@ -30,7 +30,11 @@
 ;   <o> Stack Size (in Bytes) <0x0-0xFFFFFFFF:8>
 ; </h>
 
+<<<<<<<< HEAD:MDK-ARM/startup_stm32f103xe.s
 Stack_Size		EQU     0x400
+========
+Stack_Size      EQU     0x00001000
+>>>>>>>> origin/elite_light:Drivers/CMSIS/startup_stm32f103xe.s
 
                 AREA    STACK, NOINIT, READWRITE, ALIGN=3
 Stack_Mem       SPACE   Stack_Size
@@ -40,7 +44,11 @@ __initial_sp
 ;   <o>  Heap Size (in Bytes) <0x0-0xFFFFFFFF:8>
 ; </h>
 
+<<<<<<<< HEAD:MDK-ARM/startup_stm32f103xe.s
 Heap_Size      EQU     0x200
+========
+Heap_Size       EQU     0x00001000
+>>>>>>>> origin/elite_light:Drivers/CMSIS/startup_stm32f103xe.s
 
                 AREA    HEAP, NOINIT, READWRITE, ALIGN=3
 __heap_base
