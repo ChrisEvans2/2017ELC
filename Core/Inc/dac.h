@@ -43,6 +43,7 @@ void MX_DAC_Init(void);
 
 /* USER CODE BEGIN Prototypes */
 extern uint16_t Sine12bit[POINT_NUM]; 
+
 /* USER CODE END Prototypes */
 
 #ifdef __cplusplus

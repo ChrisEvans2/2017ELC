@@ -29,6 +29,7 @@ uint8_t tx_buffer[BUFFSIZE]={0};  //接收数据缓存数组
 /* USER CODE END 0 */
 
 UART_HandleTypeDef huart1;
+DMA_HandleTypeDef hdma_usart1_rx;
 
 /* USART1 init function */
 
@@ -55,7 +56,8 @@ void MX_USART1_UART_Init(void)
     Error_Handler();
   }
   /* USER CODE BEGIN USART1_Init 2 */
-
+	__HAL_UART_ENABLE_IT(&UART_TYPE, UART_IT_IDLE);    
+	HAL_UART_Receive_DMA(&UART_TYPE,rx_buffer,BUFFSIZE);
   /* USER CODE END USART1_Init 2 */
 
 }
@@ -87,6 +89,23 @@ void HAL_UART_MspInit(UART_HandleTypeDef* uartHandle)
     GPIO_InitStruct.Pull = GPIO_NOPULL;
     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
+    /* USART1 DMA Init */
+    /* USART1_RX Init */
+    hdma_usart1_rx.Instance = DMA1_Channel5;
+    hdma_usart1_rx.Init.Direction = DMA_PERIPH_TO_MEMORY;
+    hdma_usart1_rx.Init.PeriphInc = DMA_PINC_DISABLE;
+    hdma_usart1_rx.Init.MemInc = DMA_MINC_ENABLE;
+    hdma_usart1_rx.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
+    hdma_usart1_rx.Init.MemDataAlignment = DMA_MDATAALIGN_BYTE;
+    hdma_usart1_rx.Init.Mode = DMA_CIRCULAR;
+    hdma_usart1_rx.Init.Priority = DMA_PRIORITY_LOW;
+    if (HAL_DMA_Init(&hdma_usart1_rx) != HAL_OK)
+    {
+      Error_Handler();
+    }
+
+    __HAL_LINKDMA(uartHandle,hdmarx,hdma_usart1_rx);
+
     /* USART1 interrupt Init */
     HAL_NVIC_SetPriority(USART1_IRQn, 0, 0);
     HAL_NVIC_EnableIRQ(USART1_IRQn);
@@ -113,6 +132,9 @@ void HAL_UART_MspDeInit(UART_HandleTypeDef* uartHandle)
     */
     HAL_GPIO_DeInit(GPIOA, GPIO_PIN_9|GPIO_PIN_10);
 
+    /* USART1 DMA DeInit */
+    HAL_DMA_DeInit(uartHandle->hdmarx);
+
     /* USART1 interrupt Deinit */
     HAL_NVIC_DisableIRQ(USART1_IRQn);
   /* USER CODE BEGIN USART1_MspDeInit 1 */
@@ -128,7 +150,7 @@ void Usart_SendString(uint8_t *str)
 	unsigned int k=0;
   do 
   {
-      HAL_UART_Transmit(&UART_TYPE,(uint8_t *)(str + k) ,1, 10);
+      HAL_UART_Transmit(&huart1,(uint8_t *)(str + k) ,1, 10);
       k++;
   } while(*(str + k)!='\0'); 
 }
@@ -136,7 +158,7 @@ void Usart_SendString(uint8_t *str)
 int fputc(int ch, FILE *f)
 {
 	/* 发送一个字节数据到串口MY_USART */
-	HAL_UART_Transmit(&UART_TYPE, (uint8_t *)&ch, 1, 10);	
+	HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 1, 10);	
 	
 	return ch;
 }
@@ -145,7 +167,7 @@ int fputc(int ch, FILE *f)
 int fgetc(FILE *f)
 {		
 	int ch;
-	HAL_UART_Receive(&UART_TYPE, (uint8_t *)&ch, 1, 10);	
+	HAL_UART_Receive(&huart1, (uint8_t *)&ch, 1, 10);	
 	return ch;
 }
 

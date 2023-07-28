@@ -24,6 +24,7 @@
 #include "tim.h"
 #include "usart.h"
 #include "gpio.h"
+#include "fsmc.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -31,6 +32,8 @@
 #include "table_fft.h"
 #include "math.h"
 #include "arm_math.h"
+#include "arm_const_structs.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -45,6 +48,7 @@
 #define MY_PI 	3.1416
 #define W		2*MY_PI/Fs
 #define N		256
+
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -58,9 +62,6 @@
 int32_t x[N];
 int32_t FFT_IN[N],FFT_OUT[N];
 int32_t lBufMagArray[N] = {0};
-
-float ADC_Vol; 
-uint32_t ADC_Data; 
 
 /* USER CODE END PV */
 
@@ -97,6 +98,7 @@ void GetPowerMag()
 		printf("%f      \r\n",Y);                       
 	}
 }
+
 /* USER CODE END 0 */
 
 /**
@@ -128,51 +130,56 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_DMA_Init();
-  MX_DAC_Init();
-  MX_USART1_UART_Init();
   MX_TIM6_Init();
+  MX_TIM7_Init();
+  MX_USART1_UART_Init();
+  MX_FSMC_Init();
   MX_ADC1_Init();
+  MX_DAC_Init();
   /* USER CODE BEGIN 2 */
-	HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_SET);
-	HAL_GPIO_WritePin(LED2_GPIO_Port, LED2_Pin, GPIO_PIN_SET);
-	
-	HAL_TIM_Base_Start(&htim6);
-  HAL_DAC_Start_DMA(&hdac,DAC_CHANNEL_2,(uint32_t *) Sine12bit,32,DAC_ALIGN_12B_R);
-	
+  HAL_DAC_Start_DMA(&hdac,DAC_CHANNEL_1,(uint32_t *) Sine12bit,32,DAC_ALIGN_12B_R);
 	HAL_ADC_Start_DMA(&hadc1, (uint32_t*)&ADC_ConvertedValue, 1);
+	
+	LCD_Init();
+	tp_dev.init();
+
+	
+	POINT_COLOR=RED; 
+	LCD_ShowString(30,50,200,16,16,(unsigned char*)"ELITE STM32");	
+	LCD_ShowString(30,70,200,16,16,(unsigned char*)"DAC TEST");	
+	LCD_ShowString(30,90,200,16,16,(unsigned char*)"ATOM@ALIENTEK");
+	LCD_ShowString(30,110,200,16,16,(unsigned char*)"2019/9/18");	 
+	LCD_ShowString(30,130,200,16,16,(unsigned char*)"KEY1:-  KEY1:+");	  
+	POINT_COLOR=BLUE;//设置字体为蓝色      	 
+	LCD_ShowString(30,150,200,16,16,(unsigned char*)"DAC VAL:");	      
+	LCD_ShowString(30,170,200,16,16,(unsigned char*)"DAC VOL:0.000V");	      
+	LCD_ShowString(30,190,200,16,16,(unsigned char*)"ADC VOL:0.000V"); 	
+
+	HAL_GPIO_WritePin(LED0_GPIO_Port, LED0_Pin, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_SET);
+	HAL_TIM_Base_Start_IT(&htim6);
+	
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-	printf("这是一个FFT实验\r\n");
-	printf("初始化完成\r\n");
-	
-	HAL_Delay(10);
-	
+	printf("初始化完成");
 	// 生成FFT数据
 	for(int i = 0;i<N;i++)
 	{
 		x[i] = 2048*sin((float)W*F*i)+2048;
 		FFT_IN[i] = x[i] << 16;
 	}
-	printf("输入信号：\r\n");
-	for(int i = 0;i<N;i++)
-	{
-		printf("%d (input :%d)\r\n", x[i], i+1);
-	}
-	
 	// 计算FFT
 	cr4_fft_256_stm32(FFT_OUT, FFT_IN, N);
 	
 	GetPowerMag();
-	
-  while (1)
+
+	while (1)
   {
-		ADC_Data = ADC_ConvertedValue;
-		ADC_Vol =(float) ADC_Data/4096*(float)3.3; // 读取转换的AD值
-//		printf("\r\n The current AD value = 0x%04X \r\n", ADC_Data); 
-//		printf("\r\n The current AD value = %f V \r\n",ADC_Vol);     
-		HAL_Delay(1000);  
+		tp_dev.scan(0);
+//		HAL_GPIO_TogglePin(LED0_GPIO_Port, LED0_Pin);
+		delay_ms(5);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

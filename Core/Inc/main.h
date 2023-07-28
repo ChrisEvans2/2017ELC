@@ -31,7 +31,17 @@ extern "C" {
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include <stdio.h>
+#include <string.h>
+#include "delay.h"
+#include "usart.h"
+#include "sys.h"
 
+#include "lcd.h"
+#include "myiic.h"
+#include "24cxx.h"
+#include "touch.h"
+#include "DataScope.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
@@ -57,16 +67,21 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
-#define KEY2_Pin GPIO_PIN_13
-#define KEY2_GPIO_Port GPIOC
-#define KEY2_EXTI_IRQn EXTI15_10_IRQn
-#define LED1_Pin GPIO_PIN_2
-#define LED1_GPIO_Port GPIOC
-#define LED2_Pin GPIO_PIN_3
-#define LED2_GPIO_Port GPIOC
-#define KEY1_Pin GPIO_PIN_0
-#define KEY1_GPIO_Port GPIOA
-#define KEY1_EXTI_IRQn EXTI0_IRQn
+#define KEY0_Pin GPIO_PIN_3
+#define KEY0_GPIO_Port GPIOE
+#define KEY0_EXTI_IRQn EXTI3_IRQn
+#define KEY1_Pin GPIO_PIN_4
+#define KEY1_GPIO_Port GPIOE
+#define KEY1_EXTI_IRQn EXTI4_IRQn
+#define LED1_Pin GPIO_PIN_5
+#define LED1_GPIO_Port GPIOE
+#define WK_UP_Pin GPIO_PIN_0
+#define WK_UP_GPIO_Port GPIOA
+#define WK_UP_EXTI_IRQn EXTI0_IRQn
+#define LCD_BL_Pin GPIO_PIN_0
+#define LCD_BL_GPIO_Port GPIOB
+#define LED0_Pin GPIO_PIN_5
+#define LED0_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */
 
