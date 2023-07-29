@@ -100,8 +100,6 @@ int main(void)
   MX_DAC_Init();
   MX_TIM3_Init();
   /* USER CODE BEGIN 2 */
-  HAL_DAC_Start_DMA(&hdac,DAC_CHANNEL_1,(uint32_t *) Sine12bit,32,DAC_ALIGN_12B_R);
-//	HAL_ADC_Start_DMA(&hadc1, (uint32_t*)&ADC_Array, ADC_NUM);
 	
 	LCD_Init();
 	tp_dev.init();

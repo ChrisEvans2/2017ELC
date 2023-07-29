@@ -1,5 +1,5 @@
 Dependencies for Project 'elite_test', Target 'elite_test': (DO NOT MODIFY !)
-F (../Core/Src/main.c)(0x64C4BF27)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../User -I ../User/LCD -I ../User/TOUCH -I ../User/IIC -I ../User/24CXX -I ../User/FFT -I ../User/delay -I ../User/DataScope-I.\RTE\_elite_test-I"D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\Core\Include"-I"D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Include"-I"D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\PrivateInclude"-I"D:\study\keil MDK\Pack\Keil\STM32F1xx_DFP\2.3.0\Device\Include"-D__UVISION_VERSION="528" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE -DARM_MATH_CM3-o elite_test\main.o --omf_browse elite_test\main.crf --depend elite_test\main.d)
+F (../Core/Src/main.c)(0x64C4CDD5)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../User -I ../User/LCD -I ../User/TOUCH -I ../User/IIC -I ../User/24CXX -I ../User/FFT -I ../User/delay -I ../User/DataScope-I.\RTE\_elite_test-I"D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\Core\Include"-I"D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Include"-I"D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\PrivateInclude"-I"D:\study\keil MDK\Pack\Keil\STM32F1xx_DFP\2.3.0\Device\Include"-D__UVISION_VERSION="528" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE -DARM_MATH_CM3-o elite_test\main.o --omf_browse elite_test\main.crf --depend elite_test\main.d)
 I (../Core/Inc/main.h)(0x64C3EB02)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x64A7860E)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x64C3EB02)
@@ -48,7 +48,7 @@ I (../User/TOUCH/ott2001a.h)(0x64C3EB04)
 I (../User/TOUCH/gt9147.h)(0x64C3EB04)
 I (../User/TOUCH/ft5206.h)(0x64C3EB04)
 I (../User/DataScope/DataScope.h)(0x64C47B7E)
-I (../Core/Inc/adc.h)(0x64C4B953)
+I (../Core/Inc/adc.h)(0x64C4EFCA)
 I (../Core/Inc/dac.h)(0x64C3EB02)
 I (../Core/Inc/dma.h)(0x64C3EB02)
 I (../Core/Inc/tim.h)(0x64C4B8EB)
@@ -104,8 +104,8 @@ I (../User/TOUCH/ott2001a.h)(0x64C3EB04)
 I (../User/TOUCH/gt9147.h)(0x64C3EB04)
 I (../User/TOUCH/ft5206.h)(0x64C3EB04)
 I (../User/DataScope/DataScope.h)(0x64C47B7E)
-F (../Core/Src/adc.c)(0x64C4BAAD)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../User -I ../User/LCD -I ../User/TOUCH -I ../User/IIC -I ../User/24CXX -I ../User/FFT -I ../User/delay -I ../User/DataScope-I.\RTE\_elite_test-I"D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\Core\Include"-I"D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Include"-I"D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\PrivateInclude"-I"D:\study\keil MDK\Pack\Keil\STM32F1xx_DFP\2.3.0\Device\Include"-D__UVISION_VERSION="528" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE -DARM_MATH_CM3-o elite_test\adc.o --omf_browse elite_test\adc.crf --depend elite_test\adc.d)
-I (../Core/Inc/adc.h)(0x64C4B953)
+F (../Core/Src/adc.c)(0x64C4DE9C)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../User -I ../User/LCD -I ../User/TOUCH -I ../User/IIC -I ../User/24CXX -I ../User/FFT -I ../User/delay -I ../User/DataScope-I.\RTE\_elite_test-I"D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\Core\Include"-I"D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Include"-I"D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\PrivateInclude"-I"D:\study\keil MDK\Pack\Keil\STM32F1xx_DFP\2.3.0\Device\Include"-D__UVISION_VERSION="528" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE -DARM_MATH_CM3-o elite_test\adc.o --omf_browse elite_test\adc.crf --depend elite_test\adc.d)
+I (../Core/Inc/adc.h)(0x64C4EFCA)
 I (../Core/Inc/main.h)(0x64C3EB02)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x64A7860E)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x64C3EB02)
@@ -304,7 +304,7 @@ I (../User/TOUCH/ott2001a.h)(0x64C3EB04)
 I (../User/TOUCH/gt9147.h)(0x64C3EB04)
 I (../User/TOUCH/ft5206.h)(0x64C3EB04)
 I (../User/DataScope/DataScope.h)(0x64C47B7E)
-F (../Core/Src/tim.c)(0x64C4B8EB)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../User -I ../User/LCD -I ../User/TOUCH -I ../User/IIC -I ../User/24CXX -I ../User/FFT -I ../User/delay -I ../User/DataScope-I.\RTE\_elite_test-I"D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\Core\Include"-I"D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Include"-I"D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\PrivateInclude"-I"D:\study\keil MDK\Pack\Keil\STM32F1xx_DFP\2.3.0\Device\Include"-D__UVISION_VERSION="528" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE -DARM_MATH_CM3-o elite_test\tim.o --omf_browse elite_test\tim.crf --depend elite_test\tim.d)
+F (../Core/Src/tim.c)(0x64C4EFF9)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../User -I ../User/LCD -I ../User/TOUCH -I ../User/IIC -I ../User/24CXX -I ../User/FFT -I ../User/delay -I ../User/DataScope-I.\RTE\_elite_test-I"D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\Core\Include"-I"D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Include"-I"D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\PrivateInclude"-I"D:\study\keil MDK\Pack\Keil\STM32F1xx_DFP\2.3.0\Device\Include"-D__UVISION_VERSION="528" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE -DARM_MATH_CM3-o elite_test\tim.o --omf_browse elite_test\tim.crf --depend elite_test\tim.d)
 I (../Core/Inc/tim.h)(0x64C4B8EB)
 I (../Core/Inc/main.h)(0x64C3EB02)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x64A7860E)
@@ -403,7 +403,7 @@ I (../User/TOUCH/ott2001a.h)(0x64C3EB04)
 I (../User/TOUCH/gt9147.h)(0x64C3EB04)
 I (../User/TOUCH/ft5206.h)(0x64C3EB04)
 I (../User/DataScope/DataScope.h)(0x64C47B7E)
-F (../Core/Src/stm32f1xx_it.c)(0x64C4BF27)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../User -I ../User/LCD -I ../User/TOUCH -I ../User/IIC -I ../User/24CXX -I ../User/FFT -I ../User/delay -I ../User/DataScope-I.\RTE\_elite_test-I"D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\Core\Include"-I"D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Include"-I"D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\PrivateInclude"-I"D:\study\keil MDK\Pack\Keil\STM32F1xx_DFP\2.3.0\Device\Include"-D__UVISION_VERSION="528" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE -DARM_MATH_CM3-o elite_test\stm32f1xx_it.o --omf_browse elite_test\stm32f1xx_it.crf --depend elite_test\stm32f1xx_it.d)
+F (../Core/Src/stm32f1xx_it.c)(0x64C4EE14)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../User -I ../User/LCD -I ../User/TOUCH -I ../User/IIC -I ../User/24CXX -I ../User/FFT -I ../User/delay -I ../User/DataScope-I.\RTE\_elite_test-I"D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\Core\Include"-I"D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Include"-I"D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\PrivateInclude"-I"D:\study\keil MDK\Pack\Keil\STM32F1xx_DFP\2.3.0\Device\Include"-D__UVISION_VERSION="528" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE -DARM_MATH_CM3-o elite_test\stm32f1xx_it.o --omf_browse elite_test\stm32f1xx_it.crf --depend elite_test\stm32f1xx_it.d)
 I (../Core/Inc/main.h)(0x64C3EB02)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x64A7860E)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x64C3EB02)
@@ -453,7 +453,7 @@ I (../User/TOUCH/gt9147.h)(0x64C3EB04)
 I (../User/TOUCH/ft5206.h)(0x64C3EB04)
 I (../User/DataScope/DataScope.h)(0x64C47B7E)
 I (../Core/Inc/stm32f1xx_it.h)(0x64C3EB02)
-I (../Core/Inc/adc.h)(0x64C4B953)
+I (../Core/Inc/adc.h)(0x64C4EFCA)
 I (../Core/Inc/dac.h)(0x64C3EB02)
 I (../User/FFT/stm32_dsp.h)(0x64C3EB04)
 I (../User/FFT/table_fft.h)(0x64C3EB04)
@@ -1212,7 +1212,7 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h)(0x64A7860E)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x64A7860E)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x64A7860E)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x64A7860E)
-F (..\Drivers\CMSIS\startup_stm32f103xe.s)(0x64C3EB03)(--cpu Cortex-M3 -g --apcs=interwork --pd "__MICROLIB SETA 1"-I.\RTE\_elite_test-I"D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\Core\Include"-I"D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Include"-I"D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\PrivateInclude"-I"D:\study\keil MDK\Pack\Keil\STM32F1xx_DFP\2.3.0\Device\Include"--pd "__UVISION_VERSION SETA 528" --pd "_RTE_ SETA 1" --pd "STM32F10X_HD SETA 1"--list ./elite_test/\startup_stm32f103xe.lst --xref -o elite_test\startup_stm32f103xe.o --depend elite_test\startup_stm32f103xe.d)
+F (..\Drivers\CMSIS\startup_stm32f103xe.s)(0x64C4D26E)(--cpu Cortex-M3 -g --apcs=interwork --pd "__MICROLIB SETA 1"-I.\RTE\_elite_test-I"D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\Core\Include"-I"D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Include"-I"D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\PrivateInclude"-I"D:\study\keil MDK\Pack\Keil\STM32F1xx_DFP\2.3.0\Device\Include"--pd "__UVISION_VERSION SETA 528" --pd "_RTE_ SETA 1" --pd "STM32F10X_HD SETA 1"--list ./elite_test/\startup_stm32f103xe.lst --xref -o elite_test\startup_stm32f103xe.o --depend elite_test\startup_stm32f103xe.d)
 F (../Core/Src/system_stm32f1xx.c)(0x64C3EB02)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../User -I ../User/LCD -I ../User/TOUCH -I ../User/IIC -I ../User/24CXX -I ../User/FFT -I ../User/delay -I ../User/DataScope-I.\RTE\_elite_test-I"D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\Core\Include"-I"D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Include"-I"D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\PrivateInclude"-I"D:\study\keil MDK\Pack\Keil\STM32F1xx_DFP\2.3.0\Device\Include"-D__UVISION_VERSION="528" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE -DARM_MATH_CM3-o elite_test\system_stm32f1xx.o --omf_browse elite_test\system_stm32f1xx.crf --depend elite_test\system_stm32f1xx.d)
 I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h)(0x64A7860E)
 I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xe.h)(0x64A7860E)
@@ -1702,7 +1702,7 @@ I (../User/TOUCH/ott2001a.h)(0x64C3EB04)
 I (../User/TOUCH/gt9147.h)(0x64C3EB04)
 I (../User/TOUCH/ft5206.h)(0x64C3EB04)
 I (../User/DataScope/DataScope.h)(0x64C47B7E)
-F (..\User\DataScope\DataScope.c)(0x64C47B9A)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../User -I ../User/LCD -I ../User/TOUCH -I ../User/IIC -I ../User/24CXX -I ../User/FFT -I ../User/delay -I ../User/DataScope-I.\RTE\_elite_test-I"D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\Core\Include"-I"D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Include"-I"D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\PrivateInclude"-I"D:\study\keil MDK\Pack\Keil\STM32F1xx_DFP\2.3.0\Device\Include"-D__UVISION_VERSION="528" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE -DARM_MATH_CM3-o elite_test\datascope.o --omf_browse elite_test\datascope.crf --depend elite_test\datascope.d)
+F (..\User\DataScope\DataScope.c)(0x64C4D49C)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../User -I ../User/LCD -I ../User/TOUCH -I ../User/IIC -I ../User/24CXX -I ../User/FFT -I ../User/delay -I ../User/DataScope-I.\RTE\_elite_test-I"D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\Core\Include"-I"D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Include"-I"D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\PrivateInclude"-I"D:\study\keil MDK\Pack\Keil\STM32F1xx_DFP\2.3.0\Device\Include"-D__UVISION_VERSION="528" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE -DARM_MATH_CM3-o elite_test\datascope.o --omf_browse elite_test\datascope.crf --depend elite_test\datascope.d)
 I (..\User\DataScope\DataScope.h)(0x64C47B7E)
 I (../Core/Inc/main.h)(0x64C3EB02)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x64A7860E)

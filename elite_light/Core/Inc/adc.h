@@ -35,8 +35,8 @@ extern "C" {
 extern ADC_HandleTypeDef hadc1;
 
 /* USER CODE BEGIN Private defines */
-#define ADC_NUM		256
-#define Fs 	2571.428571
+#define ADC_NUM		1024
+#define Fs 	(float)72000000.0/28/5
 #define MY_PI 	3.1416
 #define W		2*MY_PI/Fs
 
@@ -46,7 +46,7 @@ void MX_ADC1_Init(void);
 
 /* USER CODE BEGIN Prototypes */
 extern __IO uint32_t ADC_ConvertedValue;
-extern __IO uint32_t ADC_Array[256];
+extern __IO uint32_t ADC_Array[ADC_NUM];
 
 /* USER CODE END Prototypes */
 

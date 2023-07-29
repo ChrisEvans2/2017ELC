@@ -107,11 +107,15 @@ void GetPowerMag()
      else
 			lBufMagArray[i] = (unsigned long)(Mag * 65536);
 		 
-		printf("%d      ",i);
+		printf("%d      ",i+1);
 		printf("%f      ",(float)Fs/ADC_NUM*i);
 		printf("%d      ",lBufMagArray[i]);
 		printf("%f      ",X);
-		printf("%f      \r\n",Y);                       
+		printf("%f      \r\n",Y);
+	}
+	for(i=0; i<ADC_NUM/2; i++)
+	{
+		Send_u32(lBufMagArray[i]);
 	}
 }
 
@@ -444,9 +448,10 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
 	for(int i = 0;i<ADC_NUM;i++)
 	{
 		FFT_IN[i] = ADC_Array[i] << 16;
+//		Send_u32(ADC_Array[i]);  // 查看波形
 	}
 	// 计算FFT
-	cr4_fft_256_stm32(FFT_OUT, FFT_IN, ADC_NUM);
+	cr4_fft_1024_stm32(FFT_OUT, FFT_IN, ADC_NUM);
 	
 	GetPowerMag();
 	HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_SET);
