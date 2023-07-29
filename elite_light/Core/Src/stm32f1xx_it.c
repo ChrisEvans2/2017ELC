@@ -51,7 +51,7 @@
 /* USER CODE BEGIN PV */
 uint16_t temp = 0;
 
-u16 dacval=0;
+u16 dacval=620;
 u16 adcx;
 float ADC_Vol; 
 uint32_t ADC_Data; 
@@ -402,22 +402,29 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
 
 	if(GPIO_Pin & KEY0_Pin){
-			if(dacval<4000)dacval+=200;
-            HAL_DAC_SetValue(&hdac,DAC_CHANNEL_1,DAC_ALIGN_12B_R,dacval);//设置DAC值
-	}
-	if(GPIO_Pin & KEY1_Pin){
-			if(dacval>200)dacval-=200;
-			else dacval=0;
-            HAL_DAC_SetValue(&hdac,DAC_CHANNEL_1,DAC_ALIGN_12B_R,dacval);//设置DAC值
-	}
-	if(GPIO_Pin & WK_UP_Pin)
+			if(dacval<1240)
+			{
+				dacval+=62;
+      	HAL_DAC_SetValue(&hdac,DAC_CHANNEL_1,DAC_ALIGN_12B_R,dacval);//设置DAC值
+			}
+		ADC_DAC_show();	
+	}else if(GPIO_Pin & KEY1_Pin){
+			if(dacval>62)
+			{
+				dacval-=62;
+				HAL_DAC_SetValue(&hdac,DAC_CHANNEL_1,DAC_ALIGN_12B_R,dacval);//设置DAC值				
+			}
+			else 
+			{
+				dacval=0;
+				HAL_DAC_SetValue(&hdac,DAC_CHANNEL_1,DAC_ALIGN_12B_R,dacval);//设置DAC值
+			}
+			ADC_DAC_show();	
+	}else if(GPIO_Pin & WK_UP_Pin)
 	{
 		HAL_TIM_Base_Start(&htim3);
 		HAL_ADC_Start_DMA(&hadc1, (uint32_t*)&ADC_Array, ADC_NUM);
-
 	}
-	
-	ADC_DAC_show();	
 }
 uint16_t time6 = 0;
 uint16_t time6_s = 0;

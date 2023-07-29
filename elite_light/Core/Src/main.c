@@ -49,7 +49,8 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-
+uint32_t F=1000000;  		// 设置正弦波的频率（1~100MHz）
+uint16_t A=816;			// 设置正弦波的幅度（0~4095）        816为100mV输出
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -104,7 +105,11 @@ int main(void)
 	LCD_Init();
 	tp_dev.init();
 
-	
+	GPIO_AD9854_Configuration(); // AD9854IO口初始化
+	delay_ms(5);  
+	AD9854_Init ();
+	AD9854_SetSine (F, A);
+
 	POINT_COLOR=RED; 
 	LCD_ShowString(30,50,200,16,16,(unsigned char*)"ELITE STM32");	
 	LCD_ShowString(30,70,200,16,16,(unsigned char*)"DAC TEST");	
@@ -117,6 +122,9 @@ int main(void)
 	LCD_ShowString(30,190,200,16,16,(unsigned char*)"ADC VOL:0.000V"); 	
 
 	HAL_TIM_Base_Start_IT(&htim6);
+	HAL_DAC_Start(&hdac,DAC_CHANNEL_1);  			//开启DAC通道1
+	HAL_DAC_SetValue(&hdac,DAC_CHANNEL_1,DAC_ALIGN_12B_R,0);//初始值为0 
+	
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -125,7 +133,7 @@ int main(void)
 
 	while (1)
   {
-		tp_dev.scan(0);
+//		tp_dev.scan(0);
 //		HAL_GPIO_TogglePin(LED0_GPIO_Port, LED0_Pin);
 		delay_ms(5);
     /* USER CODE END WHILE */

@@ -49,5 +49,7 @@ elite_test\lcd.o: ../User/TOUCH/ott2001a.h
 elite_test\lcd.o: ../User/TOUCH/gt9147.h
 elite_test\lcd.o: ../User/TOUCH/ft5206.h
 elite_test\lcd.o: ../User/DataScope/DataScope.h
+elite_test\lcd.o: ..\User\AD9854\ad9854.h
+elite_test\lcd.o: ../Core/Inc/gpio.h
 elite_test\lcd.o: D:\study\keil MDK\Core\ARM\ARMCC\Bin\..\include\stdlib.h
 elite_test\lcd.o: ..\User\LCD\font.h

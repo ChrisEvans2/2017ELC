@@ -48,6 +48,8 @@ elite_test\gt9147.o: ../User/IIC/myiic.h
 elite_test\gt9147.o: ../User/24CXX/24cxx.h
 elite_test\gt9147.o: ../User/TOUCH/touch.h
 elite_test\gt9147.o: ../User/DataScope/DataScope.h
+elite_test\gt9147.o: ..\User\AD9854\ad9854.h
+elite_test\gt9147.o: ../Core/Inc/gpio.h
 elite_test\gt9147.o: ..\User\TOUCH\ott2001a.h
 elite_test\gt9147.o: ..\User\TOUCH\ft5206.h
 elite_test\gt9147.o: ..\User\TOUCH\ctiic.h

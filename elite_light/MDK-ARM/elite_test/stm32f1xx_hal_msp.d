@@ -49,3 +49,5 @@ elite_test\stm32f1xx_hal_msp.o: ../User/TOUCH/ott2001a.h
 elite_test\stm32f1xx_hal_msp.o: ../User/TOUCH/gt9147.h
 elite_test\stm32f1xx_hal_msp.o: ../User/TOUCH/ft5206.h
 elite_test\stm32f1xx_hal_msp.o: ../User/DataScope/DataScope.h
+elite_test\stm32f1xx_hal_msp.o: ..\User\AD9854\ad9854.h
+elite_test\stm32f1xx_hal_msp.o: ../Core/Inc/gpio.h
