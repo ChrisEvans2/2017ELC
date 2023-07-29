@@ -52,3 +52,31 @@ elite_test\stm32f1xx_it.o: ../User/DataScope/DataScope.h
 elite_test\stm32f1xx_it.o: ../Core/Inc/stm32f1xx_it.h
 elite_test\stm32f1xx_it.o: ../Core/Inc/adc.h
 elite_test\stm32f1xx_it.o: ../Core/Inc/dac.h
+elite_test\stm32f1xx_it.o: ../User/FFT/stm32_dsp.h
+elite_test\stm32f1xx_it.o: ../User/FFT/table_fft.h
+elite_test\stm32f1xx_it.o: D:\study\keil MDK\Core\ARM\ARMCC\Bin\..\include\math.h
+elite_test\stm32f1xx_it.o: D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Include\arm_math.h
+elite_test\stm32f1xx_it.o: D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Include\arm_math_types.h
+elite_test\stm32f1xx_it.o: D:\study\keil MDK\Core\ARM\ARMCC\Bin\..\include\float.h
+elite_test\stm32f1xx_it.o: D:\study\keil MDK\Core\ARM\ARMCC\Bin\..\include\limits.h
+elite_test\stm32f1xx_it.o: D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Include\arm_math_memory.h
+elite_test\stm32f1xx_it.o: D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Include\dsp/none.h
+elite_test\stm32f1xx_it.o: D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Include\dsp/utils.h
+elite_test\stm32f1xx_it.o: D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Include\dsp/basic_math_functions.h
+elite_test\stm32f1xx_it.o: D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Include\dsp/interpolation_functions.h
+elite_test\stm32f1xx_it.o: D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Include\dsp/bayes_functions.h
+elite_test\stm32f1xx_it.o: D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Include\dsp/statistics_functions.h
+elite_test\stm32f1xx_it.o: D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Include\dsp/fast_math_functions.h
+elite_test\stm32f1xx_it.o: D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Include\dsp/matrix_functions.h
+elite_test\stm32f1xx_it.o: D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Include\dsp/complex_math_functions.h
+elite_test\stm32f1xx_it.o: D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Include\dsp/controller_functions.h
+elite_test\stm32f1xx_it.o: D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Include\dsp/support_functions.h
+elite_test\stm32f1xx_it.o: D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Include\dsp/distance_functions.h
+elite_test\stm32f1xx_it.o: D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Include\dsp/svm_functions.h
+elite_test\stm32f1xx_it.o: D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Include\dsp/svm_defines.h
+elite_test\stm32f1xx_it.o: D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Include\dsp/transform_functions.h
+elite_test\stm32f1xx_it.o: D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Include\dsp/filtering_functions.h
+elite_test\stm32f1xx_it.o: D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Include\dsp/quaternion_math_functions.h
+elite_test\stm32f1xx_it.o: D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Include\arm_const_structs.h
+elite_test\stm32f1xx_it.o: D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Include\arm_common_tables.h
+elite_test\stm32f1xx_it.o: ../Core/Inc/tim.h

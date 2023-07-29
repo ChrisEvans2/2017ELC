@@ -22,16 +22,9 @@
 #define CHECK_LEN				(DATA_LEN  + 6)
 #define SEND_LEN				(CHECK_LEN + 2)
 
-
 void DataScope_Float_Generate( float f );
 void DataScope_Uint32_Generate( uint32_t u32 );
 void Send_float( float f );
 void Send_u32( uint32_t u32 );
 
-void Send_frame();  // ·¢ËÍÊý¾ÝÖ¡
-
- 
 #endif 
-
-
-

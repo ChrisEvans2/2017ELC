@@ -28,11 +28,6 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "stm32_dsp.h"
-#include "table_fft.h"
-#include "math.h"
-#include "arm_math.h"
-#include "arm_const_structs.h"
 
 /* USER CODE END Includes */
 
@@ -43,11 +38,6 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-#define F 	50
-#define Fs 	1000
-#define MY_PI 	3.1416
-#define W		2*MY_PI/Fs
-#define N		256
 
 /* USER CODE END PD */
 
@@ -59,9 +49,6 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-int32_t x[N];
-int32_t FFT_IN[N],FFT_OUT[N];
-int32_t lBufMagArray[N] = {0};
 
 /* USER CODE END PV */
 
@@ -73,31 +60,6 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-void GetPowerMag()
-{
-	signed short lX,lY;
-	float X,Y,Mag;
-	unsigned short i;
-	int a;
-	for(i=0; i<N/2; i++)
-	{
-		lX  =  FFT_OUT[i] >> 16;
-		lY  = (FFT_OUT[i] << 16 ) >> 16;
-		X = N * ((float)lX) / 32768;
-		Y = N * ((float)lY) / 32768;
-		Mag = sqrt(X * X + Y * Y) / N;
-		if(i == 0)
-			lBufMagArray[i] = (unsigned long)(Mag * 32768);
-     else
-			lBufMagArray[i] = (unsigned long)(Mag * 65536);
-		 
-		printf("%d      ",i);
-		printf("%f      ",(float)Fs/N*i);
-		printf("%d      ",lBufMagArray[i]);
-		printf("%f      ",X);
-		printf("%f      \r\n",Y);                       
-	}
-}
 
 /* USER CODE END 0 */
 
@@ -136,9 +98,10 @@ int main(void)
   MX_FSMC_Init();
   MX_ADC1_Init();
   MX_DAC_Init();
+  MX_TIM3_Init();
   /* USER CODE BEGIN 2 */
   HAL_DAC_Start_DMA(&hdac,DAC_CHANNEL_1,(uint32_t *) Sine12bit,32,DAC_ALIGN_12B_R);
-	HAL_ADC_Start_DMA(&hadc1, (uint32_t*)&ADC_Array, 256);
+//	HAL_ADC_Start_DMA(&hadc1, (uint32_t*)&ADC_Array, ADC_NUM);
 	
 	LCD_Init();
 	tp_dev.init();
@@ -156,22 +119,11 @@ int main(void)
 	LCD_ShowString(30,190,200,16,16,(unsigned char*)"ADC VOL:0.000V"); 	
 
 	HAL_TIM_Base_Start_IT(&htim6);
-	
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
 	printf("初始化完成");
-	// 生成FFT数据
-	for(int i = 0;i<N;i++)
-	{
-		x[i] = 2048*sin((float)W*F*i)+2048;
-		FFT_IN[i] = x[i] << 16;
-	}
-	// 计算FFT
-	cr4_fft_256_stm32(FFT_OUT, FFT_IN, N);
-	
-	GetPowerMag();
 
 	while (1)
   {

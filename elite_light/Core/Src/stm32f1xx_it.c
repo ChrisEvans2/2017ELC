@@ -24,6 +24,12 @@
 /* USER CODE BEGIN Includes */
 #include "adc.h"
 #include "dac.h"
+#include "stm32_dsp.h"
+#include "table_fft.h"
+#include "math.h"
+#include "arm_math.h"
+#include "arm_const_structs.h"
+#include "tim.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -49,6 +55,9 @@ u16 dacval=0;
 u16 adcx;
 float ADC_Vol; 
 uint32_t ADC_Data; 
+
+int32_t FFT_IN[ADC_NUM],FFT_OUT[ADC_NUM];
+int32_t lBufMagArray[ADC_NUM] = {0};
 
 /* USER CODE END PV */
 
@@ -78,6 +87,32 @@ void ADC_DAC_show()
 	temp_adc-=adcx;
 	temp_adc*=1000;
 	LCD_ShowxNum(110,190,temp_adc,3,16,0X80); 	    //显示电压值的小数部分
+}
+
+void GetPowerMag()
+{
+	signed short lX,lY;
+	float X,Y,Mag;
+	unsigned short i;
+
+	for(i=0; i<ADC_NUM/2; i++)
+	{
+		lX  =  FFT_OUT[i] >> 16;
+		lY  = (FFT_OUT[i] << 16 ) >> 16;
+		X = ADC_NUM * ((float)lX) / 32768;
+		Y = ADC_NUM * ((float)lY) / 32768;
+		Mag = sqrt(X * X + Y * Y) / ADC_NUM;
+		if(i == 0)
+			lBufMagArray[i] = (unsigned long)(Mag * 32768);
+     else
+			lBufMagArray[i] = (unsigned long)(Mag * 65536);
+		 
+		printf("%d      ",i);
+		printf("%f      ",(float)Fs/ADC_NUM*i);
+		printf("%d      ",lBufMagArray[i]);
+		printf("%f      ",X);
+		printf("%f      \r\n",Y);                       
+	}
 }
 
 /* USER CODE END 0 */
@@ -371,6 +406,12 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 			else dacval=0;
             HAL_DAC_SetValue(&hdac,DAC_CHANNEL_1,DAC_ALIGN_12B_R,dacval);//设置DAC值
 	}
+	if(GPIO_Pin & WK_UP_Pin)
+	{
+		HAL_TIM_Base_Start(&htim3);
+		HAL_ADC_Start_DMA(&hadc1, (uint32_t*)&ADC_Array, ADC_NUM);
+
+	}
 	
 	ADC_DAC_show();	
 }
@@ -385,11 +426,11 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 			time6 = 0;
 			time6_s++;
 			
-			ADC_Data = ADC_ConvertedValue;
-			ADC_Vol =(float) ADC_Data/4096*(float)3.3; // 读取转换的AD值
-			printf("\r\n The current AD value = %d \r\n", ADC_Data); 
-			printf("\r\n The current AD value = %f V \r\n",ADC_Vol);     
-			printf("This is 1s (%d)", time6_s);
+//			ADC_Data = ADC_ConvertedValue;
+//			ADC_Vol =(float) ADC_Data/4096*(float)3.3; // 读取转换的AD值
+//			printf("\r\n The current AD value = %d \r\n", ADC_Data); 
+//			printf("\r\n The current AD value = %f V \r\n",ADC_Vol);     
+//			printf("This is 1s (%d)", time6_s);
 			
 			ADC_DAC_show();	
 		}
@@ -397,8 +438,19 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 }
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
 {
-	HAL_GPIO_TogglePin(LED1_GPIO_Port, LED1_Pin);
-	printf("ADC complete!");
+	HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_RESET);
+	printf("ADC DMA complete!\r\n");
+	// 生成FFT数据
+	for(int i = 0;i<ADC_NUM;i++)
+	{
+		FFT_IN[i] = ADC_Array[i] << 16;
+	}
+	// 计算FFT
+	cr4_fft_256_stm32(FFT_OUT, FFT_IN, ADC_NUM);
+	
+	GetPowerMag();
+	HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_SET);
+
 	
 }
 /* USER CODE END 1 */

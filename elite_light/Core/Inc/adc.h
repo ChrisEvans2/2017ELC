@@ -35,6 +35,10 @@ extern "C" {
 extern ADC_HandleTypeDef hadc1;
 
 /* USER CODE BEGIN Private defines */
+#define ADC_NUM		256
+#define Fs 	2571.428571
+#define MY_PI 	3.1416
+#define W		2*MY_PI/Fs
 
 /* USER CODE END Private defines */
 
