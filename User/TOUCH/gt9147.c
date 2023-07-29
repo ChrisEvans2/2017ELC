@@ -132,16 +132,16 @@ u8 GT9147_Init(void)
 	
 	CT_IIC_Init();      	//初始化电容屏的I2C总线  
 	GT_RST=0;				//复位
-	delay_ms(10);
+	Delay_ms(10);
  	GT_RST=1;				//释放复位 
-	delay_ms(10);
+	Delay_ms(10);
 	
  	GPIO_Initure.Pin=GPIO_PIN_10; 				//PF10
 	GPIO_Initure.Pull=GPIO_PULLDOWN;          	//无上下拉
 	GPIO_Initure.Mode=GPIO_MODE_INPUT;  		//推挽输出
 	HAL_GPIO_Init(GPIOF,&GPIO_Initure);	
 	
-	delay_ms(100);  
+	Delay_ms(100);  
 	GT9147_RD_Reg(GT_PID_REG,temp,4);	//读取产品ID
 	temp[4]=0;
 	printf("CTP ID:%s\r\n",temp);		//打印ID
@@ -155,7 +155,7 @@ u8 GT9147_Init(void)
 			printf("Default Ver:%d\r\n",temp[0]);
 			GT9147_Send_Cfg(1);//更新并保存配置
 		}
-		delay_ms(10);
+		Delay_ms(10);
 		temp[0]=0X00;	 
 		GT9147_WR_Reg(GT_CTRL_REG,temp,1);	//结束复位   	
 		return 0;

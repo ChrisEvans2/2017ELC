@@ -1,7 +1,7 @@
 #include "Delay.h"
 
 static uint32_t  fac_us=0;							//1us计数fac_us个数		   
-
+uint32_t  tcnt = 0;
 /*******************************************************************************
 * 函 数 名:          SysTick_Init
 * 函数功能:          SysTick初始化函数
@@ -24,7 +24,7 @@ void SysTick_Init(uint8_t SYSCLK)
 void Delay_us(uint32_t nus)
 {		
 	uint32_t ticks;
-	uint32_t told,tnow,tcnt=0;
+	uint32_t told,tnow;
 	uint32_t reload=SysTick->LOAD;				//LOAD的值	    	 
 	ticks=nus*fac_us; 						//需要的节拍数 
 	told=SysTick->VAL;        				//刚进入时的计数器值

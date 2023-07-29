@@ -358,6 +358,7 @@ void DMA2_Channel3_IRQHandler(void)
   /* USER CODE END DMA2_Channel3_IRQn 1 */
 }
 
+
 /* USER CODE BEGIN 1 */
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
@@ -374,24 +375,28 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 	
 	ADC_DAC_show();	
 }
-uint16_t time6 = 0;
+uint32_t time6 = 0;
 uint16_t time6_s = 0;
+float ADC_Vol = 0.1;
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
 	if(htim == &htim6){	
 		time6++;
-		if(time6 == 1000)
+		if(time6 == 500000)
 		{
 			time6 = 0;
 			time6_s++;
-			
-			ADC_Data = ADC_ConvertedValue;
-			ADC_Vol =(float) ADC_Data/4096*(float)3.3; // 读取转换的AD值
-			printf("\r\n The current AD value = %d \r\n", ADC_Data); 
-			printf("\r\n The current AD value = %f V \r\n",ADC_Vol);     
-			printf("This is 1s (%d)", time6_s);
-			
-			ADC_DAC_show();	
+			ADC_Vol += 0.1;
+//			ADC_Data = ADC_ConvertedValue;
+//			ADC_Vol =(float) ADC_Data/4096*(float)3.3; // 读取转换的AD值
+//            Send_float(ADC_Vol);
+//			printf("\r\n The current AD value = %d \r\n", ADC_Data); 
+//			printf("\r\n The current AD val ue = %f V \r\n",ADC_Vol);     
+//			printf("This is 1s (%d)", time6_s);
+//			
+//			ADC_DAC_show();	
+            printf("hello world");
+            HAL_GPIO_TogglePin(LED0_GPIO_Port, LED0_Pin);
 		}
 	}
 }

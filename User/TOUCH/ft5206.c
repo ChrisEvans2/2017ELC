@@ -87,9 +87,9 @@ u8 FT5206_Init(void)
 
 	CT_IIC_Init();      	//初始化电容屏的I2C总线  
 	FT_RST=0;				//复位
-	delay_ms(20);
+	Delay_ms(20);
  	FT_RST=1;				//释放复位		    
-	delay_ms(50);  	
+	Delay_ms(50);  	
 	temp[0]=0;
 	FT5206_WR_Reg(FT_DEVIDE_MODE,temp,1);	//进入正常操作模式 
 	FT5206_WR_Reg(FT_ID_G_MODE,temp,1);		//查询模式 
@@ -112,7 +112,7 @@ u8 FT5206_Init(void)
         temp[0]=0X02;
         GT9147_WR_Reg(GT_CTRL_REG,temp,1);  //软复位GT9XXX 
         GT9147_RD_Reg(GT_CFGS_REG,temp,1);  //读取GT_CFGS_REG寄存器
-        delay_ms(10);
+        Delay_ms(10);
         temp[0]=0X00;
         GT9147_WR_Reg(GT_CTRL_REG,temp,1); //结束复位, 进入读坐标状态
     }
@@ -160,7 +160,7 @@ u8 FT5206_Scan(u8 mode)
             tp_dev.x[g_gt_tnum-1]=tp_dev.x[0];//保存触点0的数据,保存在最后一个上
             tp_dev.y[g_gt_tnum-1]=tp_dev.y[0];
 
-            delay_ms(4);    //必要的延时，否则老是认为有按键按下
+            Delay_ms(4);    //必要的延时，否则老是认为有按键按下
 
 			for(i=0;i<g_gt_tnum;i++)
 			{

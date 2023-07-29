@@ -625,7 +625,7 @@ void LCD_Init(void)
     FSMC_WriteTim.AccessMode=FSMC_ACCESS_MODE_A;    //模式A
     HAL_SRAM_Init(&TFTSRAM_Handler,&FSMC_ReadWriteTim,&FSMC_WriteTim);	
 
-    delay_ms(50); // delay 50 ms 
+    Delay_ms(50); // delay 50 ms 
 
     //尝试9341 ID的读取
     LCD_WR_REG(0XD3);
@@ -673,7 +673,7 @@ void LCD_Init(void)
 
                 LCD_WR_REG(0xC501);             //读取ID低8位
                 lcddev.id |= LCD_RD_DATA();     //读回0X10
-                delay_ms(50);
+                Delay_ms(50);
 
                 if (lcddev.id != 0X5510)        //也不是NT5510,尝试看看是不是SSD1963
                 {
@@ -783,14 +783,14 @@ void LCD_Init(void)
         LCD_WR_DATA(0x00);
         LCD_WR_DATA(0xef);
         LCD_WR_REG(0x11);       //Exit Sleep
-        delay_ms(120);
+        Delay_ms(120);
         LCD_WR_REG(0x29);       //display on
     }
     else if (lcddev.id == 0x7789)   //7789初始化
     {
         LCD_WR_REG(0x11);
 
-        delay_ms(120);
+        Delay_ms(120);
 
         LCD_WR_REG(0x36);
         LCD_WR_DATA(0x00);
@@ -1546,7 +1546,7 @@ void LCD_Init(void)
         LCD_WR_DATA(0x55);	//66
 
         LCD_WR_REG(0x11);
-        delay_ms(100);
+        Delay_ms(100);
         LCD_WR_REG(0x29);
         LCD_WR_REG(0x35);
         LCD_WR_DATA(0x00);
@@ -1981,12 +1981,12 @@ void LCD_Init(void)
         Delay_us(100);
         LCD_WR_REG(0xE0);       // Start PLL command
         LCD_WR_DATA(0x01);      // enable PLL
-        delay_ms(10);
+        Delay_ms(10);
         LCD_WR_REG(0xE0);       // Start PLL command again
         LCD_WR_DATA(0x03);      // now, use PLL output as system clock
-        delay_ms(12);
+        Delay_ms(12);
         LCD_WR_REG(0x01);       //软复位
-        delay_ms(10);
+        Delay_ms(10);
 
         LCD_WR_REG(0xE6);       //设置像素频率,33Mhz
         LCD_WR_DATA(0x2F);

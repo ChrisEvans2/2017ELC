@@ -47,7 +47,7 @@ void TP_Write_Byte(u8 num)
 		else TDIN=0;   
 		num<<=1;    
 		TCLK=0; 
-		delay_us(1);
+		Delay_us(1);
 		TCLK=1;		//上升沿有效	        
 	}		 			    
 } 		 
@@ -63,17 +63,17 @@ u16 TP_Read_AD(u8 CMD)
 	TDIN=0; 	//拉低数据线
 	TCS=0; 		//选中触摸屏IC
 	TP_Write_Byte(CMD);//发送命令字
-	delay_us(6);//ADS7846的转换时间最长为6us
+	Delay_us(6);//ADS7846的转换时间最长为6us
 	TCLK=0; 	     	    
-	delay_us(1);    	   
+	Delay_us(1);    	   
 	TCLK=1;		//给1个时钟，清除BUSY
-	delay_us(1);    
+	Delay_us(1);    
 	TCLK=0; 	     	    
 	for(count=0;count<16;count++)//读出16位数据,只有高12位有效 
 	{ 				  
 		Num<<=1; 	 
 		TCLK=0;	//下降沿有效  	    	   
-		delay_us(1);    
+		Delay_us(1);    
  		TCLK=1;
  		if(DOUT)Num++; 		 
 	}  	
@@ -410,13 +410,13 @@ void TP_Adjust(void)
 					POINT_COLOR=BLUE;
 					LCD_Clear(WHITE);//清屏
 					LCD_ShowString(35,110,lcddev.width,lcddev.height,16,"Touch Screen Adjust OK!");//校正完成
-					delay_ms(1000);
+					Delay_ms(1000);
 					TP_Save_Adjdata();  
  					LCD_Clear(WHITE);//清屏   
 					return;//校正完成				 
 			}
 		}
-		delay_ms(10);
+		Delay_ms(10);
 		outtime++;
 		if(outtime>1000)
 		{

@@ -96,9 +96,9 @@ u8 OTT2001A_Init(void)
  
 	CT_IIC_Init();      	//初始化电容屏的I2C总线  
 	OTT_RST=0;				//复位
-	delay_ms(100);
+	Delay_ms(100);
  	OTT_RST=1;				//释放复位		    
-	delay_ms(100); 
+	Delay_ms(100); 
 	OTT2001A_SensorControl(1);//打开传感器 
 	OTT2001A_RD_Reg(OTT_CTRL_REG,&regval,1);//读取传感器运行寄存器的值来判断I2C通信是否正常
 	printf("CTP ID:%x\r\n",regval);

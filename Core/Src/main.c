@@ -137,48 +137,51 @@ int main(void)
   MX_ADC1_Init();
   MX_DAC_Init();
   /* USER CODE BEGIN 2 */
-  HAL_DAC_Start_DMA(&hdac,DAC_CHANNEL_1,(uint32_t *) Sine12bit,32,DAC_ALIGN_12B_R);
+//  HAL_DAC_Start_DMA(&hdac,DAC_CHANNEL_1,(uint32_t *) Sine12bit,32,DAC_ALIGN_12B_R);
 	HAL_ADC_Start_DMA(&hadc1, (uint32_t*)&ADC_ConvertedValue, 1);
-	
-	LCD_Init();
-	tp_dev.init();
+  HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_SET);
 
-	
-	POINT_COLOR=RED; 
-	LCD_ShowString(30,50,200,16,16,(unsigned char*)"ELITE STM32");	
-	LCD_ShowString(30,70,200,16,16,(unsigned char*)"DAC TEST");	
-	LCD_ShowString(30,90,200,16,16,(unsigned char*)"ATOM@ALIENTEK");
-	LCD_ShowString(30,110,200,16,16,(unsigned char*)"2019/9/18");	 
-	LCD_ShowString(30,130,200,16,16,(unsigned char*)"KEY1:-  KEY1:+");	  
-	POINT_COLOR=BLUE;//设置字体为蓝色      	 
-	LCD_ShowString(30,150,200,16,16,(unsigned char*)"DAC VAL:");	      
-	LCD_ShowString(30,170,200,16,16,(unsigned char*)"DAC VOL:0.000V");	      
-	LCD_ShowString(30,190,200,16,16,(unsigned char*)"ADC VOL:0.000V"); 	
+  HAL_GPIO_WritePin(GPIOB, LCD_BL_Pin|LED0_Pin, GPIO_PIN_SET);
+//	LCD_Init();
+//	tp_dev.init();
 
-	HAL_GPIO_WritePin(LED0_GPIO_Port, LED0_Pin, GPIO_PIN_SET);
-	HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_SET);
+//	
+//	POINT_COLOR=RED; 
+//	LCD_ShowString(30,50,200,16,16,(unsigned char*)"ELITE STM32");	
+//	LCD_ShowString(30,70,200,16,16,(unsigned char*)"DAC TEST");	
+//	LCD_ShowString(30,90,200,16,16,(unsigned char*)"ATOM@ALIENTEK");
+//	LCD_ShowString(30,110,200,16,16,(unsigned char*)"2019/9/18");	 
+//	LCD_ShowString(30,130,200,16,16,(unsigned char*)"KEY1:-  KEY1:+");	  
+//	POINT_COLOR=BLUE;//设置字体为蓝色      	 
+//	LCD_ShowString(30,150,200,16,16,(unsigned char*)"DAC VAL:");	      
+//	LCD_ShowString(30,170,200,16,16,(unsigned char*)"DAC VOL:0.000V");	      
+//	LCD_ShowString(30,190,200,16,16,(unsigned char*)"ADC VOL:0.000V"); 	
+
+//	HAL_GPIO_WritePin(LED0_GPIO_Port, LED0_Pin, GPIO_PIN_SET);
+//	HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_SET);
 	HAL_TIM_Base_Start_IT(&htim6);
-	
-  /* USER CODE END 2 */
+//	
+//  /* USER CODE END 2 */
 
-  /* Infinite loop */
-  /* USER CODE BEGIN WHILE */
-	printf("初始化完成");
-	// 生成FFT数据
-	for(int i = 0;i<N;i++)
-	{
-		x[i] = 2048*sin((float)W*F*i)+2048;
-		FFT_IN[i] = x[i] << 16;
-	}
-	// 计算FFT
-	cr4_fft_256_stm32(FFT_OUT, FFT_IN, N);
-	
-	GetPowerMag();
+//  /* Infinite loop */
+//  /* USER CODE BEGIN WHILE */
+//	printf("初始化完成");
+//	// 生成FFT数据
+//	for(int i = 0;i<N;i++)
+//	{
+//		x[i] = 2048*sin((float)W*F*i)+2048;
+//		FFT_IN[i] = x[i] << 16;
+//	}
+//	// 计算FFT
+//	cr4_fft_256_stm32(FFT_OUT, FFT_IN, N);
+//	
+//	GetPowerMag();
 
 	while (1)
   {
-		tp_dev.scan(0);
+//		tp_dev.scan(0);
 //		HAL_GPIO_TogglePin(LED0_GPIO_Port, LED0_Pin);
+      
 		Delay_ms(5);
     /* USER CODE END WHILE */
 
