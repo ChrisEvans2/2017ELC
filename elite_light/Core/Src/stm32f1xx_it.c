@@ -422,7 +422,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 			ADC_DAC_show();	
 	}else if(GPIO_Pin & WK_UP_Pin)
 	{
-		HAL_TIM_Base_Start(&htim3);
+//		HAL_TIM_Base_Start(&htim3);
 		HAL_ADC_Start_DMA(&hadc1, (uint32_t*)&ADC_Array, ADC_NUM);
 	}
 }
@@ -458,7 +458,7 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
 //		Send_u32(ADC_Array[i]);  // 查看波形
 	}
 	// 计算FFT
-	cr4_fft_1024_stm32(FFT_OUT, FFT_IN, ADC_NUM);
+	cr4_fft_256_stm32(FFT_OUT, FFT_IN, ADC_NUM);
 	
 	GetPowerMag();
 	HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_SET);

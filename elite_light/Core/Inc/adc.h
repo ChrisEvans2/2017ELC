@@ -35,7 +35,7 @@ extern "C" {
 extern ADC_HandleTypeDef hadc1;
 
 /* USER CODE BEGIN Private defines */
-#define ADC_NUM		1024
+#define ADC_NUM		256
 #define Fs 	(float)72000000.0/28/5
 #define MY_PI 	3.1416
 #define W		2*MY_PI/Fs

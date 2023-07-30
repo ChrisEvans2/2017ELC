@@ -121,6 +121,9 @@ int main(void)
 	LCD_ShowString(30,170,200,16,16,(unsigned char*)"DAC VOL:0.000V");	      
 	LCD_ShowString(30,190,200,16,16,(unsigned char*)"ADC VOL:0.000V"); 	
 
+	HAL_TIM_Base_Start(&htim3);
+	HAL_ADCEx_Calibration_Start(&hadc1);
+	HAL_ADC_Start(&hadc1);
 	HAL_TIM_Base_Start_IT(&htim6);
 	HAL_DAC_Start(&hdac,DAC_CHANNEL_1);  			//开启DAC通道1
 	HAL_DAC_SetValue(&hdac,DAC_CHANNEL_1,DAC_ALIGN_12B_R,0);//初始值为0 

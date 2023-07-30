@@ -50,5 +50,5 @@ elite_test\24cxx.o: ../User/TOUCH/ott2001a.h
 elite_test\24cxx.o: ../User/TOUCH/gt9147.h
 elite_test\24cxx.o: ../User/TOUCH/ft5206.h
 elite_test\24cxx.o: ../User/DataScope/DataScope.h
-elite_test\24cxx.o: ..\User\AD9854\ad9854.h
+elite_test\24cxx.o: ../User/AD9854/ad9854.h
 elite_test\24cxx.o: ../Core/Inc/gpio.h
