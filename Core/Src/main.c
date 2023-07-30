@@ -28,11 +28,6 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "stm32_dsp.h"
-#include "table_fft.h"
-#include "math.h"
-#include "arm_math.h"
-#include "arm_const_structs.h"
 
 /* USER CODE END Includes */
 
@@ -43,11 +38,6 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-#define F 	50
-#define Fs 	1000
-#define MY_PI 	3.1416
-#define W		2*MY_PI/Fs
-#define N		256
 
 /* USER CODE END PD */
 
@@ -59,10 +49,8 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-int32_t x[N];
-int32_t FFT_IN[N],FFT_OUT[N];
-int32_t lBufMagArray[N] = {0};
-
+uint32_t F=1000000;  		// 设置正弦波的频率（1~100MHz）
+uint16_t A=816;			// 设置正弦波的幅度（0~4095）        816为100mV输出
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -73,31 +61,6 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-void GetPowerMag()
-{
-	signed short lX,lY;
-	float X,Y,Mag;
-	unsigned short i;
-	int a;
-	for(i=0; i<N/2; i++)
-	{
-		lX  =  FFT_OUT[i] >> 16;
-		lY  = (FFT_OUT[i] << 16 ) >> 16;
-		X = N * ((float)lX) / 32768;
-		Y = N * ((float)lY) / 32768;
-		Mag = sqrt(X * X + Y * Y) / N;
-		if(i == 0)
-			lBufMagArray[i] = (unsigned long)(Mag * 32768);
-     else
-			lBufMagArray[i] = (unsigned long)(Mag * 65536);
-		 
-		printf("%d      ",i);
-		printf("%f      ",(float)Fs/N*i);
-		printf("%d      ",lBufMagArray[i]);
-		printf("%f      ",X);
-		printf("%f      \r\n",Y);                       
-	}
-}
 
 /* USER CODE END 0 */
 
@@ -136,48 +99,44 @@ int main(void)
   MX_FSMC_Init();
   MX_ADC1_Init();
   MX_DAC_Init();
+  MX_TIM3_Init();
   /* USER CODE BEGIN 2 */
-  HAL_DAC_Start_DMA(&hdac,DAC_CHANNEL_1,(uint32_t *) Sine12bit,32,DAC_ALIGN_12B_R);
-	HAL_ADC_Start_DMA(&hadc1, (uint32_t*)&ADC_ConvertedValue, 1);
 	
 	LCD_Init();
 	tp_dev.init();
 
-	
+	GPIO_AD9854_Configuration(); // AD9854IO口初始化
+	delay_ms(5);  
+	AD9854_Init ();
+	AD9854_SetSine (F, A);
+
 	POINT_COLOR=RED; 
 	LCD_ShowString(30,50,200,16,16,(unsigned char*)"ELITE STM32");	
 	LCD_ShowString(30,70,200,16,16,(unsigned char*)"DAC TEST");	
 	LCD_ShowString(30,90,200,16,16,(unsigned char*)"ATOM@ALIENTEK");
 	LCD_ShowString(30,110,200,16,16,(unsigned char*)"2019/9/18");	 
-	LCD_ShowString(30,130,200,16,16,(unsigned char*)"KEY1:-  KEY1:+");	  
+	LCD_ShowString(30,130,200,16,16,(unsigned char*)"KEY0:-  KEY1:+");	  
 	POINT_COLOR=BLUE;//设置字体为蓝色      	 
 	LCD_ShowString(30,150,200,16,16,(unsigned char*)"DAC VAL:");	      
 	LCD_ShowString(30,170,200,16,16,(unsigned char*)"DAC VOL:0.000V");	      
 	LCD_ShowString(30,190,200,16,16,(unsigned char*)"ADC VOL:0.000V"); 	
 
-	HAL_GPIO_WritePin(LED0_GPIO_Port, LED0_Pin, GPIO_PIN_SET);
-	HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_SET);
+	HAL_TIM_Base_Start(&htim3);
+	HAL_ADCEx_Calibration_Start(&hadc1);
+	HAL_ADC_Start(&hadc1);
 	HAL_TIM_Base_Start_IT(&htim6);
+	HAL_DAC_Start(&hdac,DAC_CHANNEL_1);  			//开启DAC通道1
+	HAL_DAC_SetValue(&hdac,DAC_CHANNEL_1,DAC_ALIGN_12B_R,0);//初始值为0 
 	
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
 	printf("初始化完成");
-	// 生成FFT数据
-	for(int i = 0;i<N;i++)
-	{
-		x[i] = 2048*sin((float)W*F*i)+2048;
-		FFT_IN[i] = x[i] << 16;
-	}
-	// 计算FFT
-	cr4_fft_256_stm32(FFT_OUT, FFT_IN, N);
-	
-	GetPowerMag();
 
 	while (1)
   {
-		tp_dev.scan(0);
+//		tp_dev.scan(0);
 //		HAL_GPIO_TogglePin(LED0_GPIO_Port, LED0_Pin);
 		delay_ms(5);
     /* USER CODE END WHILE */
