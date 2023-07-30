@@ -40,6 +40,7 @@ elite_test\main.o: ../User/delay/delay.h
 elite_test\main.o: ../Core/Inc/main.h
 elite_test\main.o: ../Core/Inc/usart.h
 elite_test\main.o: ../User/sys.h
+elite_test\main.o: ../User/KEY/key.h
 elite_test\main.o: ../User/LCD/lcd.h
 elite_test\main.o: D:\study\keil MDK\Core\ARM\ARMCC\Bin\..\include\stdlib.h
 elite_test\main.o: ../User/IIC/myiic.h

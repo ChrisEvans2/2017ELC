@@ -40,6 +40,7 @@ elite_test\stm32f1xx_hal_msp.o: ../User/delay/delay.h
 elite_test\stm32f1xx_hal_msp.o: ../Core/Inc/main.h
 elite_test\stm32f1xx_hal_msp.o: ../Core/Inc/usart.h
 elite_test\stm32f1xx_hal_msp.o: ../User/sys.h
+elite_test\stm32f1xx_hal_msp.o: ../User/KEY/key.h
 elite_test\stm32f1xx_hal_msp.o: ../User/LCD/lcd.h
 elite_test\stm32f1xx_hal_msp.o: D:\study\keil MDK\Core\ARM\ARMCC\Bin\..\include\stdlib.h
 elite_test\stm32f1xx_hal_msp.o: ../User/IIC/myiic.h

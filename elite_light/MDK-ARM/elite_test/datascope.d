@@ -41,6 +41,7 @@ elite_test\datascope.o: ../User/delay/delay.h
 elite_test\datascope.o: ../Core/Inc/main.h
 elite_test\datascope.o: ../Core/Inc/usart.h
 elite_test\datascope.o: ../User/sys.h
+elite_test\datascope.o: ../User/KEY/key.h
 elite_test\datascope.o: ../User/LCD/lcd.h
 elite_test\datascope.o: D:\study\keil MDK\Core\ARM\ARMCC\Bin\..\include\stdlib.h
 elite_test\datascope.o: ../User/IIC/myiic.h

@@ -41,6 +41,7 @@ elite_test\dma.o: ../User/delay/delay.h
 elite_test\dma.o: ../Core/Inc/main.h
 elite_test\dma.o: ../Core/Inc/usart.h
 elite_test\dma.o: ../User/sys.h
+elite_test\dma.o: ../User/KEY/key.h
 elite_test\dma.o: ../User/LCD/lcd.h
 elite_test\dma.o: D:\study\keil MDK\Core\ARM\ARMCC\Bin\..\include\stdlib.h
 elite_test\dma.o: ../User/IIC/myiic.h

@@ -42,6 +42,7 @@ elite_test\ft5206.o: D:\study\keil MDK\Core\ARM\ARMCC\Bin\..\include\string.h
 elite_test\ft5206.o: ../User/delay/delay.h
 elite_test\ft5206.o: ../Core/Inc/main.h
 elite_test\ft5206.o: ../Core/Inc/usart.h
+elite_test\ft5206.o: ../User/KEY/key.h
 elite_test\ft5206.o: ../User/LCD/lcd.h
 elite_test\ft5206.o: D:\study\keil MDK\Core\ARM\ARMCC\Bin\..\include\stdlib.h
 elite_test\ft5206.o: ../User/IIC/myiic.h

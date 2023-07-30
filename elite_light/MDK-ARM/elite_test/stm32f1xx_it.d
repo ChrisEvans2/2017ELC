@@ -40,6 +40,7 @@ elite_test\stm32f1xx_it.o: ../User/delay/delay.h
 elite_test\stm32f1xx_it.o: ../Core/Inc/main.h
 elite_test\stm32f1xx_it.o: ../Core/Inc/usart.h
 elite_test\stm32f1xx_it.o: ../User/sys.h
+elite_test\stm32f1xx_it.o: ../User/KEY/key.h
 elite_test\stm32f1xx_it.o: ../User/LCD/lcd.h
 elite_test\stm32f1xx_it.o: D:\study\keil MDK\Core\ARM\ARMCC\Bin\..\include\stdlib.h
 elite_test\stm32f1xx_it.o: ../User/IIC/myiic.h

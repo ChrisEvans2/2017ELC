@@ -41,6 +41,7 @@ elite_test\lcd.o: ../User/delay/delay.h
 elite_test\lcd.o: ../Core/Inc/main.h
 elite_test\lcd.o: ../Core/Inc/usart.h
 elite_test\lcd.o: ../User/sys.h
+elite_test\lcd.o: ../User/KEY/key.h
 elite_test\lcd.o: ../User/LCD/lcd.h
 elite_test\lcd.o: ../User/IIC/myiic.h
 elite_test\lcd.o: ../User/24CXX/24cxx.h

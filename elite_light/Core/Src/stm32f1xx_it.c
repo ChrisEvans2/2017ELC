@@ -59,6 +59,8 @@ uint32_t ADC_Data;
 int32_t FFT_IN[ADC_NUM],FFT_OUT[ADC_NUM];
 int32_t lBufMagArray[ADC_NUM] = {0};
 
+extern key_t Key0, Key1, Key2;
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -73,20 +75,20 @@ void ADC_DAC_show()
 	float temp_adc;
 	
 	adcx=HAL_DAC_GetValue(&hdac,DAC_CHANNEL_1);//读取前面设置DAC的值
-	LCD_ShowxNum(94,150,adcx,4,16,0);     	    //显示DAC寄存器值
+	LCD_ShowxNum(94,120,adcx,4,16,0);     	    //显示DAC寄存器值
 	temp_adc=(float)adcx*(3.3/4096);			    //得到DAC电压值
 	adcx=temp_adc;
-	LCD_ShowxNum(94,170,temp_adc,1,16,0);     	    //显示电压值整数部分
+	LCD_ShowxNum(94,140,temp_adc,1,16,0);     	    //显示电压值整数部分
 	temp_adc-=adcx;
 	temp_adc*=1000;
-	LCD_ShowxNum(110,170,temp_adc,3,16,0X80); 	    //显示电压值的小数部分
+	LCD_ShowxNum(110,140,temp_adc,3,16,0X80); 	    //显示电压值的小数部分
 	adcx=HAL_ADC_GetValue(&hadc1);     //得到ADC转换值	  
 	temp_adc=(float)adcx*(3.3/4096);			    //得到ADC电压值
 	adcx=temp_adc;
-	LCD_ShowxNum(94,190,temp_adc,1,16,0);     	    //显示电压值整数部分
+	LCD_ShowxNum(94,160,temp_adc,1,16,0);     	    //显示电压值整数部分
 	temp_adc-=adcx;
 	temp_adc*=1000;
-	LCD_ShowxNum(110,190,temp_adc,3,16,0X80); 	    //显示电压值的小数部分
+	LCD_ShowxNum(110,160,temp_adc,3,16,0X80); 	    //显示电压值的小数部分
 }
 
 void GetPowerMag()
@@ -270,48 +272,6 @@ void SysTick_Handler(void)
 /******************************************************************************/
 
 /**
-  * @brief This function handles EXTI line0 interrupt.
-  */
-void EXTI0_IRQHandler(void)
-{
-  /* USER CODE BEGIN EXTI0_IRQn 0 */
-
-  /* USER CODE END EXTI0_IRQn 0 */
-  HAL_GPIO_EXTI_IRQHandler(WK_UP_Pin);
-  /* USER CODE BEGIN EXTI0_IRQn 1 */
-
-  /* USER CODE END EXTI0_IRQn 1 */
-}
-
-/**
-  * @brief This function handles EXTI line3 interrupt.
-  */
-void EXTI3_IRQHandler(void)
-{
-  /* USER CODE BEGIN EXTI3_IRQn 0 */
-
-  /* USER CODE END EXTI3_IRQn 0 */
-  HAL_GPIO_EXTI_IRQHandler(KEY0_Pin);
-  /* USER CODE BEGIN EXTI3_IRQn 1 */
-
-  /* USER CODE END EXTI3_IRQn 1 */
-}
-
-/**
-  * @brief This function handles EXTI line4 interrupt.
-  */
-void EXTI4_IRQHandler(void)
-{
-  /* USER CODE BEGIN EXTI4_IRQn 0 */
-
-  /* USER CODE END EXTI4_IRQn 0 */
-  HAL_GPIO_EXTI_IRQHandler(KEY1_Pin);
-  /* USER CODE BEGIN EXTI4_IRQn 1 */
-
-  /* USER CODE END EXTI4_IRQn 1 */
-}
-
-/**
   * @brief This function handles DMA1 channel1 global interrupt.
   */
 void DMA1_Channel1_IRQHandler(void)
@@ -398,50 +358,53 @@ void DMA2_Channel3_IRQHandler(void)
 }
 
 /* USER CODE BEGIN 1 */
-void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
-{
-
-	if(GPIO_Pin & KEY0_Pin){
-			if(dacval<1240)
-			{
-				dacval+=62;
-      	HAL_DAC_SetValue(&hdac,DAC_CHANNEL_1,DAC_ALIGN_12B_R,dacval);//设置DAC值
-			}
-		ADC_DAC_show();	
-	}else if(GPIO_Pin & KEY1_Pin){
-			if(dacval>62)
-			{
-				dacval-=62;
-				HAL_DAC_SetValue(&hdac,DAC_CHANNEL_1,DAC_ALIGN_12B_R,dacval);//设置DAC值				
-			}
-			else 
-			{
-				dacval=0;
-				HAL_DAC_SetValue(&hdac,DAC_CHANNEL_1,DAC_ALIGN_12B_R,dacval);//设置DAC值
-			}
-			ADC_DAC_show();	
-	}else if(GPIO_Pin & WK_UP_Pin)
-	{
-//		HAL_TIM_Base_Start(&htim3);
-		HAL_ADC_Start_DMA(&hadc1, (uint32_t*)&ADC_Array, ADC_NUM);
-	}
-}
-uint16_t time6 = 0;
-uint16_t time6_s = 0;
+//void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+//{
+//	static uint8_t KEY0_TEMP=0, KEY1_TEMP=0, WK_UP_TEMP=0;
+//	uint8_t i;
+//	
+//	if(GPIO_Pin & KEY0_Pin){
+//			if(dacval<1240)
+//			{
+//				dacval+=62;
+//				HAL_DAC_SetValue(&hdac,DAC_CHANNEL_1,DAC_ALIGN_12B_R,dacval);//设置DAC值
+//			}
+//			ADC_DAC_show();	
+//	}else if(GPIO_Pin & KEY1_Pin){
+//			if(dacval>62)
+//			{
+//				dacval-=62;
+//				HAL_DAC_SetValue(&hdac,DAC_CHANNEL_1,DAC_ALIGN_12B_R,dacval);//设置DAC值				
+//			}
+//			else 
+//			{
+//				dacval=0;
+//				HAL_DAC_SetValue(&hdac,DAC_CHANNEL_1,DAC_ALIGN_12B_R,dacval);//设置DAC值
+//			}
+//			ADC_DAC_show();	
+//	}else if(GPIO_Pin & KEY2_Pin)
+//	{
+////		HAL_TIM_Base_Start(&htim3);
+//		HAL_ADC_Start_DMA(&hadc1, (uint32_t*)&ADC_Array, ADC_NUM);
+//	}
+//}
+uint16_t time6 = 0, time6_s = 0;
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
 	if(htim == &htim6){	
 		time6++;
-		if(time6 == 1000)
+		if(time6%10 == 0) // 按键状态更新
+		{
+			Key_Scan(&Key0, KEY0_GPIO_Port, KEY0_Pin);
+			Key_Scan(&Key1, KEY1_GPIO_Port, KEY1_Pin);
+			Key_Scan2(&Key2, KEY2_GPIO_Port, KEY2_Pin);
+		}
+
+		if(time6 == 1000)  // 1s中断
 		{
 			time6 = 0;
 			time6_s++;
-			
-//			ADC_Data = ADC_ConvertedValue;
-//			ADC_Vol =(float) ADC_Data/4096*(float)3.3; // 读取转换的AD值
-//			printf("\r\n The current AD value = %d \r\n", ADC_Data); 
-//			printf("\r\n The current AD value = %f V \r\n",ADC_Vol);     
-//			printf("This is 1s (%d)", time6_s);
+			printf("This is 1s (%d)", time6_s);
 			
 			ADC_DAC_show();	
 		}

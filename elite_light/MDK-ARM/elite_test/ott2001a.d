@@ -42,6 +42,7 @@ elite_test\ott2001a.o: D:\study\keil MDK\Core\ARM\ARMCC\Bin\..\include\string.h
 elite_test\ott2001a.o: ../User/delay/delay.h
 elite_test\ott2001a.o: ../Core/Inc/main.h
 elite_test\ott2001a.o: ../Core/Inc/usart.h
+elite_test\ott2001a.o: ../User/KEY/key.h
 elite_test\ott2001a.o: ../User/LCD/lcd.h
 elite_test\ott2001a.o: D:\study\keil MDK\Core\ARM\ARMCC\Bin\..\include\stdlib.h
 elite_test\ott2001a.o: ../User/IIC/myiic.h

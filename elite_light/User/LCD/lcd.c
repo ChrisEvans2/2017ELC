@@ -2046,7 +2046,7 @@ void LCD_Init(void)
         LCD_SSD_BackLightSet(100);//背光设置为最亮
     }
 
-    LCD_Display_Dir(0);         //默认为竖屏
+    LCD_Display_Dir(1);         //默认为竖屏
     LCD_LED = 1;                //点亮背光
     LCD_Clear(WHITE);
 }  
@@ -2353,7 +2353,19 @@ void LCD_ShowString(u16 x, u16 y, u16 width, u16 height, u8 size, u8 *p)
 }
 
 
-
+void LCD_Show_ADC(void)
+{
+	POINT_COLOR=RED; 
+	LCD_ShowString(30,20,200,16,16,(unsigned char*)"ELITE STM32");	
+	LCD_ShowString(30,40,200,16,16,(unsigned char*)"DAC TEST");	
+	LCD_ShowString(30,60,200,16,16,(unsigned char*)"ATOM@ALIENTEK");
+	LCD_ShowString(30,80,200,16,16,(unsigned char*)"2019/9/18");	 
+	LCD_ShowString(30,100,200,16,16,(unsigned char*)"KEY0:+  KEY1:-");	  
+	POINT_COLOR=BLUE;//设置字体为蓝色      	 
+	LCD_ShowString(30,120,200,16,16,(unsigned char*)"DAC VAL:");	      
+	LCD_ShowString(30,140,200,16,16,(unsigned char*)"DAC VOL:0.000V");	      
+	LCD_ShowString(30,160,200,16,16,(unsigned char*)"ADC VOL:0.000V"); 	
+}
 
 
 
