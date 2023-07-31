@@ -1,5 +1,5 @@
-elite_test\delay.o: ..\User\delay.c
-elite_test\delay.o: ..\User\delay.h
+elite_test\delay.o: ..\User\delay\delay.c
+elite_test\delay.o: ..\User\delay\delay.h
 elite_test\delay.o: ../Core/Inc/main.h
 elite_test\delay.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h
 elite_test\delay.o: ../Core/Inc/stm32f1xx_hal_conf.h
@@ -23,6 +23,10 @@ elite_test\delay.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_exti.h
 elite_test\delay.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h
 elite_test\delay.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma_ex.h
 elite_test\delay.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_cortex.h
+elite_test\delay.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_adc.h
+elite_test\delay.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_adc_ex.h
+elite_test\delay.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dac.h
+elite_test\delay.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dac_ex.h
 elite_test\delay.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash.h
 elite_test\delay.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h
 elite_test\delay.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_sram.h
@@ -33,10 +37,11 @@ elite_test\delay.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h
 elite_test\delay.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h
 elite_test\delay.o: D:\study\keil MDK\Core\ARM\ARMCC\Bin\..\include\stdio.h
 elite_test\delay.o: D:\study\keil MDK\Core\ARM\ARMCC\Bin\..\include\string.h
-elite_test\delay.o: ../User/delay.h
+elite_test\delay.o: ../User/delay/delay.h
 elite_test\delay.o: ../Core/Inc/usart.h
 elite_test\delay.o: ../Core/Inc/main.h
 elite_test\delay.o: ../User/sys.h
+elite_test\delay.o: ../User/KEY/key.h
 elite_test\delay.o: ../User/LCD/lcd.h
 elite_test\delay.o: D:\study\keil MDK\Core\ARM\ARMCC\Bin\..\include\stdlib.h
 elite_test\delay.o: ../User/IIC/myiic.h
@@ -45,6 +50,9 @@ elite_test\delay.o: ../User/TOUCH/touch.h
 elite_test\delay.o: ../User/TOUCH/ott2001a.h
 elite_test\delay.o: ../User/TOUCH/gt9147.h
 elite_test\delay.o: ../User/TOUCH/ft5206.h
+elite_test\delay.o: ..\User\DataScope\DataScope.h
+elite_test\delay.o: ..\User\AD9854\ad9854.h
+elite_test\delay.o: ../Core/Inc/gpio.h
 elite_test\delay.o: ../User/Middlewares/LVGL/GUI/lvgl/lvgl.h
 elite_test\delay.o: ../User/Middlewares/LVGL/GUI/lvgl/src/misc/lv_log.h
 elite_test\delay.o: ../User/Middlewares/LVGL/GUI/lvgl/src/misc/../lv_conf_internal.h

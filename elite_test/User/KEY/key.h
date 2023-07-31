@@ -1,24 +1,24 @@
 #ifndef _KEY_H
 #define _KEY_H
 #include "sys.h"
-//////////////////////////////////////////////////////////////////////////////////	 
-//本程序只供学习使用，未经作者许可，不得用于其它任何用途
-//ALIENTEK STM32F103开发板
-//KEY驱动代码	   
-//正点原子@ALIENTEK
-//技术论坛:www.openedv.com
-//创建日期:2017/5/25
-//版本：V1.0
-//版权所有，盗版必究。
-//Copyright(C) 广州市星翼电子科技有限公司 2014-2024
-//All rights reserved									  
-//////////////////////////////////////////////////////////////////////////////////
+
+typedef enum
+{
+    KEY_CHECK = 0,  //按键检测状态
+    KEY_COMFIRM,    //按键确认状态
+    KEY_RELEASE     //按键释放状态
+}keyState_e;        //状态枚举变量
+
+typedef struct
+{
+  keyState_e keyState; //按键状态
+  uint8_t keyFlag;     //按键按下标志
+}key_t;                //按键状态结构体
 
 //下面的方式是通过位带操作方式读取IO
 //#define KEY0        PEin(4) 	//KEY0按键PE4
 //#define KEY1        PEin(3) 	//KEY1按键PE3
 //#define WK_UP       PAin(0) 	//WKUP按键PA0
-
 
 //下面的方式是通过直接操作HAL库函数方式读取IO
 #define KEY0        HAL_GPIO_ReadPin(GPIOE,GPIO_PIN_4)  //KEY0按键PE4
@@ -30,5 +30,6 @@
 #define WKUP_PRES   3
 
 void KEY_Init(void);
-u8 KEY_Scan(u8 mode);
+void Key_Scan(key_t *key, GPIO_TypeDef *key_port, uint16_t key_pin);
+void Key_Scan2(key_t* key, GPIO_TypeDef *key_port, uint16_t key_pin);
 #endif

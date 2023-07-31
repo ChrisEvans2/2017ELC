@@ -1,5 +1,5 @@
-elite_test\ui.o: ..\User\Middlewares\LVGL\GUI_APP\my_test\ui.c
-elite_test\ui.o: ..\User\Middlewares\LVGL\GUI_APP\my_test\ui.h
+elite_test\ui.o: ..\User\Middlewares\LVGL\GUI_APP\ui.c
+elite_test\ui.o: ..\User\Middlewares\LVGL\GUI_APP\ui.h
 elite_test\ui.o: ../User/Middlewares/LVGL/GUI/lvgl/lvgl.h
 elite_test\ui.o: ../User/Middlewares/LVGL/GUI/lvgl/src/misc/lv_log.h
 elite_test\ui.o: ../User/Middlewares/LVGL/GUI/lvgl/src/misc/../lv_conf_internal.h
@@ -129,6 +129,6 @@ elite_test\ui.o: ../User/Middlewares/LVGL/GUI/lvgl/src/extra/widgets/colorwheel/
 elite_test\ui.o: ../User/Middlewares/LVGL/GUI/lvgl/src/extra/widgets/led/lv_led.h
 elite_test\ui.o: ../User/Middlewares/LVGL/GUI/lvgl/src/extra/widgets/imgbtn/lv_imgbtn.h
 elite_test\ui.o: ../User/Middlewares/LVGL/GUI/lvgl/src/extra/widgets/span/lv_span.h
-elite_test\ui.o: ..\User\Middlewares\LVGL\GUI_APP\my_test\ui_helpers.h
-elite_test\ui.o: ..\User\Middlewares\LVGL\GUI_APP\my_test\ui.h
-elite_test\ui.o: ..\User\Middlewares\LVGL\GUI_APP\my_test\ui_events.h
+elite_test\ui.o: ..\User\Middlewares\LVGL\GUI_APP\ui_helpers.h
+elite_test\ui.o: ..\User\Middlewares\LVGL\GUI_APP\ui.h
+elite_test\ui.o: ..\User\Middlewares\LVGL\GUI_APP\ui_events.h

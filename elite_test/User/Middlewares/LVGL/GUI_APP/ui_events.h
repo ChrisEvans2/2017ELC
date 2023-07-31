@@ -10,11 +10,12 @@
 extern "C" {
 #endif
 
-void DAC_Wave_set(lv_event_t * e);
-void DAC_Output(lv_event_t * e);
-void DAC_Fre_set(lv_event_t * e);
-void DAC_Vol_set(lv_event_t * e);
-void ADC_data_send(lv_event_t * e);
+void DDS_FreValueSet(lv_event_t * e);
+void DDS_FreRangeSet(lv_event_t * e);
+void DDS_OutputSet(lv_event_t * e);
+void DDS_Output(lv_event_t * e);
+void measure_FFT(lv_event_t * e);
+void DAC_OutputSet(lv_event_t * e);
 
 #ifdef __cplusplus
 } /*extern "C"*/

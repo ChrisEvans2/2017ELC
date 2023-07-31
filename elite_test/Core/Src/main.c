@@ -18,6 +18,8 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "adc.h"
+#include "dac.h"
 #include "dma.h"
 #include "tim.h"
 #include "usart.h"
@@ -47,7 +49,11 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
+uint32_t F=1000000;  		// 设置正弦波的频率（1~100MHz）
+uint16_t A=10;			// 设置正弦波的幅度（0~4095）        816为100mV输出
 
+key_t Key0, Key1, Key2;
+extern int dacval;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -94,22 +100,40 @@ int main(void)
   MX_TIM7_Init();
   MX_USART1_UART_Init();
   MX_FSMC_Init();
+  MX_ADC1_Init();
+  MX_TIM3_Init();
+  MX_DAC_Init();
   /* USER CODE BEGIN 2 */
 
+	Key0.keyFlag = 0;
+	Key1.keyFlag = 0;
+	Key2.keyFlag = 0;
+	Key0.keyState = KEY_COMFIRM;
+	Key1.keyState = KEY_CHECK;
+	Key2.keyState = KEY_CHECK;
+
+	HAL_TIM_Base_Start(&htim3);
+	HAL_TIM_Base_Start_IT(&htim6);
+
+	HAL_ADCEx_Calibration_Start(&hadc1);
+	HAL_ADC_Start(&hadc1);
+	HAL_DAC_Start(&hdac,DAC_CHANNEL_1);  			//开启DAC通道1
+	HAL_DAC_SetValue(&hdac,DAC_CHANNEL_1,DAC_ALIGN_12B_R,dacval);//初始值为0 
+
+	GPIO_AD9854_Configuration(); // AD9854IO口初始化
+	delay_ms(5);
+	AD9854_Init ();
+	AD9854_SetSine (F, A);
+
+	
 	lv_init();
 	lv_port_disp_init();
 	lv_port_indev_init();
 	
 	ui_init();
+	lv_chart_set_update_mode(ui_Wave_Show, LV_CHART_UPDATE_MODE_CIRCULAR);
+
 	
-//	POINT_COLOR=RED;
-//	LCD_ShowString(30,50,200,16,16,"ELITE STM32");	
-//	LCD_ShowString(30,70,200,16,16,"TOUCH TEST");	
-//	LCD_ShowString(30,90,200,16,16,"ATOM@ALIENTEK");
-//	LCD_ShowString(30,110,200,16,16,"2019/9/19");	 		
-
-	HAL_TIM_Base_Start_IT(&htim6);
-
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -118,8 +142,6 @@ int main(void)
 	
 	while (1)
   {
-//		tp_dev.scan(0);
-//		HAL_GPIO_TogglePin(LED0_GPIO_Port, LED0_Pin);
 		lv_timer_handler();
 		delay_ms(5);
     /* USER CODE END WHILE */
@@ -137,6 +159,7 @@ void SystemClock_Config(void)
 {
   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
+  RCC_PeriphCLKInitTypeDef PeriphClkInit = {0};
 
   /** Initializes the RCC Oscillators according to the specified parameters
   * in the RCC_OscInitTypeDef structure.
@@ -163,6 +186,12 @@ void SystemClock_Config(void)
   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
 
   if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_2) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_ADC;
+  PeriphClkInit.AdcClockSelection = RCC_ADCPCLK2_DIV6;
+  if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
   {
     Error_Handler();
   }

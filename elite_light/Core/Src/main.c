@@ -50,7 +50,7 @@
 
 /* USER CODE BEGIN PV */
 uint32_t F=1000000;  		// 设置正弦波的频率（1~100MHz）
-uint16_t A=816;			// 设置正弦波的幅度（0~4095）        816为100mV输出
+uint16_t A=810;			// 设置正弦波的幅度（0~4095）        816为100mV输出
 
 key_t Key0, Key1, Key2;
 extern int dacval;
@@ -121,12 +121,15 @@ int main(void)
 	HAL_DAC_SetValue(&hdac,DAC_CHANNEL_1,DAC_ALIGN_12B_R,dacval);//初始值为0 
 
 	GPIO_AD9854_Configuration(); // AD9854IO口初始化
+	delay_ms(5);
 	AD9854_Init ();
 	AD9854_SetSine (F, A);
 
 	LCD_Init();
 	tp_dev.init();
-	LCD_Show_ADC();
+
+	LCD_Clear(WHITE);	//清屏
+	TP_Adjust();  		//屏幕校准  
 	
   /* USER CODE END 2 */
 
@@ -137,37 +140,6 @@ int main(void)
 	while (1)
   {
 		tp_dev.scan(0);
-		if(Key0.keyFlag == 1)
-		{
-			Key0.keyFlag = 0;
-			if(dacval<1240)
-			{
-				dacval+=62;
-				HAL_DAC_SetValue(&hdac,DAC_CHANNEL_1,DAC_ALIGN_12B_R,dacval);//设置DAC值
-			}
-			ADC_DAC_show();	
-		}
-		if(Key1.keyFlag == 1)
-		{
-			Key1.keyFlag = 0;
-			if(dacval>62)
-			{
-				dacval-=62;
-				HAL_DAC_SetValue(&hdac,DAC_CHANNEL_1,DAC_ALIGN_12B_R,dacval);//设置DAC值				
-			}
-			else 
-			{
-				dacval=0;
-				HAL_DAC_SetValue(&hdac,DAC_CHANNEL_1,DAC_ALIGN_12B_R,dacval);//设置DAC值
-			}
-			ADC_DAC_show();	
-		}
-		if(Key2.keyFlag == 1)
-		{
-			Key2.keyFlag = 0;
-//		HAL_TIM_Base_Start(&htim3);
-			HAL_ADC_Start_DMA(&hadc1, (uint32_t*)&ADC_Array, ADC_NUM);
-		}
 		delay_ms(5);
     /* USER CODE END WHILE */
 

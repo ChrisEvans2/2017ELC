@@ -2046,7 +2046,7 @@ void LCD_Init(void)
         LCD_SSD_BackLightSet(100);//背光设置为最亮
     }
 
-    LCD_Display_Dir(1);         //默认为竖屏
+    LCD_Display_Dir(0);         //默认为竖屏
     LCD_LED = 1;                //点亮背光
     LCD_Clear(WHITE);
 }  
@@ -2365,7 +2365,8 @@ void LCD_Show_ADC(void)
 	LCD_ShowString(30,120,200,16,16,(unsigned char*)"DAC VAL:");	      
 	LCD_ShowString(30,140,200,16,16,(unsigned char*)"DAC VOL:0.000V");	      
 	LCD_ShowString(30,160,200,16,16,(unsigned char*)"ADC VOL:0.000V"); 	
-}
+	LCD_ShowString(30,180,200,16,16,(unsigned char*)"A			:"); 	
+}	
 
 
 

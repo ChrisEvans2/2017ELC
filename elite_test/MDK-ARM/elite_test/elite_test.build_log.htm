@@ -17,22 +17,37 @@ Library Manager: ArmAr.exe V5.06 update 6 (build 750)
 Hex Converter:   FromElf.exe V5.06 update 6 (build 750)
 CPU DLL:         SARMCM3.DLL V5.28.0.0
 Dialog DLL:      DCM.DLL V1.17.3.0
-Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.0.1.0
+Target DLL:      Segger\JL2CM3.dll V2.99.36.0
 Dialog DLL:      TCM.DLL V1.36.2.0
  
 <h2>Project:</h2>
 D:\GitHub\2017ELC\elite_test\MDK-ARM\elite_test.uvprojx
-Project File Date:  07/28/2023
+Project File Date:  07/31/2023
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'D:\study\keil MDK\Core\ARM\ARMCC\Bin'
 Build target 'elite_test'
-compiling gpio.c...
+compiling ui_comp_hook.c...
+compiling ui.c...
+compiling ui_helpers.c...
+..\User\Middlewares\LVGL\GUI_APP\ui_helpers.c(74): warning:  #188-D: enumerated type mixed with another type
+      lv_bar_set_value(target, old + val, anm);
+..\User\Middlewares\LVGL\GUI_APP\ui_helpers.c(80): warning:  #188-D: enumerated type mixed with another type
+      lv_slider_set_value(target, old + val, anm);
+..\User\Middlewares\LVGL\GUI_APP\ui_helpers.c: 2 warnings, 0 errors
+compiling ui_Screen1.c...
+..\User\Middlewares\LVGL\GUI_APP\screens\ui_Screen1.c(42): warning:  #223-D: function "round" declared implicitly
+      lv_spinbox_set_step(ui_Fre_Value, round(pow(10, 1 - 1)));
+..\User\Middlewares\LVGL\GUI_APP\screens\ui_Screen1.c(42): warning:  #223-D: function "pow" declared implicitly
+      lv_spinbox_set_step(ui_Fre_Value, round(pow(10, 1 - 1)));
+..\User\Middlewares\LVGL\GUI_APP\screens\ui_Screen1.c: 2 warnings, 0 errors
+compiling stm32f1xx_it.c...
 compiling main.c...
+compiling ui_events.c...
 linking...
-Program Size: Code=220402 RO-data=25030 RW-data=724 ZI-data=57916  
+Program Size: Code=230314 RO-data=25046 RW-data=776 ZI-data=62776  
 FromELF: creating hex file...
-"elite_test\elite_test.axf" - 0 Error(s), 0 Warning(s).
+"elite_test\elite_test.axf" - 0 Error(s), 4 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -55,7 +70,7 @@ Package Vendor: Keil
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:CORE:5.5.0
-Build Time Elapsed:  00:00:04
+Build Time Elapsed:  00:00:05
 </pre>
 </body>
 </html>

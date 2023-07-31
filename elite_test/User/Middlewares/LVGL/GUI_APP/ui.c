@@ -13,29 +13,33 @@ void load_Animation(lv_obj_t * TargetObject, int delay);
 void ui_Screen1_screen_init(void);
 lv_obj_t * ui_Screen1;
 lv_obj_t * ui_select;
-lv_obj_t * ui_DAC;
-lv_obj_t * ui_Wave_tab;
-void ui_event_Wave_select(lv_event_t * e);
-lv_obj_t * ui_Wave_select;
-void ui_event_OUT_switch(lv_event_t * e);
-lv_obj_t * ui_OUT_switch;
-lv_obj_t * ui_OUT_tab;
-lv_obj_t * ui_Fre_tab;
-void ui_event_Fre(lv_event_t * e);
-lv_obj_t * ui_Fre;
-void ui_event_Fre_inc_btn(lv_event_t * e);
-lv_obj_t * ui_Fre_inc_btn;
-lv_obj_t * ui_Fre_inc_tab;
-void ui_event_Fre_dec_btn(lv_event_t * e);
-lv_obj_t * ui_Fre_dec_btn;
-lv_obj_t * ui_Fre_dec_tab;
-lv_obj_t * ui_Vol_tab;
-void ui_event_Slider2(lv_event_t * e);
-lv_obj_t * ui_Slider2;
+lv_obj_t * ui_DDS;
+lv_obj_t * ui_Fre_tag;
+void ui_event_Fre_Value(lv_event_t * e);
+lv_obj_t * ui_Fre_Value;
+void ui_event_DDS_Fre_Range(lv_event_t * e);
+lv_obj_t * ui_DDS_Fre_Range;
+void ui_event_DDS_Vol_Slider(lv_event_t * e);
+lv_obj_t * ui_DDS_Vol_Slider;
+lv_obj_t * ui_DDS_Vol;
+lv_obj_t * ui_DDS_Output_tag;
+void ui_event_Switch2(lv_event_t * e);
+lv_obj_t * ui_Switch2;
+void ui_event_Fre_Value_Add(lv_event_t * e);
+lv_obj_t * ui_Fre_Value_Add;
+lv_obj_t * ui_add;
+void ui_event_Fre_Value_Dec(lv_event_t * e);
+lv_obj_t * ui_Fre_Value_Dec;
+lv_obj_t * ui_dec;
 lv_obj_t * ui_ADC;
-lv_obj_t * ui_Label2;
-void ui_event_measure(lv_event_t * e);
-lv_obj_t * ui_measure;
+void ui_event_Measure_Button(lv_event_t * e);
+lv_obj_t * ui_Measure_Button;
+lv_obj_t * ui_Measure_tag;
+lv_obj_t * ui_Wave_Show;
+lv_obj_t * ui_DAC;
+lv_obj_t * ui_DAC_Value_tag;
+void ui_event_DAC_Value_Set(lv_event_t * e);
+lv_obj_t * ui_DAC_Value_Set;
 lv_obj_t * ui____initial_actions0;
 
 ///////////////////// TEST LVGL SETTINGS ////////////////////
@@ -53,62 +57,71 @@ void load_Animation(lv_obj_t * TargetObject, int delay)
 }
 
 ///////////////////// FUNCTIONS ////////////////////
-void ui_event_Wave_select(lv_event_t * e)
+void ui_event_Fre_Value(lv_event_t * e)
 {
     lv_event_code_t event_code = lv_event_get_code(e);
     lv_obj_t * target = lv_event_get_target(e);
     if(event_code == LV_EVENT_VALUE_CHANGED) {
-        DAC_Wave_set(e);
+        DDS_FreValueSet(e);
     }
 }
-void ui_event_OUT_switch(lv_event_t * e)
-{
-    lv_event_code_t event_code = lv_event_get_code(e);
-    lv_obj_t * target = lv_event_get_target(e);
-    if(event_code == LV_EVENT_CLICKED) {
-        DAC_Output(e);
-        _ui_checked_set_text_value(ui_OUT_tab, target, "OUT:ON", "OUT:OFF");
-    }
-}
-void ui_event_Fre(lv_event_t * e)
+void ui_event_DDS_Fre_Range(lv_event_t * e)
 {
     lv_event_code_t event_code = lv_event_get_code(e);
     lv_obj_t * target = lv_event_get_target(e);
     if(event_code == LV_EVENT_VALUE_CHANGED) {
-        DAC_Fre_set(e);
+        DDS_FreRangeSet(e);
     }
 }
-void ui_event_Fre_inc_btn(lv_event_t * e)
-{
-    lv_event_code_t event_code = lv_event_get_code(e);
-    lv_obj_t * target = lv_event_get_target(e);
-    if(event_code == LV_EVENT_CLICKED) {
-        _ui_spinbox_step(ui_Fre, 1);
-    }
-}
-void ui_event_Fre_dec_btn(lv_event_t * e)
-{
-    lv_event_code_t event_code = lv_event_get_code(e);
-    lv_obj_t * target = lv_event_get_target(e);
-    if(event_code == LV_EVENT_CLICKED) {
-        _ui_spinbox_step(ui_Fre, -1);
-    }
-}
-void ui_event_Slider2(lv_event_t * e)
+void ui_event_DDS_Vol_Slider(lv_event_t * e)
 {
     lv_event_code_t event_code = lv_event_get_code(e);
     lv_obj_t * target = lv_event_get_target(e);
     if(event_code == LV_EVENT_VALUE_CHANGED) {
-        DAC_Vol_set(e);
-        _ui_slider_set_text_value(ui_Vol_tab, target, "Vol:", "%");
+        DDS_OutputSet(e);
+        _ui_slider_set_text_value(ui_DDS_Vol, target, "Vol:", "");
     }
 }
-void ui_event_measure(lv_event_t * e)
+void ui_event_Switch2(lv_event_t * e)
 {
     lv_event_code_t event_code = lv_event_get_code(e);
     lv_obj_t * target = lv_event_get_target(e);
     if(event_code == LV_EVENT_CLICKED) {
-        ADC_data_send(e);
+        _ui_checked_set_text_value(ui_DDS_Output_tag, target, "Out:ON", "Out:OFF");
+        DDS_Output(e);
+    }
+}
+void ui_event_Fre_Value_Add(lv_event_t * e)
+{
+    lv_event_code_t event_code = lv_event_get_code(e);
+    lv_obj_t * target = lv_event_get_target(e);
+    if(event_code == LV_EVENT_CLICKED) {
+        _ui_spinbox_step(ui_Fre_Value, 1);
+    }
+}
+void ui_event_Fre_Value_Dec(lv_event_t * e)
+{
+    lv_event_code_t event_code = lv_event_get_code(e);
+    lv_obj_t * target = lv_event_get_target(e);
+    if(event_code == LV_EVENT_CLICKED) {
+        _ui_spinbox_step(ui_Fre_Value, -1);
+    }
+}
+void ui_event_Measure_Button(lv_event_t * e)
+{
+    lv_event_code_t event_code = lv_event_get_code(e);
+    lv_obj_t * target = lv_event_get_target(e);
+    if(event_code == LV_EVENT_CLICKED) {
+        measure_FFT(e);
+    }
+}
+void ui_event_DAC_Value_Set(lv_event_t * e)
+{
+    lv_event_code_t event_code = lv_event_get_code(e);
+    lv_obj_t * target = lv_event_get_target(e);
+    if(event_code == LV_EVENT_VALUE_CHANGED) {
+        DAC_OutputSet(e);
+        _ui_slider_set_text_value(ui_DAC_Value_tag, target, "DAC_Vol:", "");
     }
 }
 

@@ -23,6 +23,10 @@ elite_test\ott2001a.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_exti.h
 elite_test\ott2001a.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h
 elite_test\ott2001a.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma_ex.h
 elite_test\ott2001a.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_cortex.h
+elite_test\ott2001a.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_adc.h
+elite_test\ott2001a.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_adc_ex.h
+elite_test\ott2001a.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dac.h
+elite_test\ott2001a.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dac_ex.h
 elite_test\ott2001a.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash.h
 elite_test\ott2001a.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h
 elite_test\ott2001a.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_sram.h
@@ -35,14 +39,18 @@ elite_test\ott2001a.o: ..\User\TOUCH\touch.h
 elite_test\ott2001a.o: ../Core/Inc/main.h
 elite_test\ott2001a.o: D:\study\keil MDK\Core\ARM\ARMCC\Bin\..\include\stdio.h
 elite_test\ott2001a.o: D:\study\keil MDK\Core\ARM\ARMCC\Bin\..\include\string.h
-elite_test\ott2001a.o: ../User/delay.h
+elite_test\ott2001a.o: ../User/delay/delay.h
 elite_test\ott2001a.o: ../Core/Inc/main.h
 elite_test\ott2001a.o: ../Core/Inc/usart.h
+elite_test\ott2001a.o: ../User/KEY/key.h
 elite_test\ott2001a.o: ../User/LCD/lcd.h
 elite_test\ott2001a.o: D:\study\keil MDK\Core\ARM\ARMCC\Bin\..\include\stdlib.h
 elite_test\ott2001a.o: ../User/IIC/myiic.h
 elite_test\ott2001a.o: ../User/24CXX/24cxx.h
 elite_test\ott2001a.o: ../User/TOUCH/touch.h
+elite_test\ott2001a.o: ..\User\DataScope\DataScope.h
+elite_test\ott2001a.o: ..\User\AD9854\ad9854.h
+elite_test\ott2001a.o: ../Core/Inc/gpio.h
 elite_test\ott2001a.o: ../User/Middlewares/LVGL/GUI/lvgl/lvgl.h
 elite_test\ott2001a.o: ../User/Middlewares/LVGL/GUI/lvgl/src/misc/lv_log.h
 elite_test\ott2001a.o: ../User/Middlewares/LVGL/GUI/lvgl/src/misc/../lv_conf_internal.h

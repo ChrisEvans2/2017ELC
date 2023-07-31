@@ -60,7 +60,8 @@ int32_t FFT_IN[ADC_NUM],FFT_OUT[ADC_NUM];
 int32_t lBufMagArray[ADC_NUM] = {0};
 
 extern key_t Key0, Key1, Key2;
-
+extern uint16_t A;
+extern uint32_t F;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -89,6 +90,7 @@ void ADC_DAC_show()
 	temp_adc-=adcx;
 	temp_adc*=1000;
 	LCD_ShowxNum(110,160,temp_adc,3,16,0X80); 	    //显示电压值的小数部分
+	LCD_ShowxNum(110,180,A,3,16,0X80); 	    //显示电压值的小数部分
 }
 
 void GetPowerMag()
@@ -322,9 +324,9 @@ void USART1_IRQHandler(void)
 		rx_len =BUFFSIZE-temp; //计算出数据长度
 		
 		printf("传输长度:%d\r\r\n", rx_len);
-		HAL_UART_Transmit(&UART_TYPE, rx_buffer,rx_len, 10);//将收到的数据发送出去
+		HAL_UART_Transmit(&UART_TYPE, rx_buffer,rx_len, 10); //将收到的数据发送出去
 
-		HAL_UART_Receive_DMA(&UART_TYPE,rx_buffer,BUFFSIZE);//开启DMA接收，方便下一次接收数据
+		HAL_UART_Receive_DMA(&UART_TYPE,rx_buffer,BUFFSIZE); //开启DMA接收，方便下一次接收数据
   }
   /* USER CODE END USART1_IRQn 1 */
 }
@@ -358,36 +360,6 @@ void DMA2_Channel3_IRQHandler(void)
 }
 
 /* USER CODE BEGIN 1 */
-//void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
-//{
-//	static uint8_t KEY0_TEMP=0, KEY1_TEMP=0, WK_UP_TEMP=0;
-//	uint8_t i;
-//	
-//	if(GPIO_Pin & KEY0_Pin){
-//			if(dacval<1240)
-//			{
-//				dacval+=62;
-//				HAL_DAC_SetValue(&hdac,DAC_CHANNEL_1,DAC_ALIGN_12B_R,dacval);//设置DAC值
-//			}
-//			ADC_DAC_show();	
-//	}else if(GPIO_Pin & KEY1_Pin){
-//			if(dacval>62)
-//			{
-//				dacval-=62;
-//				HAL_DAC_SetValue(&hdac,DAC_CHANNEL_1,DAC_ALIGN_12B_R,dacval);//设置DAC值				
-//			}
-//			else 
-//			{
-//				dacval=0;
-//				HAL_DAC_SetValue(&hdac,DAC_CHANNEL_1,DAC_ALIGN_12B_R,dacval);//设置DAC值
-//			}
-//			ADC_DAC_show();	
-//	}else if(GPIO_Pin & KEY2_Pin)
-//	{
-////		HAL_TIM_Base_Start(&htim3);
-//		HAL_ADC_Start_DMA(&hadc1, (uint32_t*)&ADC_Array, ADC_NUM);
-//	}
-//}
 uint16_t time6 = 0, time6_s = 0;
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
@@ -399,6 +371,42 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 			Key_Scan(&Key1, KEY1_GPIO_Port, KEY1_Pin);
 			Key_Scan2(&Key2, KEY2_GPIO_Port, KEY2_Pin);
 		}
+		if(Key0.keyFlag == 1)
+		{
+			Key0.keyFlag = 0;
+			if(dacval<1240)
+			{
+				dacval+=16;
+				HAL_DAC_SetValue(&hdac,DAC_CHANNEL_1,DAC_ALIGN_12B_R,dacval);//设置DAC值
+			}
+			ADC_DAC_show();	
+		}
+		if(Key1.keyFlag == 1)
+		{
+			Key1.keyFlag = 0;
+			if(dacval>16)
+			{
+				dacval-=16;
+				HAL_DAC_SetValue(&hdac,DAC_CHANNEL_1,DAC_ALIGN_12B_R,dacval);//设置DAC值				
+			}
+			else 
+			{
+				dacval=0;
+				HAL_DAC_SetValue(&hdac,DAC_CHANNEL_1,DAC_ALIGN_12B_R,dacval);//设置DAC值
+			}
+			ADC_DAC_show();	
+		}
+		if(Key2.keyFlag == 1)
+		{
+			Key2.keyFlag = 0;
+//		HAL_TIM_Base_Start(&htim3);
+//			HAL_ADC_Start_DMA(&hadc1, (uint32_t*)&ADC_Array, ADC_NUM);
+			A += 10;
+			printf("A:%d", A);
+			AD9854_SetSine (F, A);
+			ADC_DAC_show();	
+		}
+
 
 		if(time6 == 1000)  // 1s中断
 		{

@@ -22,6 +22,10 @@ elite_test\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_exti.h
 elite_test\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h
 elite_test\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma_ex.h
 elite_test\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_cortex.h
+elite_test\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_adc.h
+elite_test\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_adc_ex.h
+elite_test\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dac.h
+elite_test\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dac_ex.h
 elite_test\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash.h
 elite_test\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h
 elite_test\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_sram.h
@@ -32,10 +36,11 @@ elite_test\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h
 elite_test\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h
 elite_test\main.o: D:\study\keil MDK\Core\ARM\ARMCC\Bin\..\include\stdio.h
 elite_test\main.o: D:\study\keil MDK\Core\ARM\ARMCC\Bin\..\include\string.h
-elite_test\main.o: ../User/delay.h
+elite_test\main.o: ../User/delay/delay.h
 elite_test\main.o: ../Core/Inc/main.h
 elite_test\main.o: ../Core/Inc/usart.h
 elite_test\main.o: ../User/sys.h
+elite_test\main.o: ../User/KEY/key.h
 elite_test\main.o: ../User/LCD/lcd.h
 elite_test\main.o: D:\study\keil MDK\Core\ARM\ARMCC\Bin\..\include\stdlib.h
 elite_test\main.o: ../User/IIC/myiic.h
@@ -44,6 +49,9 @@ elite_test\main.o: ../User/TOUCH/touch.h
 elite_test\main.o: ../User/TOUCH/ott2001a.h
 elite_test\main.o: ../User/TOUCH/gt9147.h
 elite_test\main.o: ../User/TOUCH/ft5206.h
+elite_test\main.o: ..\User\DataScope\DataScope.h
+elite_test\main.o: ..\User\AD9854\ad9854.h
+elite_test\main.o: ../Core/Inc/gpio.h
 elite_test\main.o: ../User/Middlewares/LVGL/GUI/lvgl/lvgl.h
 elite_test\main.o: ../User/Middlewares/LVGL/GUI/lvgl/src/misc/lv_log.h
 elite_test\main.o: ../User/Middlewares/LVGL/GUI/lvgl/src/misc/../lv_conf_internal.h
@@ -172,11 +180,12 @@ elite_test\main.o: ../User/Middlewares/LVGL/GUI/lvgl/src/extra/widgets/imgbtn/lv
 elite_test\main.o: ../User/Middlewares/LVGL/GUI/lvgl/src/extra/widgets/span/lv_span.h
 elite_test\main.o: ../User/Middlewares/LVGL/GUI/lvgl/examples/porting/lv_port_disp.h
 elite_test\main.o: ../User/Middlewares/LVGL/GUI/lvgl/examples/porting/lv_port_indev.h
+elite_test\main.o: ../Core/Inc/adc.h
+elite_test\main.o: ../Core/Inc/dac.h
 elite_test\main.o: ../Core/Inc/dma.h
 elite_test\main.o: ../Core/Inc/tim.h
-elite_test\main.o: ../Core/Inc/gpio.h
 elite_test\main.o: ../Core/Inc/fsmc.h
-elite_test\main.o: ../User/Middlewares/LVGL/GUI_APP/my_test/ui.h
-elite_test\main.o: ../User/Middlewares/LVGL/GUI_APP/my_test/ui_helpers.h
-elite_test\main.o: ../User/Middlewares/LVGL/GUI_APP/my_test/ui.h
-elite_test\main.o: ../User/Middlewares/LVGL/GUI_APP/my_test/ui_events.h
+elite_test\main.o: ..\User\Middlewares\LVGL\GUI_APP\ui.h
+elite_test\main.o: ..\User\Middlewares\LVGL\GUI_APP\ui_helpers.h
+elite_test\main.o: ..\User\Middlewares\LVGL\GUI_APP\ui.h
+elite_test\main.o: ..\User\Middlewares\LVGL\GUI_APP\ui_events.h
