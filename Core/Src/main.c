@@ -50,7 +50,10 @@
 
 /* USER CODE BEGIN PV */
 uint32_t F=1000000;  		// 设置正弦波的频率（1~100MHz）
-uint16_t A=816;			// 设置正弦波的幅度（0~4095）        816为100mV输出
+uint16_t A=810;			// 设置正弦波的幅度（0~4095）        816为100mV输出
+
+key_t Key0, Key1, Key2;
+extern int dacval;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -102,31 +105,31 @@ int main(void)
   MX_TIM3_Init();
   /* USER CODE BEGIN 2 */
 	
-	LCD_Init();
-	tp_dev.init();
+	Key0.keyFlag = 0;
+	Key1.keyFlag = 0;
+	Key2.keyFlag = 0;
+	Key0.keyState = KEY_COMFIRM;
+	Key1.keyState = KEY_CHECK;
+	Key2.keyState = KEY_CHECK;
+	
+	HAL_TIM_Base_Start(&htim3);
+	HAL_TIM_Base_Start_IT(&htim6);
+
+	HAL_ADCEx_Calibration_Start(&hadc1);
+	HAL_ADC_Start(&hadc1);
+	HAL_DAC_Start(&hdac,DAC_CHANNEL_1);  			//开启DAC通道1
+	HAL_DAC_SetValue(&hdac,DAC_CHANNEL_1,DAC_ALIGN_12B_R,dacval);//初始值为0 
 
 	GPIO_AD9854_Configuration(); // AD9854IO口初始化
-	delay_ms(5);  
+	delay_ms(5);
 	AD9854_Init ();
 	AD9854_SetSine (F, A);
 
-	POINT_COLOR=RED; 
-	LCD_ShowString(30,50,200,16,16,(unsigned char*)"ELITE STM32");	
-	LCD_ShowString(30,70,200,16,16,(unsigned char*)"DAC TEST");	
-	LCD_ShowString(30,90,200,16,16,(unsigned char*)"ATOM@ALIENTEK");
-	LCD_ShowString(30,110,200,16,16,(unsigned char*)"2019/9/18");	 
-	LCD_ShowString(30,130,200,16,16,(unsigned char*)"KEY0:-  KEY1:+");	  
-	POINT_COLOR=BLUE;//设置字体为蓝色      	 
-	LCD_ShowString(30,150,200,16,16,(unsigned char*)"DAC VAL:");	      
-	LCD_ShowString(30,170,200,16,16,(unsigned char*)"DAC VOL:0.000V");	      
-	LCD_ShowString(30,190,200,16,16,(unsigned char*)"ADC VOL:0.000V"); 	
+	LCD_Init();
+	tp_dev.init();
 
-	HAL_TIM_Base_Start(&htim3);
-	HAL_ADCEx_Calibration_Start(&hadc1);
-	HAL_ADC_Start(&hadc1);
-	HAL_TIM_Base_Start_IT(&htim6);
-	HAL_DAC_Start(&hdac,DAC_CHANNEL_1);  			//开启DAC通道1
-	HAL_DAC_SetValue(&hdac,DAC_CHANNEL_1,DAC_ALIGN_12B_R,0);//初始值为0 
+	LCD_Clear(WHITE);	//清屏
+	TP_Adjust();  		//屏幕校准  
 	
   /* USER CODE END 2 */
 
@@ -136,8 +139,7 @@ int main(void)
 
 	while (1)
   {
-//		tp_dev.scan(0);
-//		HAL_GPIO_TogglePin(LED0_GPIO_Port, LED0_Pin);
+		tp_dev.scan(0);
 		delay_ms(5);
     /* USER CODE END WHILE */
 
