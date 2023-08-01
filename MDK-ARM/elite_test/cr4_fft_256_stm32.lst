@@ -1011,13 +1011,12 @@ xbcf0,0x0324
   374 000005DE                 END
 Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M3 --apcs=interw
 ork --depend=elite_test\cr4_fft_256_stm32.d -oelite_test\cr4_fft_256_stm32.o -I
-.\RTE\_elite_test -I"D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\Core\Include"
- -I"D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Include" -I"D:\study\keil 
-MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\PrivateInclude" -I"D:\study\keil MDK\Pack\Ke
-il\STM32F1xx_DFP\2.3.0\Device\Include" --predefine="__MICROLIB SETA 1" --predef
-ine="__UVISION_VERSION SETA 528" --predefine="_RTE_ SETA 1" --predefine="STM32F
-10X_HD SETA 1" --list=./elite_test/\cr4_fft_256_stm32.lst ..\User\FFT\cr4_fft_2
-56_stm32.s
+.\RTE\_elite_test -ID:\keil\Pack\ARM\CMSIS-DSP\1.14.2\Include -ID:\keil\Pack\AR
+M\CMSIS-DSP\1.14.2\PrivateInclude -ID:\keil\Pack\ARM\CMSIS\5.9.0\CMSIS\Core\Inc
+lude -ID:\keil\Pack\Keil\STM32F1xx_DFP\2.4.1\Device\Include --predefine="__MICR
+OLIB SETA 1" --predefine="__UVISION_VERSION SETA 538" --predefine="_RTE_ SETA 1
+" --predefine="STM32F10X_HD SETA 1" --predefine="_RTE_ SETA 1" --list=./elite_t
+est/\cr4_fft_256_stm32.lst ..\User\FFT\cr4_fft_256_stm32.s
 
 
 
@@ -1093,13 +1092,13 @@ Symbol: NPT
    Definitions
       At line 46 in file ..\User\FFT\cr4_fft_256_stm32.s
    Uses
-      At line 136 in macro p商OPT
+      At line 136 in macro 鴅"8S OPT
       at line 228 in file ..\User\FFT\cr4_fft_256_stm32.s
-      At line 139 in macro p商OPT
+      At line 139 in macro 鴅"8S OPT
       at line 228 in file ..\User\FFT\cr4_fft_256_stm32.s
-      At line 142 in macro p商OPT
+      At line 142 in macro 鴅"8S OPT
       at line 228 in file ..\User\FFT\cr4_fft_256_stm32.s
-      At line 145 in macro p商OPT
+      At line 145 in macro 鴅"8S OPT
       at line 228 in file ..\User\FFT\cr4_fft_256_stm32.s
 
 1 symbol

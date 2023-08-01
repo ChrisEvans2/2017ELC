@@ -1,57 +1,65 @@
-elite_test\transformfunctions.o: D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Source\TransformFunctions\TransformFunctions.c
-elite_test\transformfunctions.o: D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Source\TransformFunctions\arm_bitreversal.c
-elite_test\transformfunctions.o: D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Include\dsp/transform_functions.h
-elite_test\transformfunctions.o: D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Include\arm_math_types.h
+elite_test\transformfunctions.o: D:/keil/Pack/ARM/CMSIS-DSP/1.14.2/Source/TransformFunctions/TransformFunctions.c
+elite_test\transformfunctions.o: D:/keil/Pack/ARM/CMSIS-DSP/1.14.2/Source/TransformFunctions/arm_bitreversal.c
+elite_test\transformfunctions.o: D:\keil\Pack\ARM\CMSIS-DSP\1.14.2\Include\dsp/transform_functions.h
+elite_test\transformfunctions.o: D:\keil\Pack\ARM\CMSIS-DSP\1.14.2\Include\arm_math_types.h
 elite_test\transformfunctions.o: ../Drivers/CMSIS/Include/cmsis_compiler.h
-elite_test\transformfunctions.o: D:\study\keil MDK\Core\ARM\ARMCC\Bin\..\include\stdint.h
+elite_test\transformfunctions.o: D:\keil\ARM\ARMCC\Bin\..\include\stdint.h
 elite_test\transformfunctions.o: ../Drivers/CMSIS/Include/cmsis_armcc.h
-elite_test\transformfunctions.o: D:\study\keil MDK\Core\ARM\ARMCC\Bin\..\include\string.h
-elite_test\transformfunctions.o: D:\study\keil MDK\Core\ARM\ARMCC\Bin\..\include\math.h
-elite_test\transformfunctions.o: D:\study\keil MDK\Core\ARM\ARMCC\Bin\..\include\float.h
-elite_test\transformfunctions.o: D:\study\keil MDK\Core\ARM\ARMCC\Bin\..\include\limits.h
-elite_test\transformfunctions.o: D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Include\arm_math_memory.h
-elite_test\transformfunctions.o: D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Include\dsp/none.h
-elite_test\transformfunctions.o: D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Include\dsp/utils.h
-elite_test\transformfunctions.o: D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Include\dsp/basic_math_functions.h
-elite_test\transformfunctions.o: D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Include\dsp/complex_math_functions.h
-elite_test\transformfunctions.o: D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Include\dsp/fast_math_functions.h
-elite_test\transformfunctions.o: D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Include\arm_common_tables.h
-elite_test\transformfunctions.o: D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Source\TransformFunctions\arm_bitreversal2.c
-elite_test\transformfunctions.o: D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Source\TransformFunctions\arm_cfft_f32.c
-elite_test\transformfunctions.o: D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Source\TransformFunctions\arm_cfft_f64.c
-elite_test\transformfunctions.o: D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Source\TransformFunctions\arm_cfft_q15.c
-elite_test\transformfunctions.o: D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Source\TransformFunctions\arm_cfft_q31.c
-elite_test\transformfunctions.o: D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Source\TransformFunctions\arm_cfft_init_f32.c
-elite_test\transformfunctions.o: D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Include\arm_const_structs.h
-elite_test\transformfunctions.o: D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Source\TransformFunctions\arm_cfft_init_f64.c
-elite_test\transformfunctions.o: D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Source\TransformFunctions\arm_cfft_init_q15.c
-elite_test\transformfunctions.o: D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Source\TransformFunctions\arm_cfft_init_q31.c
-elite_test\transformfunctions.o: D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Source\TransformFunctions\arm_cfft_radix2_f32.c
-elite_test\transformfunctions.o: D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Source\TransformFunctions\arm_cfft_radix2_q15.c
-elite_test\transformfunctions.o: D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Source\TransformFunctions\arm_cfft_radix2_q31.c
-elite_test\transformfunctions.o: D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Source\TransformFunctions\arm_cfft_radix4_f32.c
-elite_test\transformfunctions.o: D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Source\TransformFunctions\arm_cfft_radix4_q15.c
-elite_test\transformfunctions.o: D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Source\TransformFunctions\arm_cfft_radix4_q31.c
-elite_test\transformfunctions.o: D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Source\TransformFunctions\arm_cfft_radix8_f32.c
-elite_test\transformfunctions.o: D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Source\TransformFunctions\arm_rfft_fast_f32.c
-elite_test\transformfunctions.o: D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Source\TransformFunctions\arm_rfft_fast_f64.c
-elite_test\transformfunctions.o: D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Source\TransformFunctions\arm_rfft_fast_init_f32.c
-elite_test\transformfunctions.o: D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Source\TransformFunctions\arm_rfft_fast_init_f64.c
-elite_test\transformfunctions.o: D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Source\TransformFunctions\arm_dct4_f32.c
-elite_test\transformfunctions.o: D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Source\TransformFunctions\arm_dct4_init_f32.c
-elite_test\transformfunctions.o: D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Source\TransformFunctions\arm_dct4_init_q15.c
-elite_test\transformfunctions.o: D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Source\TransformFunctions\arm_dct4_init_q31.c
-elite_test\transformfunctions.o: D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Source\TransformFunctions\arm_dct4_q15.c
-elite_test\transformfunctions.o: D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Source\TransformFunctions\arm_dct4_q31.c
-elite_test\transformfunctions.o: D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Source\TransformFunctions\arm_rfft_f32.c
-elite_test\transformfunctions.o: D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Source\TransformFunctions\arm_rfft_q15.c
-elite_test\transformfunctions.o: D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Source\TransformFunctions\arm_rfft_q31.c
-elite_test\transformfunctions.o: D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Source\TransformFunctions\arm_rfft_init_f32.c
-elite_test\transformfunctions.o: D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Source\TransformFunctions\arm_rfft_init_q15.c
-elite_test\transformfunctions.o: D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Source\TransformFunctions\arm_rfft_init_q31.c
-elite_test\transformfunctions.o: D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Source\TransformFunctions\arm_cfft_radix4_init_f32.c
-elite_test\transformfunctions.o: D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Source\TransformFunctions\arm_cfft_radix4_init_q15.c
-elite_test\transformfunctions.o: D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Source\TransformFunctions\arm_cfft_radix4_init_q31.c
-elite_test\transformfunctions.o: D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Source\TransformFunctions\arm_cfft_radix2_init_f32.c
-elite_test\transformfunctions.o: D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Source\TransformFunctions\arm_cfft_radix2_init_q15.c
-elite_test\transformfunctions.o: D:\study\keil MDK\Pack\ARM\CMSIS\5.8.0\CMSIS\DSP\Source\TransformFunctions\arm_cfft_radix2_init_q31.c
+elite_test\transformfunctions.o: D:\keil\ARM\ARMCC\Bin\..\include\string.h
+elite_test\transformfunctions.o: D:\keil\ARM\ARMCC\Bin\..\include\math.h
+elite_test\transformfunctions.o: D:\keil\ARM\ARMCC\Bin\..\include\float.h
+elite_test\transformfunctions.o: D:\keil\ARM\ARMCC\Bin\..\include\limits.h
+elite_test\transformfunctions.o: D:\keil\Pack\ARM\CMSIS-DSP\1.14.2\Include\arm_math_memory.h
+elite_test\transformfunctions.o: D:\keil\Pack\ARM\CMSIS-DSP\1.14.2\Include\dsp/none.h
+elite_test\transformfunctions.o: D:\keil\Pack\ARM\CMSIS-DSP\1.14.2\Include\dsp/utils.h
+elite_test\transformfunctions.o: D:\keil\Pack\ARM\CMSIS-DSP\1.14.2\Include\dsp/basic_math_functions.h
+elite_test\transformfunctions.o: D:\keil\Pack\ARM\CMSIS-DSP\1.14.2\Include\dsp/complex_math_functions.h
+elite_test\transformfunctions.o: D:\keil\Pack\ARM\CMSIS-DSP\1.14.2\Include\dsp/fast_math_functions.h
+elite_test\transformfunctions.o: D:\keil\Pack\ARM\CMSIS-DSP\1.14.2\Include\arm_common_tables.h
+elite_test\transformfunctions.o: D:/keil/Pack/ARM/CMSIS-DSP/1.14.2/Source/TransformFunctions/arm_bitreversal2.c
+elite_test\transformfunctions.o: D:/keil/Pack/ARM/CMSIS-DSP/1.14.2/Source/TransformFunctions/arm_cfft_f32.c
+elite_test\transformfunctions.o: D:/keil/Pack/ARM/CMSIS-DSP/1.14.2/Source/TransformFunctions/arm_cfft_f64.c
+elite_test\transformfunctions.o: D:/keil/Pack/ARM/CMSIS-DSP/1.14.2/Source/TransformFunctions/arm_cfft_q15.c
+elite_test\transformfunctions.o: D:/keil/Pack/ARM/CMSIS-DSP/1.14.2/Source/TransformFunctions/arm_cfft_q31.c
+elite_test\transformfunctions.o: D:/keil/Pack/ARM/CMSIS-DSP/1.14.2/Source/TransformFunctions/arm_cfft_init_f32.c
+elite_test\transformfunctions.o: D:\keil\Pack\ARM\CMSIS-DSP\1.14.2\Include\arm_const_structs.h
+elite_test\transformfunctions.o: D:/keil/Pack/ARM/CMSIS-DSP/1.14.2/Source/TransformFunctions/arm_cfft_init_f64.c
+elite_test\transformfunctions.o: D:/keil/Pack/ARM/CMSIS-DSP/1.14.2/Source/TransformFunctions/arm_cfft_init_q15.c
+elite_test\transformfunctions.o: D:/keil/Pack/ARM/CMSIS-DSP/1.14.2/Source/TransformFunctions/arm_cfft_init_q31.c
+elite_test\transformfunctions.o: D:/keil/Pack/ARM/CMSIS-DSP/1.14.2/Source/TransformFunctions/arm_cfft_radix2_f32.c
+elite_test\transformfunctions.o: D:/keil/Pack/ARM/CMSIS-DSP/1.14.2/Source/TransformFunctions/arm_cfft_radix2_q15.c
+elite_test\transformfunctions.o: D:/keil/Pack/ARM/CMSIS-DSP/1.14.2/Source/TransformFunctions/arm_cfft_radix2_q31.c
+elite_test\transformfunctions.o: D:/keil/Pack/ARM/CMSIS-DSP/1.14.2/Source/TransformFunctions/arm_cfft_radix4_f32.c
+elite_test\transformfunctions.o: D:/keil/Pack/ARM/CMSIS-DSP/1.14.2/Source/TransformFunctions/arm_cfft_radix4_q15.c
+elite_test\transformfunctions.o: D:/keil/Pack/ARM/CMSIS-DSP/1.14.2/Source/TransformFunctions/arm_cfft_radix4_q31.c
+elite_test\transformfunctions.o: D:/keil/Pack/ARM/CMSIS-DSP/1.14.2/Source/TransformFunctions/arm_cfft_radix8_f32.c
+elite_test\transformfunctions.o: D:/keil/Pack/ARM/CMSIS-DSP/1.14.2/Source/TransformFunctions/arm_rfft_fast_f32.c
+elite_test\transformfunctions.o: D:/keil/Pack/ARM/CMSIS-DSP/1.14.2/Source/TransformFunctions/arm_rfft_fast_f64.c
+elite_test\transformfunctions.o: D:/keil/Pack/ARM/CMSIS-DSP/1.14.2/Source/TransformFunctions/arm_rfft_fast_init_f32.c
+elite_test\transformfunctions.o: D:/keil/Pack/ARM/CMSIS-DSP/1.14.2/Source/TransformFunctions/arm_rfft_fast_init_f64.c
+elite_test\transformfunctions.o: D:/keil/Pack/ARM/CMSIS-DSP/1.14.2/Source/TransformFunctions/arm_mfcc_init_f32.c
+elite_test\transformfunctions.o: D:/keil/Pack/ARM/CMSIS-DSP/1.14.2/Source/TransformFunctions/arm_mfcc_f32.c
+elite_test\transformfunctions.o: D:\keil\Pack\ARM\CMSIS-DSP\1.14.2\Include\dsp/statistics_functions.h
+elite_test\transformfunctions.o: D:\keil\Pack\ARM\CMSIS-DSP\1.14.2\Include\dsp/matrix_functions.h
+elite_test\transformfunctions.o: D:/keil/Pack/ARM/CMSIS-DSP/1.14.2/Source/TransformFunctions/arm_mfcc_init_q31.c
+elite_test\transformfunctions.o: D:/keil/Pack/ARM/CMSIS-DSP/1.14.2/Source/TransformFunctions/arm_mfcc_q31.c
+elite_test\transformfunctions.o: D:/keil/Pack/ARM/CMSIS-DSP/1.14.2/Source/TransformFunctions/arm_mfcc_init_q15.c
+elite_test\transformfunctions.o: D:/keil/Pack/ARM/CMSIS-DSP/1.14.2/Source/TransformFunctions/arm_mfcc_q15.c
+elite_test\transformfunctions.o: D:/keil/Pack/ARM/CMSIS-DSP/1.14.2/Source/TransformFunctions/arm_dct4_f32.c
+elite_test\transformfunctions.o: D:/keil/Pack/ARM/CMSIS-DSP/1.14.2/Source/TransformFunctions/arm_dct4_init_f32.c
+elite_test\transformfunctions.o: D:/keil/Pack/ARM/CMSIS-DSP/1.14.2/Source/TransformFunctions/arm_dct4_init_q15.c
+elite_test\transformfunctions.o: D:/keil/Pack/ARM/CMSIS-DSP/1.14.2/Source/TransformFunctions/arm_dct4_init_q31.c
+elite_test\transformfunctions.o: D:/keil/Pack/ARM/CMSIS-DSP/1.14.2/Source/TransformFunctions/arm_dct4_q15.c
+elite_test\transformfunctions.o: D:/keil/Pack/ARM/CMSIS-DSP/1.14.2/Source/TransformFunctions/arm_dct4_q31.c
+elite_test\transformfunctions.o: D:/keil/Pack/ARM/CMSIS-DSP/1.14.2/Source/TransformFunctions/arm_rfft_f32.c
+elite_test\transformfunctions.o: D:/keil/Pack/ARM/CMSIS-DSP/1.14.2/Source/TransformFunctions/arm_rfft_q15.c
+elite_test\transformfunctions.o: D:/keil/Pack/ARM/CMSIS-DSP/1.14.2/Source/TransformFunctions/arm_rfft_q31.c
+elite_test\transformfunctions.o: D:/keil/Pack/ARM/CMSIS-DSP/1.14.2/Source/TransformFunctions/arm_rfft_init_f32.c
+elite_test\transformfunctions.o: D:/keil/Pack/ARM/CMSIS-DSP/1.14.2/Source/TransformFunctions/arm_rfft_init_q15.c
+elite_test\transformfunctions.o: D:/keil/Pack/ARM/CMSIS-DSP/1.14.2/Source/TransformFunctions/arm_rfft_init_q31.c
+elite_test\transformfunctions.o: D:/keil/Pack/ARM/CMSIS-DSP/1.14.2/Source/TransformFunctions/arm_cfft_radix4_init_f32.c
+elite_test\transformfunctions.o: D:/keil/Pack/ARM/CMSIS-DSP/1.14.2/Source/TransformFunctions/arm_cfft_radix4_init_q15.c
+elite_test\transformfunctions.o: D:/keil/Pack/ARM/CMSIS-DSP/1.14.2/Source/TransformFunctions/arm_cfft_radix4_init_q31.c
+elite_test\transformfunctions.o: D:/keil/Pack/ARM/CMSIS-DSP/1.14.2/Source/TransformFunctions/arm_cfft_radix2_init_f32.c
+elite_test\transformfunctions.o: D:/keil/Pack/ARM/CMSIS-DSP/1.14.2/Source/TransformFunctions/arm_cfft_radix2_init_q15.c
+elite_test\transformfunctions.o: D:/keil/Pack/ARM/CMSIS-DSP/1.14.2/Source/TransformFunctions/arm_cfft_radix2_init_q31.c

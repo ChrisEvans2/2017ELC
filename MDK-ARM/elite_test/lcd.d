@@ -8,14 +8,14 @@ elite_test\lcd.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h
 elite_test\lcd.o: ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h
 elite_test\lcd.o: ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xe.h
 elite_test\lcd.o: ../Drivers/CMSIS/Include/core_cm3.h
-elite_test\lcd.o: D:\study\keil MDK\Core\ARM\ARMCC\Bin\..\include\stdint.h
+elite_test\lcd.o: D:\keil\ARM\ARMCC\Bin\..\include\stdint.h
 elite_test\lcd.o: ../Drivers/CMSIS/Include/cmsis_version.h
 elite_test\lcd.o: ../Drivers/CMSIS/Include/cmsis_compiler.h
 elite_test\lcd.o: ../Drivers/CMSIS/Include/cmsis_armcc.h
 elite_test\lcd.o: ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h
 elite_test\lcd.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h
 elite_test\lcd.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h
-elite_test\lcd.o: D:\study\keil MDK\Core\ARM\ARMCC\Bin\..\include\stddef.h
+elite_test\lcd.o: D:\keil\ARM\ARMCC\Bin\..\include\stddef.h
 elite_test\lcd.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc_ex.h
 elite_test\lcd.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h
 elite_test\lcd.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio_ex.h
@@ -35,11 +35,11 @@ elite_test\lcd.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h
 elite_test\lcd.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h
 elite_test\lcd.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h
 elite_test\lcd.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h
-elite_test\lcd.o: D:\study\keil MDK\Core\ARM\ARMCC\Bin\..\include\stdio.h
-elite_test\lcd.o: D:\study\keil MDK\Core\ARM\ARMCC\Bin\..\include\string.h
+elite_test\lcd.o: D:\keil\ARM\ARMCC\Bin\..\include\stdio.h
+elite_test\lcd.o: D:\keil\ARM\ARMCC\Bin\..\include\string.h
 elite_test\lcd.o: ../User/delay/delay.h
-elite_test\lcd.o: ../Core/Inc/main.h
 elite_test\lcd.o: ../Core/Inc/usart.h
+elite_test\lcd.o: ../Core/Inc/main.h
 elite_test\lcd.o: ../User/sys.h
 elite_test\lcd.o: ../User/KEY/key.h
 elite_test\lcd.o: ../User/LCD/lcd.h
@@ -52,5 +52,5 @@ elite_test\lcd.o: ../User/TOUCH/ft5206.h
 elite_test\lcd.o: ../User/DataScope/DataScope.h
 elite_test\lcd.o: ../User/AD9854/ad9854.h
 elite_test\lcd.o: ../Core/Inc/gpio.h
-elite_test\lcd.o: D:\study\keil MDK\Core\ARM\ARMCC\Bin\..\include\stdlib.h
+elite_test\lcd.o: D:\keil\ARM\ARMCC\Bin\..\include\stdlib.h
 elite_test\lcd.o: ..\User\LCD\font.h

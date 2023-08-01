@@ -50,7 +50,7 @@
 
 /* USER CODE BEGIN PV */
 uint32_t F=1000000;  		// �������Ҳ���Ƶ�ʣ�1~100MHz��
-uint16_t A=810;			// �������Ҳ��ķ��ȣ�0~4095��        816Ϊ100mV���
+uint16_t A=810;			// �������Ҳ��ķ��ȣ�0~4095��        816Ϊ100mV���?
 
 key_t Key0, Key1, Key2;
 extern int dacval;
@@ -121,7 +121,7 @@ int main(void)
 	HAL_DAC_SetValue(&hdac,DAC_CHANNEL_1,DAC_ALIGN_12B_R,dacval);//��ʼֵΪ0 
 
 	GPIO_AD9854_Configuration(); // AD9854IO�ڳ�ʼ��
-	delay_ms(5);
+	Delay_ms(5);
 	AD9854_Init ();
 	AD9854_SetSine (F, A);
 
@@ -135,12 +135,12 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-	printf("��ʼ�����");
+	printf("��ʼ�����?");
 
 	while (1)
   {
 		tp_dev.scan(0);
-		delay_ms(5);
+		Delay_ms(5);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

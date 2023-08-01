@@ -312,16 +312,16 @@ void USART1_IRQHandler(void)
   HAL_UART_IRQHandler(&huart1);
   /* USER CODE BEGIN USART1_IRQn 1 */
 	tmp_flag =__HAL_UART_GET_FLAG(&UART_TYPE,UART_FLAG_IDLE); //��ȡIDLE��־λ
-	if((tmp_flag != RESET)){//ͨ����־λ�жϽ����Ƿ����
+	if((tmp_flag != RESET)){//ͨ����־λ�жϽ����Ƿ����?
 		
 		rx_flag = 1; //��1�������ս���
-		__HAL_UART_CLEAR_IDLEFLAG(&UART_TYPE);//�����־λ
+		__HAL_UART_CLEAR_IDLEFLAG(&UART_TYPE);//�����־�?
 		HAL_UART_DMAStop(&UART_TYPE); 
 		
 		temp = __HAL_DMA_GET_COUNTER(&hdma_usart1_rx);
 		temp = huart1.hdmarx->Instance->CNDTR;
 
-		rx_len =BUFFSIZE-temp; //��������ݳ���
+		rx_len =BUFFSIZE-temp; //��������ݳ���?
 		
 		printf("���䳤��:%d\r\r\n", rx_len);
 		HAL_UART_Transmit(&UART_TYPE, rx_buffer,rx_len, 10); //���յ������ݷ��ͳ�ȥ
