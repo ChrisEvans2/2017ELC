@@ -50,7 +50,7 @@
 
 /* USER CODE BEGIN PV */
 uint32_t F=1000000;  		// 设置正弦波的频率（1~100MHz）
-uint16_t A=10;			// 设置正弦波的幅度（0~4095）        816为100mV输出
+uint16_t A=810;			// 设置正弦波的幅度（0~4095）        816为100mV输出
 
 key_t Key0, Key1, Key2;
 extern int dacval;

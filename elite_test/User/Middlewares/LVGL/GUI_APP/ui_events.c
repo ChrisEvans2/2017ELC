@@ -7,23 +7,42 @@
 #include "stm32f1xx_it.h"
 #include "adc.h"
 #include "dac.h"
-static uint32_t DDS_Fre;
-static uint16_t DDS_Vol;
+static uint32_t DDS_Fre = 1000;
+static uint16_t DDS_Vol = 10;
+static uint32_t DDS_FreRange = 100000;
 void DDS_FreValueSet(lv_event_t * e)
 {
 	// Your code here
 	
+	DDS_Fre = lv_spinbox_get_value(ui_Fre_Value)*DDS_FreRange;
 	AD9854_SetSine(DDS_Fre, DDS_Vol);
 }
 
 void DDS_FreRangeSet(lv_event_t * e)
 {
 	// Your code here
+	if(lv_dropdown_get_selected(ui_DDS_Fre_Range) == 0)
+	{
+		DDS_FreRange = 100000;
+		DDS_Fre = lv_spinbox_get_value(ui_Fre_Value)*DDS_FreRange;
+		AD9854_SetSine(DDS_Fre, DDS_Vol);
+		printf("DDS_Fre:%d", DDS_Fre);
+	}else if(lv_dropdown_get_selected(ui_DDS_Fre_Range) == 1){
+		DDS_FreRange = 100;
+		DDS_Fre = lv_spinbox_get_value(ui_Fre_Value)*DDS_FreRange;
+		AD9854_SetSine(DDS_Fre, DDS_Vol);
+	}else if(lv_dropdown_get_selected(ui_DDS_Fre_Range) == 2){
+		DDS_FreRange = 10;
+		DDS_Fre = lv_spinbox_get_value(ui_Fre_Value)/10;
+		AD9854_SetSine(DDS_Fre, DDS_Vol);
+	}
 }
 
 void DDS_OutputSet(lv_event_t * e)
 {
 	// Your code here
+	DDS_Vol = lv_slider_get_value(ui_DDS_Vol_Slider);
+	AD9854_SetSine(DDS_Fre, DDS_Vol);
 }
 
 void DDS_Output(lv_event_t * e)

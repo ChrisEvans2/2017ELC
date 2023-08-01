@@ -42,7 +42,7 @@ void ui_Screen1_screen_init(void)
     lv_spinbox_set_step(ui_Fre_Value, round(pow(10, 1 - 1)));
 
     ui_DDS_Fre_Range = lv_dropdown_create(ui_DDS);
-    lv_dropdown_set_options(ui_DDS_Fre_Range, "MHz\nKHz");
+    lv_dropdown_set_options(ui_DDS_Fre_Range, "MHz\nKHz\nHz");
     lv_obj_set_width(ui_DDS_Fre_Range, 80);
     lv_obj_set_height(ui_DDS_Fre_Range, 35);
     lv_obj_set_x(ui_DDS_Fre_Range, 70);
