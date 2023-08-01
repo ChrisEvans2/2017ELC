@@ -13,7 +13,7 @@ extern "C" {
 void DDS_FreValueSet(lv_event_t * e);
 void DDS_FreRangeSet(lv_event_t * e);
 void DDS_OutputSet(lv_event_t * e);
-void DDS_Output(lv_event_t * e);
+void DDS_Sweep(lv_event_t * e);
 void measure_FFT(lv_event_t * e);
 void DAC_OutputSet(lv_event_t * e);
 

@@ -72,14 +72,7 @@ void ui_Screen1_screen_init(void)
     lv_obj_set_x(ui_DDS_Output_tag, -70);
     lv_obj_set_y(ui_DDS_Output_tag, 80);
     lv_obj_set_align(ui_DDS_Output_tag, LV_ALIGN_CENTER);
-    lv_label_set_text(ui_DDS_Output_tag, "Out:OFF");
-
-    ui_Switch2 = lv_switch_create(ui_DDS);
-    lv_obj_set_width(ui_Switch2, 40);
-    lv_obj_set_height(ui_Switch2, 20);
-    lv_obj_set_x(ui_Switch2, 60);
-    lv_obj_set_y(ui_Switch2, 80);
-    lv_obj_set_align(ui_Switch2, LV_ALIGN_CENTER);
+    lv_label_set_text(ui_DDS_Output_tag, "Sweep");
 
     ui_Fre_Value_Add = lv_btn_create(ui_DDS);
     lv_obj_set_width(ui_Fre_Value_Add, 30);
@@ -110,6 +103,13 @@ void ui_Screen1_screen_init(void)
     lv_obj_set_height(ui_dec, LV_SIZE_CONTENT);    /// 1
     lv_obj_set_align(ui_dec, LV_ALIGN_CENTER);
     lv_label_set_text(ui_dec, "-");
+
+    ui_Sweep_Switch = lv_switch_create(ui_DDS);
+    lv_obj_set_width(ui_Sweep_Switch, 40);
+    lv_obj_set_height(ui_Sweep_Switch, 20);
+    lv_obj_set_x(ui_Sweep_Switch, 70);
+    lv_obj_set_y(ui_Sweep_Switch, 80);
+    lv_obj_set_align(ui_Sweep_Switch, LV_ALIGN_CENTER);
 
     ui_ADC = lv_tabview_add_tab(ui_select, "ADC");
     lv_obj_clear_flag(ui_ADC, LV_OBJ_FLAG_CLICKABLE | LV_OBJ_FLAG_PRESS_LOCK | LV_OBJ_FLAG_CLICK_FOCUSABLE |
@@ -164,7 +164,7 @@ void ui_Screen1_screen_init(void)
     lv_label_set_text(ui_DAC_Value_tag, "DAC_Vol:0");
 
     ui_DAC_Value_Set = lv_slider_create(ui_DAC);
-    lv_slider_set_range(ui_DAC_Value_Set, 0, 4095);
+    lv_slider_set_range(ui_DAC_Value_Set, 0, 1240);
     lv_obj_set_width(ui_DAC_Value_Set, 150);
     lv_obj_set_height(ui_DAC_Value_Set, 10);
     lv_obj_set_x(ui_DAC_Value_Set, 0);
@@ -174,9 +174,9 @@ void ui_Screen1_screen_init(void)
     lv_obj_add_event_cb(ui_Fre_Value, ui_event_Fre_Value, LV_EVENT_ALL, NULL);
     lv_obj_add_event_cb(ui_DDS_Fre_Range, ui_event_DDS_Fre_Range, LV_EVENT_ALL, NULL);
     lv_obj_add_event_cb(ui_DDS_Vol_Slider, ui_event_DDS_Vol_Slider, LV_EVENT_ALL, NULL);
-    lv_obj_add_event_cb(ui_Switch2, ui_event_Switch2, LV_EVENT_ALL, NULL);
     lv_obj_add_event_cb(ui_Fre_Value_Add, ui_event_Fre_Value_Add, LV_EVENT_ALL, NULL);
     lv_obj_add_event_cb(ui_Fre_Value_Dec, ui_event_Fre_Value_Dec, LV_EVENT_ALL, NULL);
+    lv_obj_add_event_cb(ui_Sweep_Switch, ui_event_Sweep_Switch, LV_EVENT_ALL, NULL);
     lv_obj_add_event_cb(ui_Measure_Button, ui_event_Measure_Button, LV_EVENT_ALL, NULL);
     lv_obj_add_event_cb(ui_DAC_Value_Set, ui_event_DAC_Value_Set, LV_EVENT_ALL, NULL);
 

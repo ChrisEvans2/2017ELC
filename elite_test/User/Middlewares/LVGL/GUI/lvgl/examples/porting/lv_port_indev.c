@@ -227,12 +227,12 @@ static bool touchpad_is_pressed(void)
 static void touchpad_get_xy(lv_coord_t * x, lv_coord_t * y)
 {
     /*Your code comes here*/		
-		static uint16_t count = 0;
-		if(count++ == 30)
-		{
-			printf("\nºá×ø±ê£º%d\n×Ý×ø±ê£º%d\n", 320-tp_dev.y[0], tp_dev.x[0]);
-			count = 0;
-		}
+//		static uint16_t count = 0;
+//		if(count++ == 30)
+//		{
+//			printf("\nºá×ø±ê£º%d\n×Ý×ø±ê£º%d\n", 320-tp_dev.y[0], tp_dev.x[0]);
+//			count = 0;
+//		}
     (*x) = 320 - tp_dev.y[0];
     (*y) = tp_dev.x[0];
 }

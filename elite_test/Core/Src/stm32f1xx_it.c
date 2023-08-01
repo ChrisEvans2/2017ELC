@@ -58,6 +58,8 @@ uint32_t ADC_Data;
 
 int32_t FFT_IN[ADC_NUM],FFT_OUT[ADC_NUM];
 int32_t lBufMagArray[ADC_NUM] = {0};
+uint8_t DDS_Sweep_state = 0;
+
 
 /* USER CODE END PV */
 
@@ -68,6 +70,23 @@ int32_t lBufMagArray[ADC_NUM] = {0};
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+void My_Sweep_out()
+{
+	uint32_t start_Fre = 1000000, end_Fre = 100000000, step_Fre = 1000000;
+	static uint32_t Fre = 1000000;
+	if(DDS_Sweep_state)
+	{
+		AD9854_SetSine(Fre ,815);
+		Fre += step_Fre;
+		if(Fre == end_Fre)
+		{
+			Fre = start_Fre;
+		}
+	}else if(Fre != start_Fre){
+			Fre = start_Fre;
+	}
+}
+
 void ADC_DAC_show()
 {
 	float temp_adc;
@@ -357,6 +376,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 	if(htim == &htim6){	
 		time6++;
 		lv_tick_inc(1);
+		My_Sweep_out();
 		if(time6%10 == 0) // °´¼ü×´Ì¬¸üÐÂ
 		{
 			Key_Scan(&Key0, KEY0_GPIO_Port, KEY0_Pin);

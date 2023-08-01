@@ -38,7 +38,8 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-
+#define DDS_VOL 815				// 设置正弦波的幅度（0~4095）        816为100mV输出
+#define DDS_FRE 1000000		// 设置正弦波的频率（1~100MHz）
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -49,9 +50,6 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-uint32_t F=1000000;  		// 设置正弦波的频率（1~100MHz）
-uint16_t A=810;			// 设置正弦波的幅度（0~4095）        816为100mV输出
-
 key_t Key0, Key1, Key2;
 extern int dacval;
 /* USER CODE END PV */
@@ -123,8 +121,6 @@ int main(void)
 	GPIO_AD9854_Configuration(); // AD9854IO口初始化
 	delay_ms(5);
 	AD9854_Init ();
-	AD9854_SetSine (F, A);
-
 	
 	lv_init();
 	lv_port_disp_init();
@@ -132,7 +128,12 @@ int main(void)
 	
 	ui_init();
 	lv_chart_set_update_mode(ui_Wave_Show, LV_CHART_UPDATE_MODE_CIRCULAR);
-
+	lv_spinbox_set_value(ui_Fre_Value, DDS_FRE/100000);
+	lv_label_set_text(ui_DDS_Vol, "Vol:815");  //100mv:815  200mv:1695 300mv:2565  400mv:3465
+	lv_slider_set_value(ui_DDS_Vol_Slider, DDS_VOL, LV_ANIM_OFF);
+	lv_label_set_text(ui_DAC_Value_tag, "DAC_Vol:300");
+	lv_slider_set_value(ui_DAC_Value_Set, 300, LV_ANIM_OFF);
+	AD9854_SetSine (DDS_FRE, DDS_VOL);
 	
   /* USER CODE END 2 */
 

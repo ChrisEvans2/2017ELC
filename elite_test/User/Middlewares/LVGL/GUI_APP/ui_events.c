@@ -7,9 +7,12 @@
 #include "stm32f1xx_it.h"
 #include "adc.h"
 #include "dac.h"
+#include "ad9854.h"
 static uint32_t DDS_Fre = 1000;
-static uint16_t DDS_Vol = 10;
+static uint16_t DDS_Vol = 810;
 static uint32_t DDS_FreRange = 100000;
+extern uint8_t DDS_Sweep_state;
+
 void DDS_FreValueSet(lv_event_t * e)
 {
 	// Your code here
@@ -62,6 +65,19 @@ void DAC_OutputSet(lv_event_t * e)
 	uint16_t dacval;
 	lv_obj_t * slider = lv_event_get_target(e);
 	dacval = (uint16_t)lv_slider_get_value(slider);
-	HAL_DAC_SetValue(&hdac,DAC_CHANNEL_1,DAC_ALIGN_12B_R,dacval);//ÉèÖÃDACÖµ
+	HAL_DAC_SetValue(&hdac,DAC_CHANNEL_1,DAC_ALIGN_12B_R,dacval);//ï¿½ï¿½ï¿½ï¿½DACÖµ
 	ADC_DAC_show();
+}
+
+void DDS_Sweep(lv_event_t * e)
+{
+	// Your code here
+	if(lv_obj_has_state(ui_Sweep_Switch, LV_STATE_CHECKED))
+	{
+		DDS_Sweep_state = 1;
+	}else{
+		DDS_Sweep_state = 0;
+		delay_ms(3);
+		AD9854_SetSine(DDS_Fre, DDS_Vol);
+	}
 }
