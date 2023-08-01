@@ -161,10 +161,10 @@ int main(void)
 //	HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_SET);
 	HAL_TIM_Base_Start_IT(&htim6);
 //	
-//  /* USER CODE END 2 */
+  /* USER CODE END 2 */
 
-//  /* Infinite loop */
-//  /* USER CODE BEGIN WHILE */
+  /* Infinite loop */
+  /* USER CODE BEGIN WHILE */
 //	printf("初始化完成");
 //	// 生成FFT数据
 //	for(int i = 0;i<N;i++)

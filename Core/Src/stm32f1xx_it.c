@@ -331,6 +331,20 @@ void USART1_IRQHandler(void)
 }
 
 /**
+  * @brief This function handles EXTI line[15:10] interrupts.
+  */
+void EXTI15_10_IRQHandler(void)
+{
+  /* USER CODE BEGIN EXTI15_10_IRQn 0 */
+
+  /* USER CODE END EXTI15_10_IRQn 0 */
+  HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_11);
+  /* USER CODE BEGIN EXTI15_10_IRQn 1 */
+
+  /* USER CODE END EXTI15_10_IRQn 1 */
+}
+
+/**
   * @brief This function handles TIM6 global interrupt.
   */
 void TIM6_IRQHandler(void)
@@ -358,7 +372,6 @@ void DMA2_Channel3_IRQHandler(void)
   /* USER CODE END DMA2_Channel3_IRQn 1 */
 }
 
-
 /* USER CODE BEGIN 1 */
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
@@ -372,7 +385,10 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 			else dacval=0;
             HAL_DAC_SetValue(&hdac,DAC_CHANNEL_1,DAC_ALIGN_12B_R,dacval);//…Ë÷√DAC÷µ
 	}
-	
+	if(GPIO_Pin & GPIO_PIN_11)
+    {
+        
+    }
 	ADC_DAC_show();	
 }
 uint32_t time6 = 0;
