@@ -14,22 +14,22 @@
 // RESET             -->   GPIOC_PIN11/PC11
 // S/P               -->   GPIOC_PIN12/PC12
 
-//´Ó±à³Ì¼Ä´æÆ÷ÖÐ¶ÁÈ¡²¢ÐÐÊý¾Ý¡£ÓëCS¹²ÏíµÄ¹¦ÄÜ¡£Óë´®ÐÐ±à³Ì×ÜÏßÏà¹ØÁªµÄÐ¾Æ¬Ñ¡ÔñÐÅºÅ¡£µÍµçÆ½ÓÐÐ§¡£µ±Ñ¡Ôñ²¢ÐÐÄ£Ê½Ê±£¬´ËÒý½ÅÓëRD¹²Ïí¡£
+//ï¿½Ó±ï¿½Ì¼Ä´ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¡ï¿½ï¿½ï¿½CSï¿½ï¿½ï¿½ï¿½ï¿½Ä¹ï¿½ï¿½Ü¡ï¿½ï¿½ë´®ï¿½Ð±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¾Æ¬Ñ¡ï¿½ï¿½ï¿½ÅºÅ¡ï¿½ï¿½Íµï¿½Æ½ï¿½ï¿½Ð§ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½Ä£Ê½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½RDï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 #define AD9854_RD_Set    HAL_GPIO_WritePin(GPIOC,GPIO_PIN_8,GPIO_PIN_SET)         
 #define AD9854_RD_Clr    HAL_GPIO_WritePin(GPIOC,GPIO_PIN_8,GPIO_PIN_RESET)
 
-//½«²¢ÐÐÊý¾ÝÐ´ÈëI/O¶Ë¿Ú»º³åÇø¡£ÓëSCLK¹²ÏíµÄº¯Êý¡£´®ÐÐÊ±ÖÓÐÅºÅÓë´®ÐÐ±à³Ì×ÜÏßÏà¹ØÁª¡£Êý¾ÝÔÚÉÏÉýÑØ×¢²á¡£µ±Ñ¡Ôñ²¢ÐÐÄ£Ê½Ê±£¬´ËÒý½ÅÓëWR¹²Ïí
-//Ä£Ê½È¡¾öÓÚPin 70£¨S/P SELECT£©¡£
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½I/Oï¿½Ë¿Ú»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½SCLKï¿½ï¿½ï¿½ï¿½ï¿½Äºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½Åºï¿½ï¿½ë´®ï¿½Ð±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¢ï¿½á¡£ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½Ä£Ê½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½WRï¿½ï¿½ï¿½ï¿½
+//Ä£Ê½È¡ï¿½ï¿½ï¿½ï¿½Pin 70ï¿½ï¿½S/P SELECTï¿½ï¿½ï¿½ï¿½
 #define AD9854_WR_Set    HAL_GPIO_WritePin(GPIOC,GPIO_PIN_9,GPIO_PIN_SET)         
 #define AD9854_WR_Clr    HAL_GPIO_WritePin(GPIOC,GPIO_PIN_9,GPIO_PIN_RESET)
 
-#define AD9854_UDCLK_Set    HAL_GPIO_WritePin(GPIOC,GPIO_PIN_10,GPIO_PIN_SET)           // Ê±ÖÓÐÅºÅ
+#define AD9854_UDCLK_Set    HAL_GPIO_WritePin(GPIOC,GPIO_PIN_10,GPIO_PIN_SET)           // Ê±ï¿½ï¿½ï¿½Åºï¿½
 #define AD9854_UDCLK_Clr    HAL_GPIO_WritePin(GPIOC,GPIO_PIN_10,GPIO_PIN_RESET)
 
-#define AD9854_RST_Set    HAL_GPIO_WritePin(GPIOC,GPIO_PIN_11,GPIO_PIN_SET)			   //¿ª¹ØµçÔ´°å
+#define AD9854_RST_Set    HAL_GPIO_WritePin(GPIOC,GPIO_PIN_11,GPIO_PIN_SET)			   //ï¿½ï¿½ï¿½Øµï¿½Ô´ï¿½ï¿½
 #define AD9854_RST_Clr    HAL_GPIO_WritePin(GPIOC,GPIO_PIN_11,GPIO_PIN_RESET)
 
-#define AD9854_SP_Set    HAL_GPIO_WritePin(GPIOC,GPIO_PIN_12,GPIO_PIN_SET)         // ´®ÐÐµÍµçÆ½£¬²¢ÐÐ¸ßµçÆ½
+#define AD9854_SP_Set    HAL_GPIO_WritePin(GPIOC,GPIO_PIN_12,GPIO_PIN_SET)         // ï¿½ï¿½ï¿½ÐµÍµï¿½Æ½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¸ßµï¿½Æ½
 #define AD9854_SP_Clr    HAL_GPIO_WritePin(GPIOC,GPIO_PIN_12,GPIO_PIN_RESET)
 
 #define AD9854_OSK_Set   HAL_GPIO_WritePin(GPIOC,GPIO_PIN_13,GPIO_PIN_SET)         
@@ -38,17 +38,17 @@
 #define AD9854_FDATA_Set    HAL_GPIO_WritePin(GPIOC,GPIO_PIN_14,GPIO_PIN_SET)        //fsk/bpsk/hold  
 #define AD9854_FDATA_Clr    HAL_GPIO_WritePin(GPIOC,GPIO_PIN_14,GPIO_PIN_RESET)
 
-// I/OÇý¶¯  Ê¹ÓÃ±ðÃû
-#define SPI_IO_RST_Set    HAL_GPIO_WritePin(GPIOA,GPIO_PIN_7,GPIO_PIN_SET)            // DDSµÄA2¿ÚÓëSTM32µÄPA7Á¬½Ó
-#define SPI_IO_RST_Clr    HAL_GPIO_WritePin(GPIOA,GPIO_PIN_7,GPIO_PIN_RESET)          // ´®ÐÐIOÔÊÐí¸´Î»
+// I/Oï¿½ï¿½ï¿½ï¿½  Ê¹ï¿½Ã±ï¿½ï¿½ï¿½
+#define SPI_IO_RST_Set    HAL_GPIO_WritePin(GPIOA,GPIO_PIN_7,GPIO_PIN_SET)            // DDSï¿½ï¿½A2ï¿½ï¿½ï¿½ï¿½STM32ï¿½ï¿½PA7ï¿½ï¿½ï¿½ï¿½
+#define SPI_IO_RST_Clr    HAL_GPIO_WritePin(GPIOA,GPIO_PIN_7,GPIO_PIN_RESET)          // ï¿½ï¿½ï¿½ï¿½IOï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î»
 
-#define SPI_SDO_Set    HAL_GPIO_WritePin(GPIOA,GPIO_PIN_6,GPIO_PIN_SET)               // DDSµÄA1¿ÚÓëSTM32µÄPA6Á¬½Ó
-#define SPI_SDO_Clr    HAL_GPIO_WritePin(GPIOA,GPIO_PIN_6,GPIO_PIN_RESET)             // µ¥Ïò´®ÐÐ´«Êä¶Ë¿Ú,3Ïß´®ÐÐÍ¨ÐÅ
+#define SPI_SDO_Set    HAL_GPIO_WritePin(GPIOA,GPIO_PIN_6,GPIO_PIN_SET)               // DDSï¿½ï¿½A1ï¿½ï¿½ï¿½ï¿½STM32ï¿½ï¿½PA6ï¿½ï¿½ï¿½ï¿½
+#define SPI_SDO_Clr    HAL_GPIO_WritePin(GPIOA,GPIO_PIN_6,GPIO_PIN_RESET)             // ï¿½ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½Ë¿ï¿½,3ï¿½ß´ï¿½ï¿½ï¿½Í¨ï¿½ï¿½
 
-#define SPI_SDI_Set 	 HAL_GPIO_WritePin(GPIOA,GPIO_PIN_5,GPIO_PIN_SET)             // DDSµÄA0¿ÚÓëSTM32µÄPA5Á¬½Ó
-#define SPI_SDI_Clr 	 HAL_GPIO_WritePin(GPIOA,GPIO_PIN_5,GPIO_PIN_RESET)           // Ë«Ïò´®ÐÐÊý¾ÝÊäÈëÊä³ö£¬2Ïß´®ÐÐ
+#define SPI_SDI_Set 	 HAL_GPIO_WritePin(GPIOA,GPIO_PIN_5,GPIO_PIN_SET)             // DDSï¿½ï¿½A0ï¿½ï¿½ï¿½ï¿½STM32ï¿½ï¿½PA5ï¿½ï¿½ï¿½ï¿½
+#define SPI_SDI_Clr 	 HAL_GPIO_WritePin(GPIOA,GPIO_PIN_5,GPIO_PIN_RESET)           // Ë«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½2ï¿½ß´ï¿½ï¿½ï¿½
 
- // AD9854¼Ä´æÆ÷µØÖ·
+ // AD9854ï¿½Ä´ï¿½ï¿½ï¿½ï¿½ï¿½Ö·
 #define PHASE1	0x00	  //phase adjust register #1
 #define PHASE2  0x01		//phase adjust register #2
 #define FREQ1   0x02		//frequency tuning word 1
@@ -62,8 +62,8 @@
 #define RAMPO   0x0A		//output shape key ramp rate
 #define CDAC    0x0B		//QDAC
 
-//**************************ÒÔÏÂ²¿·ÖÎªº¯Êý¶¨Òå********************************
-extern void GPIO_AD9854_Configuration(void);						// AD9854_IO¿Ú³õÊ¼»¯
+//**************************ï¿½ï¿½ï¿½Â²ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½********************************
+extern void GPIO_AD9854_Configuration(void);						// AD9854_IOï¿½Ú³ï¿½Ê¼ï¿½ï¿½
 static void AD9854_WR_Byte(uint8_t Adata);	  
 extern void AD9854_Init(void);						  
 static void Freq_convert(long Freq);	         	  

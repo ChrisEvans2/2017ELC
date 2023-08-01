@@ -75,11 +75,11 @@ void DataScope_Uint32_Generate( uint32_t u32 )
 void Send_float( float f )
 {
 	DataScope_Float_Generate(f);
-	HAL_UART_Transmit_IT(&huart1, DataScope_OutPut_Buffer, SEND_LEN);
+	HAL_UART_Transmit(&huart1, DataScope_OutPut_Buffer, SEND_LEN, 10);
 }
 
 void Send_u32( uint32_t u32 )
 {
 	DataScope_Uint32_Generate(u32);
-	HAL_UART_Transmit_IT(&huart1, DataScope_OutPut_Buffer, SEND_LEN);
+	HAL_UART_Transmit(&huart1, DataScope_OutPut_Buffer, SEND_LEN, 10);
 }

@@ -32,27 +32,77 @@ void KEY_Init(void)
     GPIO_Initure.Mode=GPIO_MODE_INPUT;      //输入
     GPIO_Initure.Pull=GPIO_PULLUP;          //上拉
     GPIO_Initure.Speed=GPIO_SPEED_FREQ_HIGH;//高速
-    HAL_GPIO_Init(GPIOE,&GPIO_Initure);
-    
+    HAL_GPIO_Init(GPIOE,&GPIO_Initure); 
 }
 
-//按键处理函数
-//返回按键值
-//mode:0,不支持连续按;1,支持连续按;
-//0，没有任何按键按下
-//1，WKUP按下 WK_UP
-//注意此函数有响应优先级,KEY0>KEY1>WK_UP!!
-u8 KEY_Scan(u8 mode)
+// 按键扫描
+void Key_Scan(key_t* key, GPIO_TypeDef *key_port, uint16_t key_pin)
 {
-    static u8 key_up=1;     //按键松开标志
-    if(mode==1)key_up=1;    //支持连按
-    if(key_up&&(KEY0==0||KEY1==0||WK_UP==1))
-    {
-        delay_ms(10);
-        key_up=0;
-        if(KEY0==0)       return KEY0_PRES;
-        else if(KEY1==0)  return KEY1_PRES;
-        else if(WK_UP==1) return WKUP_PRES;          
-    }else if(KEY0==1&&KEY1==1&&WK_UP==0)key_up=1;
-    return 0;   //无按键按下
+	switch(key->keyState)
+	{
+		case KEY_CHECK:
+			// 读到低电平，进入按键确认状态
+			if(HAL_GPIO_ReadPin(key_port, key_pin) ==  GPIO_PIN_RESET)
+			{
+				key->keyState = KEY_COMFIRM;
+			}
+			break;
+		case KEY_COMFIRM:
+			if(HAL_GPIO_ReadPin(key_port, key_pin) ==  GPIO_PIN_RESET)
+			{
+				//读到低电平，按键确实按下，按键标志位置1，并进入按键释放状态
+				key->keyState = KEY_RELEASE;
+			}
+				//读到高电平，可能是干扰信号，返回初始状态
+			else
+			{
+				key->keyState = KEY_CHECK;
+			}
+			break;
+		case KEY_RELEASE:
+			if(HAL_GPIO_ReadPin(key_port, key_pin) ==  GPIO_PIN_SET)
+			{
+				key->keyFlag = 1;
+			 // 读到高电平，说明按键释放，返回初始状态
+			 key->keyState = KEY_CHECK;       
+			}
+			break;
+		default: break;
+	}
 }
+
+void Key_Scan2(key_t* key, GPIO_TypeDef *key_port, uint16_t key_pin)
+{
+	switch(key->keyState)
+	{
+		case KEY_CHECK:
+			// 读到低电平，进入按键确认状态
+			if(HAL_GPIO_ReadPin(key_port, key_pin) ==  GPIO_PIN_SET)
+			{
+				key->keyState = KEY_COMFIRM;
+			}
+			break;
+		case KEY_COMFIRM:
+			if(HAL_GPIO_ReadPin(key_port, key_pin) ==  GPIO_PIN_SET)
+			{
+				//读到低电平，按键确实按下，按键标志位置1，并进入按键释放状态
+				key->keyState = KEY_RELEASE;
+			}
+				//读到高电平，可能是干扰信号，返回初始状态
+			else
+			{
+				key->keyState = KEY_CHECK;
+			}
+			break;
+		case KEY_RELEASE:
+			if(HAL_GPIO_ReadPin(key_port, key_pin) ==  GPIO_PIN_RESET)
+			{
+				key->keyFlag = 1;
+			 // 读到高电平，说明按键释放，返回初始状态
+			 key->keyState = KEY_CHECK;       
+			}
+			break;
+		default: break;
+	}
+}
+

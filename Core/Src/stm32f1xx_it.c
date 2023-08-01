@@ -24,6 +24,12 @@
 /* USER CODE BEGIN Includes */
 #include "adc.h"
 #include "dac.h"
+#include "stm32_dsp.h"
+#include "table_fft.h"
+#include "math.h"
+#include "arm_math.h"
+#include "arm_const_structs.h"
+#include "tim.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -45,11 +51,17 @@
 /* USER CODE BEGIN PV */
 uint16_t temp = 0;
 
-u16 dacval=0;
+u16 dacval=620;
 u16 adcx;
 float ADC_Vol; 
 uint32_t ADC_Data; 
 
+int32_t FFT_IN[ADC_NUM],FFT_OUT[ADC_NUM];
+int32_t lBufMagArray[ADC_NUM] = {0};
+
+extern key_t Key0, Key1, Key2;
+extern uint16_t A;
+extern uint32_t F;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -63,21 +75,52 @@ void ADC_DAC_show()
 {
 	float temp_adc;
 	
-	adcx=HAL_DAC_GetValue(&hdac,DAC_CHANNEL_1);//¶ÁÈ¡Ç°ÃæÉèÖÃDACµÄÖµ
-	LCD_ShowxNum(94,150,adcx,4,16,0);     	    //ÏÔÊ¾DAC¼Ä´æÆ÷Öµ
-	temp_adc=(float)adcx*(3.3/4096);			    //µÃµ½DACµçÑ¹Öµ
+	adcx=HAL_DAC_GetValue(&hdac,DAC_CHANNEL_1);//ï¿½ï¿½È¡Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½DACï¿½ï¿½Öµ
+	LCD_ShowxNum(94,120,adcx,4,16,0);     	    //ï¿½ï¿½Ê¾DACï¿½Ä´ï¿½ï¿½ï¿½Öµ
+	temp_adc=(float)adcx*(3.3/4096);			    //ï¿½Ãµï¿½DACï¿½ï¿½Ñ¹Öµ
 	adcx=temp_adc;
-	LCD_ShowxNum(94,170,temp_adc,1,16,0);     	    //ÏÔÊ¾µçÑ¹ÖµÕûÊý²¿·Ö
+	LCD_ShowxNum(94,140,temp_adc,1,16,0);     	    //ï¿½ï¿½Ê¾ï¿½ï¿½Ñ¹Öµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	temp_adc-=adcx;
 	temp_adc*=1000;
-	LCD_ShowxNum(110,170,temp_adc,3,16,0X80); 	    //ÏÔÊ¾µçÑ¹ÖµµÄÐ¡Êý²¿·Ö
-	adcx=HAL_ADC_GetValue(&hadc1);     //µÃµ½ADC×ª»»Öµ	  
-	temp_adc=(float)adcx*(3.3/4096);			    //µÃµ½ADCµçÑ¹Öµ
+	LCD_ShowxNum(110,140,temp_adc,3,16,0X80); 	    //ï¿½ï¿½Ê¾ï¿½ï¿½Ñ¹Öµï¿½ï¿½Ð¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	adcx=HAL_ADC_GetValue(&hadc1);     //ï¿½Ãµï¿½ADC×ªï¿½ï¿½Öµ	  
+	temp_adc=(float)adcx*(3.3/4096);			    //ï¿½Ãµï¿½ADCï¿½ï¿½Ñ¹Öµ
 	adcx=temp_adc;
-	LCD_ShowxNum(94,190,temp_adc,1,16,0);     	    //ÏÔÊ¾µçÑ¹ÖµÕûÊý²¿·Ö
+	LCD_ShowxNum(94,160,temp_adc,1,16,0);     	    //ï¿½ï¿½Ê¾ï¿½ï¿½Ñ¹Öµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	temp_adc-=adcx;
 	temp_adc*=1000;
-	LCD_ShowxNum(110,190,temp_adc,3,16,0X80); 	    //ÏÔÊ¾µçÑ¹ÖµµÄÐ¡Êý²¿·Ö
+	LCD_ShowxNum(110,160,temp_adc,3,16,0X80); 	    //ï¿½ï¿½Ê¾ï¿½ï¿½Ñ¹Öµï¿½ï¿½Ð¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	LCD_ShowxNum(110,180,A,3,16,0X80); 	    //ï¿½ï¿½Ê¾ï¿½ï¿½Ñ¹Öµï¿½ï¿½Ð¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+}
+
+void GetPowerMag()
+{
+	signed short lX,lY;
+	float X,Y,Mag;
+	unsigned short i;
+
+	for(i=0; i<ADC_NUM/2; i++)
+	{
+		lX  =  FFT_OUT[i] >> 16;
+		lY  = (FFT_OUT[i] << 16 ) >> 16;
+		X = ADC_NUM * ((float)lX) / 32768;
+		Y = ADC_NUM * ((float)lY) / 32768;
+		Mag = sqrt(X * X + Y * Y) / ADC_NUM;
+		if(i == 0)
+			lBufMagArray[i] = (unsigned long)(Mag * 32768);
+     else
+			lBufMagArray[i] = (unsigned long)(Mag * 65536);
+		 
+		printf("%d      ",i+1);
+		printf("%f      ",(float)Fs/ADC_NUM*i);
+		printf("%d      ",lBufMagArray[i]);
+		printf("%f      ",X);
+		printf("%f      \r\n",Y);
+	}
+	for(i=0; i<ADC_NUM/2; i++)
+	{
+		Send_u32(lBufMagArray[i]);
+	}
 }
 
 /* USER CODE END 0 */
@@ -231,48 +274,6 @@ void SysTick_Handler(void)
 /******************************************************************************/
 
 /**
-  * @brief This function handles EXTI line0 interrupt.
-  */
-void EXTI0_IRQHandler(void)
-{
-  /* USER CODE BEGIN EXTI0_IRQn 0 */
-
-  /* USER CODE END EXTI0_IRQn 0 */
-  HAL_GPIO_EXTI_IRQHandler(WK_UP_Pin);
-  /* USER CODE BEGIN EXTI0_IRQn 1 */
-
-  /* USER CODE END EXTI0_IRQn 1 */
-}
-
-/**
-  * @brief This function handles EXTI line3 interrupt.
-  */
-void EXTI3_IRQHandler(void)
-{
-  /* USER CODE BEGIN EXTI3_IRQn 0 */
-
-  /* USER CODE END EXTI3_IRQn 0 */
-  HAL_GPIO_EXTI_IRQHandler(KEY0_Pin);
-  /* USER CODE BEGIN EXTI3_IRQn 1 */
-
-  /* USER CODE END EXTI3_IRQn 1 */
-}
-
-/**
-  * @brief This function handles EXTI line4 interrupt.
-  */
-void EXTI4_IRQHandler(void)
-{
-  /* USER CODE BEGIN EXTI4_IRQn 0 */
-
-  /* USER CODE END EXTI4_IRQn 0 */
-  HAL_GPIO_EXTI_IRQHandler(KEY1_Pin);
-  /* USER CODE BEGIN EXTI4_IRQn 1 */
-
-  /* USER CODE END EXTI4_IRQn 1 */
-}
-
-/**
   * @brief This function handles DMA1 channel1 global interrupt.
   */
 void DMA1_Channel1_IRQHandler(void)
@@ -310,22 +311,22 @@ void USART1_IRQHandler(void)
   /* USER CODE END USART1_IRQn 0 */
   HAL_UART_IRQHandler(&huart1);
   /* USER CODE BEGIN USART1_IRQn 1 */
-	tmp_flag =__HAL_UART_GET_FLAG(&UART_TYPE,UART_FLAG_IDLE); //»ñÈ¡IDLE±êÖ¾Î»
-	if((tmp_flag != RESET)){//Í¨¹ý±êÖ¾Î»ÅÐ¶Ï½ÓÊÕÊÇ·ñ½áÊø
+	tmp_flag =__HAL_UART_GET_FLAG(&UART_TYPE,UART_FLAG_IDLE); //ï¿½ï¿½È¡IDLEï¿½ï¿½Ö¾Î»
+	if((tmp_flag != RESET)){//Í¨ï¿½ï¿½ï¿½ï¿½Ö¾Î»ï¿½Ð¶Ï½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½
 		
-		rx_flag = 1; //ÖÃ1±íÃ÷½ÓÊÕ½áÊø
-		__HAL_UART_CLEAR_IDLEFLAG(&UART_TYPE);//Çå³ý±êÖ¾Î»
+		rx_flag = 1; //ï¿½ï¿½1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ½ï¿½ï¿½ï¿½
+		__HAL_UART_CLEAR_IDLEFLAG(&UART_TYPE);//ï¿½ï¿½ï¿½ï¿½ï¿½Ö¾Î»
 		HAL_UART_DMAStop(&UART_TYPE); 
 		
 		temp = __HAL_DMA_GET_COUNTER(&hdma_usart1_rx);
 		temp = huart1.hdmarx->Instance->CNDTR;
 
-		rx_len =BUFFSIZE-temp; //¼ÆËã³öÊý¾Ý³¤¶È
+		rx_len =BUFFSIZE-temp; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý³ï¿½ï¿½ï¿½
 		
-		printf("´«Êä³¤¶È:%d\r\r\n", rx_len);
-		HAL_UART_Transmit(&UART_TYPE, rx_buffer,rx_len, 10);//½«ÊÕµ½µÄÊý¾Ý·¢ËÍ³öÈ¥
+		printf("ï¿½ï¿½ï¿½ä³¤ï¿½ï¿½:%d\r\r\n", rx_len);
+		HAL_UART_Transmit(&UART_TYPE, rx_buffer,rx_len, 10); //ï¿½ï¿½ï¿½Õµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý·ï¿½ï¿½Í³ï¿½È¥
 
-		HAL_UART_Receive_DMA(&UART_TYPE,rx_buffer,BUFFSIZE);//¿ªÆôDMA½ÓÊÕ£¬·½±ãÏÂÒ»´Î½ÓÊÕÊý¾Ý
+		HAL_UART_Receive_DMA(&UART_TYPE,rx_buffer,BUFFSIZE); //ï¿½ï¿½ï¿½ï¿½DMAï¿½ï¿½ï¿½Õ£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½Î½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
   }
   /* USER CODE END USART1_IRQn 1 */
 }
@@ -378,12 +379,12 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 
 	if(GPIO_Pin & KEY0_Pin){
 			if(dacval<4000)dacval+=200;
-            HAL_DAC_SetValue(&hdac,DAC_CHANNEL_1,DAC_ALIGN_12B_R,dacval);//ÉèÖÃDACÖµ
+            HAL_DAC_SetValue(&hdac,DAC_CHANNEL_1,DAC_ALIGN_12B_R,dacval);//ï¿½ï¿½ï¿½ï¿½DACÖµ
 	}
 	if(GPIO_Pin & KEY1_Pin){
 			if(dacval>200)dacval-=200;
 			else dacval=0;
-            HAL_DAC_SetValue(&hdac,DAC_CHANNEL_1,DAC_ALIGN_12B_R,dacval);//ÉèÖÃDACÖµ
+            HAL_DAC_SetValue(&hdac,DAC_CHANNEL_1,DAC_ALIGN_12B_R,dacval);//ï¿½ï¿½ï¿½ï¿½DACÖµ
 	}
 	if(GPIO_Pin & GPIO_PIN_11)
     {
@@ -398,22 +399,71 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
 	if(htim == &htim6){	
 		time6++;
-		if(time6 == 500000)
+		if(time6%10 == 0) // ï¿½ï¿½ï¿½ï¿½×´Ì¬ï¿½ï¿½ï¿½ï¿½
+		{
+			Key_Scan(&Key0, KEY0_GPIO_Port, KEY0_Pin);
+			Key_Scan(&Key1, KEY1_GPIO_Port, KEY1_Pin);
+			Key_Scan2(&Key2, KEY2_GPIO_Port, KEY2_Pin);
+		}
+		if(Key0.keyFlag == 1)
+		{
+			Key0.keyFlag = 0;
+			if(dacval<1240)
+			{
+				dacval+=16;
+				HAL_DAC_SetValue(&hdac,DAC_CHANNEL_1,DAC_ALIGN_12B_R,dacval);//ï¿½ï¿½ï¿½ï¿½DACÖµ
+			}
+			ADC_DAC_show();	
+		}
+		if(Key1.keyFlag == 1)
+		{
+			Key1.keyFlag = 0;
+			if(dacval>16)
+			{
+				dacval-=16;
+				HAL_DAC_SetValue(&hdac,DAC_CHANNEL_1,DAC_ALIGN_12B_R,dacval);//ï¿½ï¿½ï¿½ï¿½DACÖµ				
+			}
+			else 
+			{
+				dacval=0;
+				HAL_DAC_SetValue(&hdac,DAC_CHANNEL_1,DAC_ALIGN_12B_R,dacval);//ï¿½ï¿½ï¿½ï¿½DACÖµ
+			}
+			ADC_DAC_show();	
+		}
+		if(Key2.keyFlag == 1)
+		{
+			Key2.keyFlag = 0;
+			HAL_TIM_Base_Start(&htim3);
+			HAL_ADC_Start_DMA(&hadc1, (uint32_t*)&ADC_Array, ADC_NUM);
+		}
+
+
+		if(time6 == 1000)  // 1sï¿½Ð¶ï¿½
 		{
 			time6 = 0;
 			time6_s++;
-			ADC_Vol += 0.1;
-//			ADC_Data = ADC_ConvertedValue;
-//			ADC_Vol =(float) ADC_Data/4096*(float)3.3; // ¶ÁÈ¡×ª»»µÄADÖµ
-//            Send_float(ADC_Vol);
-//			printf("\r\n The current AD value = %d \r\n", ADC_Data); 
-//			printf("\r\n The current AD val ue = %f V \r\n",ADC_Vol);     
-//			printf("This is 1s (%d)", time6_s);
-//			
-//			ADC_DAC_show();	
-            printf("hello world");
-            HAL_GPIO_TogglePin(LED0_GPIO_Port, LED0_Pin);
+			printf("This is 1s (%d)", time6_s);
+			
+			ADC_DAC_show();	
 		}
 	}
+}
+void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
+{
+	HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_RESET);
+	printf("ADC DMA complete!\r\n");
+	// ï¿½ï¿½ï¿½ï¿½FFTï¿½ï¿½ï¿½ï¿½
+	for(int i = 0;i<ADC_NUM;i++)
+	{
+		FFT_IN[i] = ADC_Array[i] << 16;
+//		Send_u32(ADC_Array[i]);  // ï¿½é¿´ï¿½ï¿½ï¿½ï¿½
+	}
+	// ï¿½ï¿½ï¿½ï¿½FFT
+	cr4_fft_256_stm32(FFT_OUT, FFT_IN, ADC_NUM);
+	
+	GetPowerMag();
+	HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_SET);
+
+	
 }
 /* USER CODE END 1 */
