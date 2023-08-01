@@ -78,7 +78,7 @@ void My_Sweep_out()
 	{
 		AD9854_SetSine(Fre ,815);
 		Fre += step_Fre;
-		if(Fre == end_Fre)
+		if(Fre >= end_Fre)
 		{
 			Fre = start_Fre;
 		}

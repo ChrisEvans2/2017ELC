@@ -16,9 +16,11 @@ extern uint8_t DDS_Sweep_state;
 void DDS_FreValueSet(lv_event_t * e)
 {
 	// Your code here
-	
 	DDS_Fre = lv_spinbox_get_value(ui_Fre_Value)*DDS_FreRange;
-	AD9854_SetSine(DDS_Fre, DDS_Vol);
+	if(!DDS_Sweep_state)
+	{
+		AD9854_SetSine(DDS_Fre, DDS_Vol);
+	}
 }
 
 void DDS_FreRangeSet(lv_event_t * e)
@@ -28,16 +30,26 @@ void DDS_FreRangeSet(lv_event_t * e)
 	{
 		DDS_FreRange = 100000;
 		DDS_Fre = lv_spinbox_get_value(ui_Fre_Value)*DDS_FreRange;
-		AD9854_SetSine(DDS_Fre, DDS_Vol);
-		printf("DDS_Fre:%d", DDS_Fre);
+
+		if(!DDS_Sweep_state)
+		{
+			AD9854_SetSine(DDS_Fre, DDS_Vol);
+			printf("DDS_Fre:%d", DDS_Fre);
+		}
 	}else if(lv_dropdown_get_selected(ui_DDS_Fre_Range) == 1){
 		DDS_FreRange = 100;
 		DDS_Fre = lv_spinbox_get_value(ui_Fre_Value)*DDS_FreRange;
-		AD9854_SetSine(DDS_Fre, DDS_Vol);
+		if(!DDS_Sweep_state)
+		{
+			AD9854_SetSine(DDS_Fre, DDS_Vol);
+		}
 	}else if(lv_dropdown_get_selected(ui_DDS_Fre_Range) == 2){
 		DDS_FreRange = 10;
 		DDS_Fre = lv_spinbox_get_value(ui_Fre_Value)/10;
-		AD9854_SetSine(DDS_Fre, DDS_Vol);
+		if(!DDS_Sweep_state)
+		{
+			AD9854_SetSine(DDS_Fre, DDS_Vol);
+		}
 	}
 }
 
@@ -45,7 +57,10 @@ void DDS_OutputSet(lv_event_t * e)
 {
 	// Your code here
 	DDS_Vol = lv_slider_get_value(ui_DDS_Vol_Slider);
-	AD9854_SetSine(DDS_Fre, DDS_Vol);
+	if(!DDS_Sweep_state)
+	{
+		AD9854_SetSine(DDS_Fre, DDS_Vol);
+	}
 }
 
 void DDS_Output(lv_event_t * e)
@@ -75,9 +90,10 @@ void DDS_Sweep(lv_event_t * e)
 	if(lv_obj_has_state(ui_Sweep_Switch, LV_STATE_CHECKED))
 	{
 		DDS_Sweep_state = 1;
+		delay_ms(5);
 	}else{
 		DDS_Sweep_state = 0;
-		delay_ms(3);
+		delay_ms(5);
 		AD9854_SetSine(DDS_Fre, DDS_Vol);
 	}
 }
