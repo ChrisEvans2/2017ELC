@@ -53,3 +53,4 @@ elite_test\usart.o: ../User/TOUCH/ft5206.h
 elite_test\usart.o: ../User/DataScope/DataScope.h
 elite_test\usart.o: ../User/AD9854/ad9854.h
 elite_test\usart.o: ../Core/Inc/gpio.h
+elite_test\usart.o: ..\User\AD9851\ad9851.h

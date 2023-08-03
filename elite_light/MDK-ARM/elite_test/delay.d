@@ -53,3 +53,4 @@ elite_test\delay.o: ../User/TOUCH/ft5206.h
 elite_test\delay.o: ../User/DataScope/DataScope.h
 elite_test\delay.o: ../User/AD9854/ad9854.h
 elite_test\delay.o: ../Core/Inc/gpio.h
+elite_test\delay.o: ..\User\AD9851\ad9851.h

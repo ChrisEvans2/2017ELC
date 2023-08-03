@@ -53,3 +53,4 @@ elite_test\key.o: ../User/TOUCH/ft5206.h
 elite_test\key.o: ../User/DataScope/DataScope.h
 elite_test\key.o: ../User/AD9854/ad9854.h
 elite_test\key.o: ../Core/Inc/gpio.h
+elite_test\key.o: ..\User\AD9851\ad9851.h

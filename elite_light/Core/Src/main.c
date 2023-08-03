@@ -49,8 +49,8 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-uint32_t F=1000000;  		// 设置正弦波的频率（1~100MHz）
-uint16_t A=810;			// 设置正弦波的幅度（0~4095）        816为100mV输出
+uint32_t F=10000000;  		// 设置正弦波的频率（1~100MHz）
+uint16_t A=4095;			// 设置正弦波的幅度（0~4095）        816为100mV输出
 
 key_t Key0, Key1, Key2;
 extern int dacval;
@@ -123,12 +123,16 @@ int main(void)
 	GPIO_AD9854_Configuration(); // AD9854IO口初始化
 	delay_ms(5);
 	AD9854_Init ();
-	AD9854_SetSine (F, A);
+//	AD9854_SetSine(F, A);
+	double Fre_test = 10000000.000;
+	AD9854_SetSine_double(Fre_test, 4095);
+	AD9851_Init ();
+	AD9851_Setfq(100000);
 
-//	LCD_Init();
+	LCD_Init();
 //	tp_dev.init();
 
-//	LCD_Clear(WHITE);	//清屏
+	LCD_Clear(WHITE);	//清屏
 //	TP_Adjust();  		//屏幕校准  
 	
   /* USER CODE END 2 */
@@ -139,7 +143,7 @@ int main(void)
 
 	while (1)
   {
-		tp_dev.scan(0);
+//		tp_dev.scan(0);
 		delay_ms(5);
     /* USER CODE END WHILE */
 

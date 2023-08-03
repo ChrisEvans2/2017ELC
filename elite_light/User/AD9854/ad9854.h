@@ -69,4 +69,5 @@ extern void AD9854_SetAM(uint16_t Shape);
 extern void AD9854_InitRFSK(void);					 
 extern void AD9854_SetRFSK(uint32_t Freq_Low,uint32_t Freq_High,uint32_t Freq_Up_Down,uint32_t FreRate);				
 extern void Sweep_out (void);
+
 #endif

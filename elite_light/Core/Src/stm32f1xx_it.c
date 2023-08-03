@@ -62,6 +62,9 @@ int32_t lBufMagArray[ADC_NUM] = {0};
 extern key_t Key0, Key1, Key2;
 extern uint16_t A;
 extern uint32_t F;
+
+static uint32_t DDS_Fre_set = 10000000;
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -75,24 +78,14 @@ void ADC_DAC_show()
 {
 	float temp_adc;
 	
-	adcx=HAL_DAC_GetValue(&hdac,DAC_CHANNEL_1);//读取前面设置DAC的值
-	LCD_ShowxNum(94,120,adcx,4,16,0);     	    //显示DAC寄存器值
-	temp_adc=(float)adcx*(3.3/4096);			    //得到DAC电压值
-	adcx=temp_adc;
-	LCD_ShowxNum(94,140,temp_adc,1,16,0);     	    //显示电压值整数部分
-	temp_adc-=adcx;
-	temp_adc*=1000;
-	LCD_ShowxNum(110,140,temp_adc,3,16,0X80); 	    //显示电压值的小数部分
-	adcx=HAL_ADC_GetValue(&hadc1);     //得到ADC转换值	  
-	temp_adc=(float)adcx*(3.3/4096);			    //得到ADC电压值
-	adcx=temp_adc;
-	LCD_ShowxNum(94,160,temp_adc,1,16,0);     	    //显示电压值整数部分
-	temp_adc-=adcx;
-	temp_adc*=1000;
-	LCD_ShowxNum(110,160,temp_adc,3,16,0X80); 	    //显示电压值的小数部分
+	LCD_ShowxNum(10,160,temp_adc,3,16,0X80); 	    //显示电压值的小数部分
 	LCD_ShowxNum(110,180,A,3,16,0X80); 	    //显示电压值的小数部分
 }
-
+void LCD_DDS_Show()
+{
+	LCD_ShowString(30,150,200,16,16,(unsigned char*)"DDS Fre:");	      
+	LCD_ShowxNum(94,150,DDS_Fre_set,8,16,0);     	    //显示DAC寄存器值
+}
 
 //void find_max(uint32_t *array, int array_size, uint16_t *max, uint16_t *second_max, uint16_t *max_index, uint16_t *second_max_index) {
 //	*max = array[1];
@@ -179,6 +172,8 @@ void GetPowerMag()
 	printf("max1:%d  max_index:%d  Fre:%f\r\nmax2:%d  max2_index:%d  Fre:%f\r\n", max, max_index, Div_Fre1, second_max, second_max_index, Div_Fre2);
 	
 	AD9854_SetSine((uint32_t)Div_Fre1, 4000);
+	AD9851_Setfq(Div_Fre2);
+	
 	HAL_GPIO_TogglePin(LED0_GPIO_Port, LED0_Pin);
 }
 
@@ -433,27 +428,35 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 		if(Key0.keyFlag == 1)
 		{
 			Key0.keyFlag = 0;
-			if(dacval<1240)
-			{
-				dacval+=16;
-				HAL_DAC_SetValue(&hdac,DAC_CHANNEL_1,DAC_ALIGN_12B_R,dacval);//设置DAC值
-			}
-			ADC_DAC_show();	
+			DDS_Fre_set += 10000;
+			AD9854_SetSine(DDS_Fre_set, A);
+			LCD_DDS_Show();
+			
+//			if(dacval<1240)
+//			{
+//				dacval+=16;
+//				HAL_DAC_SetValue(&hdac,DAC_CHANNEL_1,DAC_ALIGN_12B_R,dacval);//设置DAC值
+//			}
+//			ADC_DAC_show();	
 		}
 		if(Key1.keyFlag == 1)
 		{
 			Key1.keyFlag = 0;
-			if(dacval>16)
-			{
-				dacval-=16;
-				HAL_DAC_SetValue(&hdac,DAC_CHANNEL_1,DAC_ALIGN_12B_R,dacval);//设置DAC值				
-			}
-			else 
-			{
-				dacval=0;
-				HAL_DAC_SetValue(&hdac,DAC_CHANNEL_1,DAC_ALIGN_12B_R,dacval);//设置DAC值
-			}
-			ADC_DAC_show();	
+			DDS_Fre_set -= 10000;
+			AD9854_SetSine(DDS_Fre_set, A);
+			LCD_DDS_Show();
+			
+//			if(dacval>16)
+//			{
+//				dacval-=16;
+//				HAL_DAC_SetValue(&hdac,DAC_CHANNEL_1,DAC_ALIGN_12B_R,dacval);//设置DAC值				
+//			}
+//			else 
+//			{
+//				dacval=0;
+//				HAL_DAC_SetValue(&hdac,DAC_CHANNEL_1,DAC_ALIGN_12B_R,dacval);//设置DAC值
+//			}
+//			ADC_DAC_show();	
 		}
 		if(Key2.keyFlag == 1)
 		{
@@ -473,7 +476,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 			time6_s++;
 //			printf("This is 1s (%d)", time6_s);
 			
-			ADC_DAC_show();	
+			LCD_DDS_Show();	
 		}
 	}
 }
@@ -489,7 +492,6 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
 	}
 	// 计算FFT
 	cr4_fft_1024_stm32(FFT_OUT, FFT_IN, ADC_NUM);
-	
 	GetPowerMag();
 	HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_SET);
 

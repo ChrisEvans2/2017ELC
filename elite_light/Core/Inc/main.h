@@ -44,7 +44,7 @@ extern "C" {
 #include "touch.h"
 #include "DataScope.h"
 #include "ad9854.h" 
-
+#include "ad9851.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/

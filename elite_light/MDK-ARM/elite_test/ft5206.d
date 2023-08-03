@@ -51,6 +51,7 @@ elite_test\ft5206.o: ../User/TOUCH/touch.h
 elite_test\ft5206.o: ../User/DataScope/DataScope.h
 elite_test\ft5206.o: ../User/AD9854/ad9854.h
 elite_test\ft5206.o: ../Core/Inc/gpio.h
+elite_test\ft5206.o: ..\User\AD9851\ad9851.h
 elite_test\ft5206.o: ..\User\TOUCH\ott2001a.h
 elite_test\ft5206.o: ..\User\TOUCH\gt9147.h
 elite_test\ft5206.o: ..\User\TOUCH\ctiic.h

@@ -52,6 +52,7 @@ elite_test\stm32f1xx_it.o: ../User/TOUCH/ft5206.h
 elite_test\stm32f1xx_it.o: ../User/DataScope/DataScope.h
 elite_test\stm32f1xx_it.o: ../User/AD9854/ad9854.h
 elite_test\stm32f1xx_it.o: ../Core/Inc/gpio.h
+elite_test\stm32f1xx_it.o: ..\User\AD9851\ad9851.h
 elite_test\stm32f1xx_it.o: ../Core/Inc/stm32f1xx_it.h
 elite_test\stm32f1xx_it.o: ../Core/Inc/adc.h
 elite_test\stm32f1xx_it.o: ../Core/Inc/dac.h

@@ -43,6 +43,7 @@
 "elite_test\datascope.o"
 "elite_test\ad9854.o"
 "elite_test\key.o"
+"elite_test\ad9851.o"
 "elite_test\cr4_fft_256_stm32.o"
 "elite_test\cr4_fft_1024_stm32.o"
 "elite_test\basicmathfunctions.o"
