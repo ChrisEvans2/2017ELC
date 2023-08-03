@@ -31,6 +31,8 @@ lv_obj_t * ui_Fre_Value_Dec;
 lv_obj_t * ui_dec;
 void ui_event_Sweep_Switch(lv_event_t * e);
 lv_obj_t * ui_Sweep_Switch;
+void ui_event_Screen_Button(lv_event_t * e);
+lv_obj_t * ui_Screen_Button;
 lv_obj_t * ui_ADC;
 void ui_event_Measure_Button(lv_event_t * e);
 lv_obj_t * ui_Measure_Button;
@@ -40,6 +42,20 @@ lv_obj_t * ui_DAC;
 lv_obj_t * ui_DAC_Value_tag;
 void ui_event_DAC_Value_Set(lv_event_t * e);
 lv_obj_t * ui_DAC_Value_Set;
+
+// SCREEN: ui_Screen2
+void ui_Screen2_screen_init(void);
+lv_obj_t * ui_Screen2;
+void ui_event_Screen_Button1(lv_event_t * e);
+lv_obj_t * ui_Screen_Button1;
+void ui_event_Spinbox1(lv_event_t * e);
+lv_obj_t * ui_Spinbox1;
+void ui_event_Fre_Value_Add1(lv_event_t * e);
+lv_obj_t * ui_Fre_Value_Add1;
+lv_obj_t * ui_add1;
+void ui_event_Fre_Value_Dec1(lv_event_t * e);
+lv_obj_t * ui_Fre_Value_Dec1;
+lv_obj_t * ui_dec1;
 lv_obj_t * ui____initial_actions0;
 
 ///////////////////// TEST LVGL SETTINGS ////////////////////
@@ -106,6 +122,14 @@ void ui_event_Sweep_Switch(lv_event_t * e)
         DDS_Sweep(e);
     }
 }
+void ui_event_Screen_Button(lv_event_t * e)
+{
+    lv_event_code_t event_code = lv_event_get_code(e);
+    lv_obj_t * target = lv_event_get_target(e);
+    if(event_code == LV_EVENT_CLICKED) {
+        _ui_screen_change(&ui_Screen2, LV_SCR_LOAD_ANIM_MOVE_LEFT, 500, 0, &ui_Screen2_screen_init);
+    }
+}
 void ui_event_Measure_Button(lv_event_t * e)
 {
     lv_event_code_t event_code = lv_event_get_code(e);
@@ -123,6 +147,38 @@ void ui_event_DAC_Value_Set(lv_event_t * e)
         _ui_slider_set_text_value(ui_DAC_Value_tag, target, "DAC_Vol:", "");
     }
 }
+void ui_event_Screen_Button1(lv_event_t * e)
+{
+    lv_event_code_t event_code = lv_event_get_code(e);
+    lv_obj_t * target = lv_event_get_target(e);
+    if(event_code == LV_EVENT_CLICKED) {
+        _ui_screen_change(&ui_Screen1, LV_SCR_LOAD_ANIM_MOVE_LEFT, 500, 0, &ui_Screen1_screen_init);
+    }
+}
+void ui_event_Spinbox1(lv_event_t * e)
+{
+    lv_event_code_t event_code = lv_event_get_code(e);
+    lv_obj_t * target = lv_event_get_target(e);
+    if(event_code == LV_EVENT_VALUE_CHANGED) {
+        DDS_calibrate(e);
+    }
+}
+void ui_event_Fre_Value_Add1(lv_event_t * e)
+{
+    lv_event_code_t event_code = lv_event_get_code(e);
+    lv_obj_t * target = lv_event_get_target(e);
+    if(event_code == LV_EVENT_CLICKED) {
+        _ui_spinbox_step(ui_Spinbox1, 1);
+    }
+}
+void ui_event_Fre_Value_Dec1(lv_event_t * e)
+{
+    lv_event_code_t event_code = lv_event_get_code(e);
+    lv_obj_t * target = lv_event_get_target(e);
+    if(event_code == LV_EVENT_CLICKED) {
+        _ui_spinbox_step(ui_Spinbox1, -1);
+    }
+}
 
 ///////////////////// SCREENS ////////////////////
 
@@ -133,6 +189,7 @@ void ui_init(void)
                                                false, LV_FONT_DEFAULT);
     lv_disp_set_theme(dispp, theme);
     ui_Screen1_screen_init();
+    ui_Screen2_screen_init();
     ui____initial_actions0 = lv_obj_create(NULL);
     lv_disp_load_scr(ui_Screen1);
 }

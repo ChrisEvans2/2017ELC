@@ -111,6 +111,15 @@ void ui_Screen1_screen_init(void)
     lv_obj_set_y(ui_Sweep_Switch, 80);
     lv_obj_set_align(ui_Sweep_Switch, LV_ALIGN_CENTER);
 
+    ui_Screen_Button = lv_btn_create(ui_DDS);
+    lv_obj_set_width(ui_Screen_Button, 59);
+    lv_obj_set_height(ui_Screen_Button, 33);
+    lv_obj_set_x(ui_Screen_Button, -98);
+    lv_obj_set_y(ui_Screen_Button, -99);
+    lv_obj_set_align(ui_Screen_Button, LV_ALIGN_CENTER);
+    lv_obj_add_flag(ui_Screen_Button, LV_OBJ_FLAG_SCROLL_ON_FOCUS);     /// Flags
+    lv_obj_clear_flag(ui_Screen_Button, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
+
     ui_ADC = lv_tabview_add_tab(ui_select, "ADC");
     lv_obj_clear_flag(ui_ADC, LV_OBJ_FLAG_CLICKABLE | LV_OBJ_FLAG_PRESS_LOCK | LV_OBJ_FLAG_CLICK_FOCUSABLE |
                       LV_OBJ_FLAG_GESTURE_BUBBLE | LV_OBJ_FLAG_SNAPPABLE | LV_OBJ_FLAG_SCROLLABLE | LV_OBJ_FLAG_SCROLL_ELASTIC |
@@ -177,6 +186,7 @@ void ui_Screen1_screen_init(void)
     lv_obj_add_event_cb(ui_Fre_Value_Add, ui_event_Fre_Value_Add, LV_EVENT_ALL, NULL);
     lv_obj_add_event_cb(ui_Fre_Value_Dec, ui_event_Fre_Value_Dec, LV_EVENT_ALL, NULL);
     lv_obj_add_event_cb(ui_Sweep_Switch, ui_event_Sweep_Switch, LV_EVENT_ALL, NULL);
+    lv_obj_add_event_cb(ui_Screen_Button, ui_event_Screen_Button, LV_EVENT_ALL, NULL);
     lv_obj_add_event_cb(ui_Measure_Button, ui_event_Measure_Button, LV_EVENT_ALL, NULL);
     lv_obj_add_event_cb(ui_DAC_Value_Set, ui_event_DAC_Value_Set, LV_EVENT_ALL, NULL);
 

@@ -2124,6 +2124,11 @@
               <FileType>1</FileType>
               <FilePath>..\User\Middlewares\LVGL\GUI_APP\ui_helpers.c</FilePath>
             </File>
+            <File>
+              <FileName>ui_Screen2.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\Middlewares\LVGL\GUI_APP\screens\ui_Screen2.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

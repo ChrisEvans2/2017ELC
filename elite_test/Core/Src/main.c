@@ -133,8 +133,10 @@ int main(void)
 	lv_slider_set_value(ui_DDS_Vol_Slider, DDS_VOL, LV_ANIM_OFF);
 	lv_label_set_text(ui_DAC_Value_tag, "DAC_Vol:300");
 	lv_slider_set_value(ui_DAC_Value_Set, 300, LV_ANIM_OFF);
-	AD9854_SetSine (DDS_FRE, DDS_VOL);
-	
+	lv_spinbox_set_value(ui_Spinbox1, 263130);
+
+	AD9854_SetSine_double((double)(DDS_FRE+26.313), DDS_VOL);
+
   /* USER CODE END 2 */
 
   /* Infinite loop */

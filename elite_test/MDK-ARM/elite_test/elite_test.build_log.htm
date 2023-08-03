@@ -22,12 +22,38 @@ Dialog DLL:      TCM.DLL V1.36.2.0
  
 <h2>Project:</h2>
 D:\GitHub\2017ELC\elite_test\MDK-ARM\elite_test.uvprojx
-Project File Date:  08/01/2023
+Project File Date:  08/03/2023
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'D:\study\keil MDK\Core\ARM\ARMCC\Bin'
 Build target 'elite_test'
-"elite_test\elite_test.axf" - 0 Error(s), 0 Warning(s).
+compiling ui_comp_hook.c...
+compiling ui_Screen1.c...
+..\User\Middlewares\LVGL\GUI_APP\screens\ui_Screen1.c(42): warning:  #223-D: function "round" declared implicitly
+      lv_spinbox_set_step(ui_Fre_Value, round(pow(10, 1 - 1)));
+..\User\Middlewares\LVGL\GUI_APP\screens\ui_Screen1.c(42): warning:  #223-D: function "pow" declared implicitly
+      lv_spinbox_set_step(ui_Fre_Value, round(pow(10, 1 - 1)));
+..\User\Middlewares\LVGL\GUI_APP\screens\ui_Screen1.c: 2 warnings, 0 errors
+compiling ui_Screen2.c...
+..\User\Middlewares\LVGL\GUI_APP\screens\ui_Screen2.c(30): warning:  #223-D: function "round" declared implicitly
+      lv_spinbox_set_step(ui_Spinbox1, round(pow(10, 1 - 1)));
+..\User\Middlewares\LVGL\GUI_APP\screens\ui_Screen2.c(30): warning:  #223-D: function "pow" declared implicitly
+      lv_spinbox_set_step(ui_Spinbox1, round(pow(10, 1 - 1)));
+..\User\Middlewares\LVGL\GUI_APP\screens\ui_Screen2.c: 2 warnings, 0 errors
+compiling ui.c...
+compiling ui_helpers.c...
+..\User\Middlewares\LVGL\GUI_APP\ui_helpers.c(74): warning:  #188-D: enumerated type mixed with another type
+      lv_bar_set_value(target, old + val, anm);
+..\User\Middlewares\LVGL\GUI_APP\ui_helpers.c(80): warning:  #188-D: enumerated type mixed with another type
+      lv_slider_set_value(target, old + val, anm);
+..\User\Middlewares\LVGL\GUI_APP\ui_helpers.c: 2 warnings, 0 errors
+compiling ui_events.c...
+compiling main.c...
+compiling stm32f1xx_it.c...
+linking...
+Program Size: Code=232118 RO-data=25050 RW-data=840 ZI-data=62776  
+FromELF: creating hex file...
+"elite_test\elite_test.axf" - 0 Error(s), 6 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -50,7 +76,7 @@ Package Vendor: Keil
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:CORE:5.5.0
-Build Time Elapsed:  00:00:02
+Build Time Elapsed:  00:00:05
 </pre>
 </body>
 </html>

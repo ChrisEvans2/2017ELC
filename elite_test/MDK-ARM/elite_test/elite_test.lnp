@@ -212,6 +212,7 @@
 "elite_test\ui.o"
 "elite_test\ui_events.o"
 "elite_test\ui_helpers.o"
+"elite_test\ui_screen2.o"
 --library_type=microlib --strict --scatter "elite_test\elite_test.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

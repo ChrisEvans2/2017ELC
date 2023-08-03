@@ -37,6 +37,8 @@ extern lv_obj_t * ui_Fre_Value_Dec;
 extern lv_obj_t * ui_dec;
 void ui_event_Sweep_Switch(lv_event_t * e);
 extern lv_obj_t * ui_Sweep_Switch;
+void ui_event_Screen_Button(lv_event_t * e);
+extern lv_obj_t * ui_Screen_Button;
 extern lv_obj_t * ui_ADC;
 void ui_event_Measure_Button(lv_event_t * e);
 extern lv_obj_t * ui_Measure_Button;
@@ -46,6 +48,19 @@ extern lv_obj_t * ui_DAC;
 extern lv_obj_t * ui_DAC_Value_tag;
 void ui_event_DAC_Value_Set(lv_event_t * e);
 extern lv_obj_t * ui_DAC_Value_Set;
+// SCREEN: ui_Screen2
+void ui_Screen2_screen_init(void);
+extern lv_obj_t * ui_Screen2;
+void ui_event_Screen_Button1(lv_event_t * e);
+extern lv_obj_t * ui_Screen_Button1;
+void ui_event_Spinbox1(lv_event_t * e);
+extern lv_obj_t * ui_Spinbox1;
+void ui_event_Fre_Value_Add1(lv_event_t * e);
+extern lv_obj_t * ui_Fre_Value_Add1;
+extern lv_obj_t * ui_add1;
+void ui_event_Fre_Value_Dec1(lv_event_t * e);
+extern lv_obj_t * ui_Fre_Value_Dec1;
+extern lv_obj_t * ui_dec1;
 extern lv_obj_t * ui____initial_actions0;
 
 void ui_init(void);

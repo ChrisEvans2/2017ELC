@@ -260,24 +260,24 @@ void Sweep_out (void)
 //注意：   该函数与上面函数的区别为该函数的入口参数为double，可使信号的频率更精确
 //         谷雨建议在100HZ以下用本函数，在高于100HZ的情况下用函数void Freq_convert(long Freq)
 //====================================================================================
-//void Freq_double_convert(double Freq)   
-//{
-//	uint32_t Low32;
-//	uint16_t High16;
-//  double Temp=Freq_mult_doulle;   	            //23ca99为2的48次方除以120M
-//	Freq*=(double)(Temp);
-////	1 0000 0000 0000 0000 0000 0000 0000 0000 = 4294967295
-//	High16 = (int)(Freq/4294967295);                  //2^32 = 4294967295
-//	Freq -= (double)High16*4294967295;
-//	Low32 = (uint32_t)Freq;
+void Freq_double_convert(double Freq)   
+{
+	uint32_t Low32;
+	uint16_t High16;
+  double Temp=Freq_mult_doulle;   	            //23ca99为2的48次方除以120M
+	Freq*=(double)(Temp);
+//	1 0000 0000 0000 0000 0000 0000 0000 0000 = 4294967295
+	High16 = (int)(Freq/4294967295);                  //2^32 = 4294967295
+	Freq -= (double)High16*4294967295;
+	Low32 = (uint32_t)Freq;
 
-//	FreqWord[0]=Low32;	     
-//	FreqWord[1]=Low32>>8;
-//	FreqWord[2]=Low32>>16;
-//	FreqWord[3]=Low32>>24;
-//	FreqWord[4]=High16;
-//	FreqWord[5]=High16>>8;			
-//} 
+	FreqWord[0]=Low32;	     
+	FreqWord[1]=Low32>>8;
+	FreqWord[2]=Low32>>16;
+	FreqWord[3]=Low32>>24;
+	FreqWord[4]=High16;
+	FreqWord[5]=High16>>8;			
+} 
 
 //====================================================================================
 //函数名称:void AD9854_SetSine_double(double Freq,uint Shape)
@@ -286,32 +286,32 @@ void Sweep_out (void)
 //         Shape  幅度设置. 为12 Bit,取值范围为(0~4095) 
 //出口参数:无
 //====================================================================================
-//void AD9854_SetSine_double(double Freq,uint16_t Shape)
-//{
-//	uint8_t count=0;
-//	uint8_t i=0;
+void AD9854_SetSine_double(double Freq,uint16_t Shape)
+{
+	uint8_t count=0;
+	uint8_t i=0;
 
-//	Freq_double_convert(Freq);		           //频率转换
-//	 
-//	for(count=6;count>0;)	                    //写入6字节的频率控制字  
-//  {
-//    if(i==0)
-//			AD9854_WR_Byte(FREQ1);
-//		AD9854_WR_Byte(FreqWord[--count]);
-//		i++;
-//  }
-//	
-//	AD9854_WR_Byte(SHAPEI);						  //设置I通道幅度
-//	AD9854_WR_Byte(Shape>>8);
-//	AD9854_WR_Byte((uint8_t)(Shape&0xff));
-//	
-//	AD9854_WR_Byte(SHAPEQ);							//设置Q通道幅度
-//	AD9854_WR_Byte(Shape>>8);
-//	AD9854_WR_Byte((uint8_t)(Shape&0xff));
+	Freq_double_convert(Freq);		           //频率转换
+	 
+	for(count=6;count>0;)	                    //写入6字节的频率控制字  
+  {
+    if(i==0)
+			AD9854_WR_Byte(FREQ1);
+		AD9854_WR_Byte(FreqWord[--count]);
+		i++;
+  }
+	
+	AD9854_WR_Byte(SHAPEI);						  //设置I通道幅度
+	AD9854_WR_Byte(Shape>>8);
+	AD9854_WR_Byte((uint8_t)(Shape&0xff));
+	
+	AD9854_WR_Byte(SHAPEQ);							//设置Q通道幅度
+	AD9854_WR_Byte(Shape>>8);
+	AD9854_WR_Byte((uint8_t)(Shape&0xff));
 
-//	AD9854_UDCLK_Set;                    //更新AD9854输出
-//  AD9854_UDCLK_Clr;
-//}
+	AD9854_UDCLK_Set;                    //更新AD9854输出
+  AD9854_UDCLK_Clr;
+}
 
 //====================================================================================
 //函数名称:void AD9854_InitFSK(void)

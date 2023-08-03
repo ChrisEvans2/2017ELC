@@ -16,6 +16,7 @@ void DDS_OutputSet(lv_event_t * e);
 void DDS_Sweep(lv_event_t * e);
 void measure_FFT(lv_event_t * e);
 void DAC_OutputSet(lv_event_t * e);
+void DDS_calibrate(lv_event_t * e);
 
 #ifdef __cplusplus
 } /*extern "C"*/
