@@ -125,17 +125,17 @@ int main(void)
 	AD9854_Init ();
 	AD9854_SetSine (F, A);
 
-	LCD_Init();
-	tp_dev.init();
+//	LCD_Init();
+//	tp_dev.init();
 
-	LCD_Clear(WHITE);	//清屏
-	TP_Adjust();  		//屏幕校准  
+//	LCD_Clear(WHITE);	//清屏
+//	TP_Adjust();  		//屏幕校准  
 	
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-	printf("初始化完成");
+//	printf("初始化完成");
 
 	while (1)
   {

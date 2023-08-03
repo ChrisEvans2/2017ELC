@@ -93,6 +93,48 @@ void ADC_DAC_show()
 	LCD_ShowxNum(110,180,A,3,16,0X80); 	    //显示电压值的小数部分
 }
 
+
+//void find_max(uint32_t *array, int array_size, uint16_t *max, uint16_t *second_max, uint16_t *max_index, uint16_t *second_max_index) {
+//	*max = array[1];
+//	*second_max = array[2];
+//	*max_index = 1;
+//	*second_max_index = 2;
+//	for (int i = 2; i < array_size; i++) {
+//		if (array[i] > *max) {
+//			*second_max = *max;
+//			*second_max_index = *max_index;
+//			*max = array[i];
+//			*max_index = i;
+//		} else if (array[i] > *second_max) {
+//					*second_max = array[i];
+//					*second_max_index = i;
+//		}
+//	}
+//}
+void find_max(uint32_t *array, int array_size, uint16_t *max, uint16_t *second_max, uint16_t *max_index, uint16_t *second_max_index) {
+	*max = 0;
+	*max_index = 0;
+	*second_max = 0;
+	*second_max_index = 0;
+	for (int i = 1; i < array_size; i++) {
+//		printf("array[%d]: %d\r\n", i, array[i]);
+		if (array[i] > *max) {
+			*max = array[i];
+			*max_index = i;
+		}
+	}
+	for(int i = *max_index-10; i < *max_index+10; i++)
+	{
+		if(i>=0&&i<=array_size-1) {array[i] = 0;}
+	}
+	for(int i = 1; i<array_size; i++)
+	{
+		if (array[i] > *second_max) {
+			*second_max = array[i];
+			*second_max_index = i;
+		}
+	}
+}
 void GetPowerMag()
 {
 	signed short lX,lY;
@@ -113,14 +155,31 @@ void GetPowerMag()
 		 
 		printf("%d      ",i+1);
 		printf("%f      ",(float)Fs/ADC_NUM*i);
-		printf("%d      ",lBufMagArray[i]);
-		printf("%f      ",X);
-		printf("%f      \r\n",Y);
+		printf("%d      \r\n",lBufMagArray[i]);
+//		printf("%f      ",X);
+//		printf("%f      \r\n",Y);
 	}
 	for(i=0; i<ADC_NUM/2; i++)
 	{
 		Send_u32(lBufMagArray[i]);
 	}
+	uint16_t max, max_index;
+	uint16_t second_max, second_max_index;
+	float Div_Fre1 = 0, Div_Fre2 = 0, Div_Fre_temp;
+	find_max((uint32_t*)lBufMagArray, ADC_NUM/2, &max, &second_max, &max_index, &second_max_index);
+	Div_Fre1 = (float)Fs/ADC_NUM*max_index;
+	Div_Fre2 = (float)Fs/ADC_NUM*second_max_index;
+	if(Div_Fre1 < Div_Fre2)
+	{
+		Div_Fre_temp = Div_Fre1;
+		Div_Fre1 = Div_Fre2;
+		Div_Fre2 = Div_Fre_temp;
+	}
+	printf("\r\n                       \r\n");
+	printf("max1:%d  max_index:%d  Fre:%f\r\nmax2:%d  max2_index:%d  Fre:%f\r\n", max, max_index, Div_Fre1, second_max, second_max_index, Div_Fre2);
+	
+	AD9854_SetSine((uint32_t)Div_Fre1, 4000);
+	HAL_GPIO_TogglePin(LED0_GPIO_Port, LED0_Pin);
 }
 
 /* USER CODE END 0 */
@@ -399,12 +458,12 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 		if(Key2.keyFlag == 1)
 		{
 			Key2.keyFlag = 0;
-//		HAL_TIM_Base_Start(&htim3);
-//			HAL_ADC_Start_DMA(&hadc1, (uint32_t*)&ADC_Array, ADC_NUM);
-			A += 10;
-			printf("A:%d", A);
-			AD9854_SetSine (F, A);
-			ADC_DAC_show();	
+			HAL_ADC_Start_DMA(&hadc1, (uint32_t*)&ADC_Array, ADC_NUM);
+			
+//			A += 10;
+//			printf("A:%d", A);
+//			AD9854_SetSine (F, A);
+//			ADC_DAC_show();	
 		}
 
 
@@ -412,7 +471,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 		{
 			time6 = 0;
 			time6_s++;
-			printf("This is 1s (%d)", time6_s);
+//			printf("This is 1s (%d)", time6_s);
 			
 			ADC_DAC_show();	
 		}
@@ -421,7 +480,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
 {
 	HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_RESET);
-	printf("ADC DMA complete!\r\n");
+//	printf("ADC DMA complete!\r\n");
 	// 生成FFT数据
 	for(int i = 0;i<ADC_NUM;i++)
 	{
@@ -429,7 +488,7 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
 //		Send_u32(ADC_Array[i]);  // 查看波形
 	}
 	// 计算FFT
-	cr4_fft_256_stm32(FFT_OUT, FFT_IN, ADC_NUM);
+	cr4_fft_1024_stm32(FFT_OUT, FFT_IN, ADC_NUM);
 	
 	GetPowerMag();
 	HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_SET);
