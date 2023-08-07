@@ -123,11 +123,19 @@ int main(void)
 	GPIO_AD9854_Configuration(); // AD9854IO¿Ú³õÊ¼»¯
 	delay_ms(5);
 	AD9854_Init ();
+	AD9851_Init(1, 1);
+	AD9851_Setfq(10000);
 //	AD9854_SetSine(F, A);
 	double Fre_test = 10000000.000;
 	AD9854_SetSine_double(Fre_test, 4095);
-	AD9851_Init ();
-	AD9851_Setfq(100000);
+//	AD9851_Init ();
+//	delay_ms(5);
+//	AD9851_Setfq(7000000);
+	
+//	delay_ms(10);
+//	AD9954_Init();
+//	AD9954_SETFRE(10000);
+//	Write_ASF(0x300);
 
 	LCD_Init();
 //	tp_dev.init();

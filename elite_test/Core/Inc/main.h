@@ -44,6 +44,8 @@ extern "C" {
 #include "touch.h"
 #include "DataScope.h"
 #include "ad9854.h" 
+#include "ad9850.h"
+#include "ad9851.h"
 #include "lvgl.h"
 #include "lv_port_disp.h"
 #include "lv_port_indev.h"

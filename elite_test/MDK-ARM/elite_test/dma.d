@@ -38,8 +38,8 @@ elite_test\dma.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h
 elite_test\dma.o: D:\study\keil MDK\Core\ARM\ARMCC\Bin\..\include\stdio.h
 elite_test\dma.o: D:\study\keil MDK\Core\ARM\ARMCC\Bin\..\include\string.h
 elite_test\dma.o: ../User/delay/delay.h
-elite_test\dma.o: ../Core/Inc/main.h
 elite_test\dma.o: ../Core/Inc/usart.h
+elite_test\dma.o: ../Core/Inc/main.h
 elite_test\dma.o: ../User/sys.h
 elite_test\dma.o: ../User/KEY/key.h
 elite_test\dma.o: ../User/LCD/lcd.h
@@ -50,9 +50,11 @@ elite_test\dma.o: ../User/TOUCH/touch.h
 elite_test\dma.o: ../User/TOUCH/ott2001a.h
 elite_test\dma.o: ../User/TOUCH/gt9147.h
 elite_test\dma.o: ../User/TOUCH/ft5206.h
-elite_test\dma.o: ..\User\DataScope\DataScope.h
-elite_test\dma.o: ..\User\AD9854\ad9854.h
+elite_test\dma.o: ../User/DataScope/DataScope.h
+elite_test\dma.o: ../User/AD9854/ad9854.h
 elite_test\dma.o: ../Core/Inc/gpio.h
+elite_test\dma.o: ../User/AD9850/ad9850.h
+elite_test\dma.o: ../User/AD9851/ad9851.h
 elite_test\dma.o: ../User/Middlewares/LVGL/GUI/lvgl/lvgl.h
 elite_test\dma.o: ../User/Middlewares/LVGL/GUI/lvgl/src/misc/lv_log.h
 elite_test\dma.o: ../User/Middlewares/LVGL/GUI/lvgl/src/misc/../lv_conf_internal.h

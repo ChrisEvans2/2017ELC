@@ -165,8 +165,8 @@ elite_test\lv_port_disp.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim
 elite_test\lv_port_disp.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h
 elite_test\lv_port_disp.o: D:\study\keil MDK\Core\ARM\ARMCC\Bin\..\include\stdio.h
 elite_test\lv_port_disp.o: ../User/delay/delay.h
-elite_test\lv_port_disp.o: ../Core/Inc/main.h
 elite_test\lv_port_disp.o: ../Core/Inc/usart.h
+elite_test\lv_port_disp.o: ../Core/Inc/main.h
 elite_test\lv_port_disp.o: ../User/sys.h
 elite_test\lv_port_disp.o: ../User/KEY/key.h
 elite_test\lv_port_disp.o: ../User/LCD/lcd.h
@@ -176,9 +176,11 @@ elite_test\lv_port_disp.o: ../User/TOUCH/touch.h
 elite_test\lv_port_disp.o: ../User/TOUCH/ott2001a.h
 elite_test\lv_port_disp.o: ../User/TOUCH/gt9147.h
 elite_test\lv_port_disp.o: ../User/TOUCH/ft5206.h
-elite_test\lv_port_disp.o: ..\User\DataScope\DataScope.h
-elite_test\lv_port_disp.o: ..\User\AD9854\ad9854.h
+elite_test\lv_port_disp.o: ../User/DataScope/DataScope.h
+elite_test\lv_port_disp.o: ../User/AD9854/ad9854.h
 elite_test\lv_port_disp.o: ../Core/Inc/gpio.h
+elite_test\lv_port_disp.o: ../User/AD9850/ad9850.h
+elite_test\lv_port_disp.o: ../User/AD9851/ad9851.h
 elite_test\lv_port_disp.o: ../User/Middlewares/LVGL/GUI/lvgl/examples/porting/lv_port_disp.h
 elite_test\lv_port_disp.o: ../User/Middlewares/LVGL/GUI/lvgl/examples/porting/lv_port_indev.h
 elite_test\lv_port_disp.o: D:\study\keil MDK\Core\ARM\ARMCC\Bin\..\include\stdlib.h

@@ -9,7 +9,7 @@
 #include "dac.h"
 #include "ad9854.h"
 static uint32_t DDS_Fre = 1000;
-static double DDS_Fre_1M = 1000026.313;
+double DDS_Fre_1M = 1000026.313;
 double DDS_Fre_test;
 static uint16_t DDS_Vol = 810;
 static uint32_t DDS_FreRange = 100000;
@@ -107,7 +107,7 @@ void DDS_calibrate(lv_event_t * e)
 {
 	// Your code here
 	DDS_Fre_1M = 1000000.0 + (double)(lv_spinbox_get_value(ui_Spinbox1)/10000.0);
-	DDS_Fre_test = DDS_Fre*DDS_Fre_1M/1000000;
+	DDS_Fre_test = DDS_Fre*DDS_Fre_1M/1000000.0;
 	if(!DDS_Sweep_state)
 	{
 		AD9854_SetSine_double(DDS_Fre_test, DDS_Vol);

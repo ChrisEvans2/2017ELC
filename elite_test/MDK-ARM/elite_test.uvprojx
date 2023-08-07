@@ -338,7 +338,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32F103xE</Define>
               <Undefine></Undefine>
-              <IncludePath>../Core/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F1xx/Include;../Drivers/CMSIS/Include;../User;../User/delay;../User/LCD;../User/TOUCH;../User/IIC;../User/24CXX;../User/KEY;..\User\FFT;..\User\AD9854;..\User\DataScope;../User/Middlewares/LVGL/GUI;../User/Middlewares/LVGL/GUI/lvgl;../User/Middlewares/LVGL/GUI/lvgl/src;../User/Middlewares/LVGL/GUI/lvgl/examples/porting;..\User\Middlewares\LVGL\GUI_APP</IncludePath>
+              <IncludePath>../Core/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F1xx/Include;../Drivers/CMSIS/Include;../User;../User/delay;../User/LCD;../User/TOUCH;../User/IIC;../User/24CXX;../User/KEY;../User/FFT;../User/AD9854;../User/DataScope;../User/Middlewares/LVGL/GUI;../User/Middlewares/LVGL/GUI/lvgl;../User/Middlewares/LVGL/GUI/lvgl/src;../User/Middlewares/LVGL/GUI/lvgl/examples/porting;../User/Middlewares/LVGL/GUI_APP;../User/AD9851;../User/AD9850</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -1243,6 +1243,16 @@
               <FileName>cr4_fft_1024_stm32.s</FileName>
               <FileType>2</FileType>
               <FilePath>..\User\FFT\cr4_fft_1024_stm32.s</FilePath>
+            </File>
+            <File>
+              <FileName>AD9850.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\AD9850\AD9850.c</FilePath>
+            </File>
+            <File>
+              <FileName>AD9851.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\AD9851\AD9851.c</FilePath>
             </File>
           </Files>
         </Group>

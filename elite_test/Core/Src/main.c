@@ -121,11 +121,18 @@ int main(void)
 	GPIO_AD9854_Configuration(); // AD9854IO¿Ú³õÊ¼»¯
 	delay_ms(5);
 	AD9854_Init ();
+	delay_ms(5);
 	
 	lv_init();
 	lv_port_disp_init();
 	lv_port_indev_init();
 	
+	AD9851_Init();
+	delay_ms(5);
+
+	AD9850_Init();
+	delay_ms(5);
+`
 	ui_init();
 	lv_chart_set_update_mode(ui_Wave_Show, LV_CHART_UPDATE_MODE_CIRCULAR);
 	lv_spinbox_set_value(ui_Fre_Value, DDS_FRE/100000);
@@ -173,7 +180,7 @@ void SystemClock_Config(void)
   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
-  RCC_OscInitStruct.PLL.PLLMUL = RCC_PLL_MUL9;
+  RCC_OscInitStruct.PLL.PLLMUL = RCC_PLL_MUL8;
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
   {
     Error_Handler();
@@ -193,7 +200,7 @@ void SystemClock_Config(void)
     Error_Handler();
   }
   PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_ADC;
-  PeriphClkInit.AdcClockSelection = RCC_ADCPCLK2_DIV6;
+  PeriphClkInit.AdcClockSelection = RCC_ADCPCLK2_DIV8;
   if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
   {
     Error_Handler();

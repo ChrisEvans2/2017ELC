@@ -60,6 +60,12 @@ int32_t FFT_IN[ADC_NUM],FFT_OUT[ADC_NUM];
 int32_t lBufMagArray[ADC_NUM] = {0};
 uint8_t DDS_Sweep_state = 0;
 
+extern double DDS_Fre_1M;
+extern double DDS_Fre_test;
+
+uint16_t max, max_index;
+uint16_t second_max, second_max_index;
+double Div_Fre1 = 0, Div_Fre2 = 0, Div_Fre_temp;
 
 /* USER CODE END PV */
 
@@ -99,6 +105,30 @@ void ADC_DAC_show()
 	temp_adc=(float)adcx*(3.3/4096);			    //得到ADC电压值
 	printf("ADC_out: %f\r\n", temp_adc);
 }
+void find_max(uint32_t *array, int array_size, uint16_t *max, uint16_t *second_max, uint16_t *max_index, uint16_t *second_max_index) {
+	*max = 0;
+	*max_index = 0;
+	*second_max = 0;
+	*second_max_index = 0;
+	for (int i = 1; i < array_size; i++) {
+//		printf("array[%d]: %d\r\n", i, array[i]);
+		if (array[i] > *max) {
+			*max = array[i];
+			*max_index = i;
+		}
+	}
+	for(int i = *max_index-10; i < *max_index+10; i++)
+	{
+		if(i>=0&&i<=array_size-1) {array[i] = 0;}
+	}
+	for(int i = 1; i<array_size; i++)
+	{
+		if (array[i] > *second_max) {
+			*second_max = array[i];
+			*second_max_index = i;
+		}
+	}
+}
 
 void GetPowerMag()
 {
@@ -128,6 +158,37 @@ void GetPowerMag()
 	{
 		Send_u32(lBufMagArray[i]);
 	}
+}
+float find_near_fre(float fre)
+{
+	int a = fre / 10000; 	// 整除10KHz
+	float b = fre - a * 10000; 	// 取余
+	if (b > 5000) {
+		return (a + 1) * 10000;
+	}
+	return a * 10000;
+
+}
+void DDS_Output_Set()
+{
+	find_max((uint32_t*)lBufMagArray, ADC_NUM/2, &max, &second_max, &max_index, &second_max_index);
+	Div_Fre1 = (int)Fs/ADC_NUM*max_index;
+	Div_Fre2 = (int)Fs/ADC_NUM*second_max_index;
+	if(Div_Fre1 < Div_Fre2)
+	{
+		Div_Fre_temp = Div_Fre1;
+		Div_Fre1 = Div_Fre2;
+		Div_Fre2 = Div_Fre_temp;
+	}
+	printf("\r\n                       \r\n");
+	printf("max1:%d  max_index:%d  Fre:%f\r\nmax2:%d  max2_index:%d  Fre:%f\r\n", max, max_index, Div_Fre1, second_max, second_max_index, Div_Fre2);
+	
+	Div_Fre1 = find_near_fre(Div_Fre1)*DDS_Fre_1M/1000000.0;
+	Div_Fre2 = find_near_fre(Div_Fre2)*DDS_Fre_1M/1000000.0;
+	
+	AD9854_SetSine((uint32_t)Div_Fre1, 4000);
+	AD9851_Setfq(Div_Fre2);
+
 }
 
 /* USER CODE END 0 */
@@ -430,7 +491,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
 {
 	HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_RESET);
-	printf("ADC DMA complete!\r\n");
+//	printf("ADC DMA complete!\r\n");
 	// 生成FFT数据
 	for(int i = 0;i<ADC_NUM;i++)
 	{
@@ -441,6 +502,7 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
 	cr4_fft_256_stm32(FFT_OUT, FFT_IN, ADC_NUM);
 	
 	GetPowerMag();
+	DDS_Output_Set();
 	lv_chart_series_t * ui_FFT_Result_series_1 = lv_chart_add_series(ui_Wave_Show, lv_color_hex(0x00D8FF),
                                                                      LV_CHART_AXIS_PRIMARY_Y);
 	lv_chart_set_ext_y_array(ui_Wave_Show, ui_FFT_Result_series_1, (lv_coord_t*)lBufMagArray);

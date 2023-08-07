@@ -45,6 +45,8 @@
 "elite_test\datascope.o"
 "elite_test\cr4_fft_256_stm32.o"
 "elite_test\cr4_fft_1024_stm32.o"
+"elite_test\ad9850.o"
+"elite_test\ad9851.o"
 "elite_test\lv_port_disp.o"
 "elite_test\lv_port_indev.o"
 "elite_test\lv_disp.o"
