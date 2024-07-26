@@ -185,7 +185,7 @@ int main(void)
   while (1)
   {
 		ADC_Data = ADC_ConvertedValue;
-    // 省去几百个指令周期 也就是ms级别的优化 挺多的了一直读取，不过本身都等1s delay应该没什么区别
+    // 省去几百个指令周期 也就是us级别的优化 挺多的了一直读取，不过本身都等1s delay应该没什么区别
 		ADC_Vol =(float) ADC_Data * normal_adc_factor; // 读取转换的AD值
 //		printf("\r\n The current AD value = 0x%04X \r\n", ADC_Data); 
 //		printf("\r\n The current AD value = %f V \r\n",ADC_Vol);     
