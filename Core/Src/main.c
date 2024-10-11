@@ -78,12 +78,27 @@ void GetPowerMag()
 	float X,Y,Mag;
 	unsigned short i;
 	int a;
+  /*在STM32F1系列中用的是M3核心，并不包括FPU（浮点运算单元）。所以应该尽量减少浮点计算的使用来增加系统速度。
+  常见的做法是将浮点数乘以一个倍数（倍数取决于想要的精度）进行整数的运算。软件模拟浮点运算（特别是除法）会非常慢。
+  具体计算如下：
+  软件模拟加减和乘法为几十到上百个指令周期，触发则需要几百到上千个指令周期。我们分别取100和500作为参考。
+  本身的运算中N=256也就是要进行128次运算，本身是三个除法再乘法，也就是600*3 = 1800个指令周期/每一次运算
+  1.8K * 128 = 230.4K个指令周期
+  优化后外面把最占用时间的除法优化掉了只剩下三个乘法，也就是一个周期里面是100*3 = 300个指令周期
+  300*128 +1.8K = 38.4K个指令周期
+  总计节省了 192K个指令周期 
+  也就是 192K * 14ns = 2.688ms （使用典型值14ns）
+  不过考虑在项目里面其实不是一个反复调用的函数知识开始用了一下 应该没什么大的区别。。。 如果反复调用比如循环中使用是一个非常大的优化！
+  */
+  float normal_factor = (float)N / 32768.0f;  // 归一化系数，不需要每次循环都进行计算 同时 .0f 保证是浮点数不会丢失精度
+  float normal_freq_factor = (float)Fs / N;  // 归一化频率系数, 同样的不需要每次都进行计算
 	for(i=0; i<N/2; i++)
 	{
-		lX  =  FFT_OUT[i] >> 16;
-		lY  = (FFT_OUT[i] << 16 ) >> 16;
-		X = N * ((float)lX) / 32768;
-		Y = N * ((float)lY) / 32768;
+		lX  = (signed short) FFT_OUT[i] >> 16;  // 提取高16位 使用signed short确保它是有符号的16位整数
+		lY  = (signed short)(FFT_OUT[i] & 0xFFFF); // 用位运算比原本的连续两次移位更快
+    // 直接使用归一化后的系数进行计算
+		X = (float)lX * normal_factor;  
+		Y = (float)lY * normal_factor;
 		Mag = sqrt(X * X + Y * Y) / N;
 		if(i == 0)
 			lBufMagArray[i] = (unsigned long)(Mag * 32768);
@@ -91,7 +106,7 @@ void GetPowerMag()
 			lBufMagArray[i] = (unsigned long)(Mag * 65536);
 		 
 		printf("%d      ",i);
-		printf("%f      ",(float)Fs/N*i);
+		printf("%f      ",normal_freq_factor*i);  // 使用归一化系数而不是每次都计算
 		printf("%d      ",lBufMagArray[i]);
 		printf("%f      ",X);
 		printf("%f      \r\n",Y);                       
@@ -166,10 +181,12 @@ int main(void)
 	
 	GetPowerMag();
 	
+  float normal_adc_factor = (float)3.3 / 4096.0f;  // 同样的归一化系数
   while (1)
   {
 		ADC_Data = ADC_ConvertedValue;
-		ADC_Vol =(float) ADC_Data/4096*(float)3.3; // 读取转换的AD值
+    // 省去几百个指令周期 也就是us级别的优化 挺多的了一直读取，不过本身都等1s delay应该没什么区别
+		ADC_Vol =(float) ADC_Data * normal_adc_factor; // 读取转换的AD值
 //		printf("\r\n The current AD value = 0x%04X \r\n", ADC_Data); 
 //		printf("\r\n The current AD value = %f V \r\n",ADC_Vol);     
 		HAL_Delay(1000);  
